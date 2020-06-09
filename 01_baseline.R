@@ -6,13 +6,12 @@
 #Notes:
 ################################################
 
-setwd('/mnt/workspace/DCRI/Data')
 library(dplyr)
 library(boot)
 library(table1)
 library(Hmisc)
 
-all=read.csv('analysis_ds.csv')
+all=read.csv('Data/analysis_ds.csv')
 
 #convert to factors
 #sex=2 is female
@@ -52,34 +51,34 @@ tab1=table1( ~age + Sex + Race2 + BMI + weight + height +
                Toba + Htn + HxDM + HxMIStr + revasc
             + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin
            | study.1, data=all)
-write.table(tab1, file='/mnt/workspace/DCRI/Output/01a_baselinev2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
-#write.csv(tab1, file='~/DCRI/Output/01a_baseline.csv', row.names = F)
+write.table(tab1, file='Output/01a_baselinev2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.csv(tab1, file='Output/01a_baseline.csv', row.names = F)
 
 accord_tb=table1( ~age + Sex + Race2 + BMI + weight + height +
                       Toba + Htn + HxDM + HxMIStr + revasc
                   + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin
                   | type_hyp, data=all[which(all$study.1=='ACCORD'),])
-write.table(accord_tb, file='/mnt/workspace/DCRI/Output/01b_accordv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
-#write.csv(accord_tb, file='~/DCRI/Output/01b_accord.csv')
+write.table(accord_tb, file='Output/01b_accordv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.csv(accord_tb, file='Output/01b_accord.csv')
 
 aimhigh_tb=table1( ~age + Sex + Race2 + BMI + weight + height +
                       Toba + Htn + HxDM + HxMIStr + revasc
                   + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin
                   | type_hyp, data=all[which(all$study.1=='AIMHIGH'),])
-write.table(aimhigh_tb, file='/mnt/workspace/DCRI/Output/01c_aimhighv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
-#write.csv(aimhigh_tb, file='~/DCRI/Output/01c_aimhigh.csv')
+write.table(aimhigh_tb, file='Output/01c_aimhighv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.csv(aimhigh_tb, file='Output/01c_aimhigh.csv')
 
 allhat_tb=table1( ~age + Sex + Race2 + BMI + weight + height +
                       Toba + Htn + HxDM + HxMIStr + revasc
                   + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin
                   | type_hyp, data=all[which(all$study.1=='ALLHAT'),])
-write.table(allhat_tb, file='/mnt/workspace/DCRI/Output/01d_allhatv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
-#write.csv(allhat_tb, file='~/DCRI/Output/01d_allhat.csv')
+write.table(allhat_tb, file='Output/01d_allhatv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.csv(allhat_tb, file='Output/01d_allhat.csv')
 
 bari_tb=table1( ~age + Sex + Race2 + BMI + weight + height +
                       Toba + Htn + HxDM + HxMIStr + revasc
                   + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin
                   | type_hyp, data=all[which(all$study.1=='BARI2D'),])
-write.table(bari_tb, file='/mnt/workspace/DCRI/Output/01e_bari2dv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
-#write.csv(bari_tb, file='~/DCRI/Output/01e_bari2d.csv')
+write.table(bari_tb, file='Output/01e_bari2dv2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.csv(bari_tb, file='Output/01e_bari2d.csv')
 

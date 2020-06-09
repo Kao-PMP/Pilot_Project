@@ -7,7 +7,7 @@ library(boot)
 #library(table1)
 library(Hmisc)
 
-data=read.csv("/mnt/workspace/DCRI/Data/analysis_ds.csv")
+data=read.csv("Data/analysis_ds.csv")
 train=data[which(data$train==1),]
 #colnames(train)
 base_nmiss=train[complete.cases(train[, c(1:3, 5, 6, 9:19, 20:22, 50, 51)]), c(1:3, 5, 6, 9:19, 20:22, 50, 51)]
@@ -105,4 +105,4 @@ table(std$study, std$cluster2)
 
 #all=rbind(train2, test2)
 #head(all)
-#write.csv(all, file='/mnt/workspace/DCRI/Data/analysis_ds_clusters.csv', quote = FALSE,  row.names = FALSE)
+#write.csv(all, file='Data/analysis_ds_clusters.csv', quote = FALSE,  row.names = FALSE)

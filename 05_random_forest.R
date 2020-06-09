@@ -3,7 +3,7 @@ library(survival)
 library(dplyr)
 library(caret)
 
-hyp=read.csv("/mnt/workspace/DCRI/Data/analysis_ds.csv")
+hyp=read.csv("Data/analysis_ds.csv")
 hyp$allhat=ifelse(hyp$study.1=='ALLHAT', 1, 0)
 hyp$aimhigh=ifelse(hyp$study.1=='AIMHIGH', 1, 0)
 hyp$accord=ifelse(hyp$study.1=='ACCORD', 1, 0)

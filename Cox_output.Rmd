@@ -7,11 +7,10 @@ output: html_document
 
 ```{r setup, include=FALSE}
 require("knitr")
-opts_knit$set(root.dir="/mnt/workspace/DCRI/Progs")
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(comment=NA)
-source('/mnt/workspace/DCRI/Progs/04_cox_BP.R')
-source('/mnt/workspace/DCRI/Progs/07_bp_risk.R')
+source('04_cox_BP.R')
+source('07_bp_risk.R')
 ```
 
 

@@ -5,7 +5,7 @@ library(lattice)
 library(splines)
 library(ggplot2)
 
-hyp=read.csv("/mnt/workspace/DCRI/Data/analysis_ds_clusters.csv")
+hyp=read.csv("Data/analysis_ds_clusters.csv")
 train=hyp[which(hyp$train==1),]
 
 

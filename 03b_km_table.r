@@ -4,7 +4,7 @@ library(boot)
 library(table1)
 library(Hmisc)
 
-data=read.csv('/mnt/workspace/DCRI/Data/analysis_ds_clusters.csv')
+data=read.csv('Data/analysis_ds_clusters.csv')
 
 
 table(data$cluster1, data$cluster2)
@@ -49,17 +49,17 @@ tab1=table1( ~age + Sex + Race2 + BMI +
                Toba + Htn + HxDM + HxMIStr + revasc
             + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin + study.1
            | cluster1, data)
-write.table(tab1, file='/mnt/workspace/DCRI/Output/03_cluster1.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.table(tab1, file='Output/03_cluster1.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
 
 tab2=table1( ~age + Sex + Race2 + BMI + 
                Toba + Htn + HxDM + HxMIStr + revasc
             + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin + study.1
            | cluster2, data)
-write.table(tab2, file='/mnt/workspace/DCRI/Output/03_cluster2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.table(tab2, file='Output/03_cluster2.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
 
 tab3=table1( ~age + Sex + Race2 + BMI + 
                Toba + Htn + HxDM + HxMIStr + revasc
              + BP.s + BP.d + LDL + HDL + TChol + Trig + HMG + asprin + study.1
              | cluster1, train)
-write.table(tab3, file='/mnt/workspace/DCRI/Output/03_cluster1_train.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
+write.table(tab3, file='Output/03_cluster1_train.html', quote = FALSE,col.names = FALSE, row.names = FALSE)
 

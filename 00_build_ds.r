@@ -1,5 +1,5 @@
 
-setwd('/mnt/workspace/DCRI/Data')
+setwd('Data')
 library(dplyr)
 
 aimhigh=read.csv('aimhigh.csv')
