@@ -1,0 +1,44 @@
+---
+#title: "Cox_output"
+#author: "Hillary Mulder"
+#date: "10/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+require("knitr")
+opts_knit$set(root.dir="/mnt/workspace/DCRI/Progs")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment=NA)
+source('/mnt/workspace/DCRI/Progs/04_cox_BP.R')
+source('/mnt/workspace/DCRI/Progs/07_bp_risk.R')
+```
+
+
+```{r echo=FALSE}
+summary(cox1)
+c1a_final
+summary(cox1b)
+c1b_final
+summary(cox2a)
+c2a
+summary(cox2b)
+c2b
+summary(cox3a)
+c3a
+summary(cox3b)
+c3b
+summary(cox4a)
+c4a
+summary(cox4b)
+c4b
+summary(cox5a)
+c5a
+summary(cox5b)
+c5b
+summary(cox_sp)
+p1
+summary(cox_sp2)
+p2
+
+```

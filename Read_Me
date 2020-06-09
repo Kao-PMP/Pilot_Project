@@ -1,0 +1,19 @@
+Project: PMP Blood Pressure Analysis
+Statistician: Hillary Mulder
+Date: 10/21/2019
+__________________________________________________________
+
+02_clustering and 05_random_forest are unuseable programs. 
+Could not install required packages for both analyses, mainly due to R version and package requirement being different.
+
+Final programs:
+00_build_db
+01_baseline
+03_kmeans
+03b_km_table
+04_Cox_BP
+06_mlp
+07_bp_risk
+
+Most ipynb files will be downloaded as .html files
+Most ipynb files were converted to R files as well, though some R files were edited after downloading
