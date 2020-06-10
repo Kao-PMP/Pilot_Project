@@ -78,21 +78,15 @@ train$train=1
 test$test=1
 
 
-head(train)
-head(test)
-nrow(train)
-nrow(test)
-
 head(hyp)
 final = hyp %>% left_join(train, by=c("person_id",'study.1')) %>% left_join(test, by=c("person_id",'study.1'))
 head(final)
 
-table(hyp$study.1)
-table(hyp$antihyp)
-table(hyp$type_hyp)
-colnames(hyp)
-
-write.csv(hyp, 'analysis_ds.csv', row.names=FALSE)
+table(final$study.1)
+table(final$antihyp)
+table(final$type_hyp)
+colnames(final)
+write.csv(final, 'analysis_ds.csv', row.names=FALSE)
 
 anly=read.csv('analysis_ds.csv')
 
