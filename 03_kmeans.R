@@ -13,7 +13,7 @@ train=data[which(data$train==1),]
 
 # exclude inputs to derived values
 train_columns=c(1:3, 5, 6, 9:19, 20:22, 50, 51)
-#base_nmiss=train[complete.cases(train[, c(train_columns, train_columns)])]
+#base_nmiss=train[complete.cases(train[, train_columns]), train_columns]
 base_nmiss=train[complete.cases(train[, c(1:3, 5, 6, 9:19, 20:22, 50, 51)]), c(1:3, 5, 6, 9:19, 20:22, 50, 51)]
 studyn=base_nmiss$study.1
 enrolid=base_nmiss[,1]
