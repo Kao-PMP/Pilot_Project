@@ -17,3 +17,4 @@ Final programs:
 
 Most ipynb files will be downloaded as .html files
 Most ipynb files were converted to R files as well, though some R files were edited after downloading
+Use "jupyter nbconvert --to python <file>" to convert a notebook to a code file. R should be used in place of python but doesn't work. Remove the first line from the python file and rename it to make this way work.
