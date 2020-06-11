@@ -45,10 +45,11 @@ hyp$type_hyp=ifelse(hyp$BP.s>=130 & hyp$BP.d<80, 'Systolic',
 hyp$Htn=ifelse(is.na(hyp$Htn) & hyp$study.1=='ACCORD', 0, hyp$Htn)
 #table(hyp$Htn, hyp$study.1, useNA="ifany")
 
+# data fixes, later fixed in pipeline. Checks remain for this dataset
 hyp$dthStat=ifelse(is.na(hyp$dthStat) & hyp$study.1=='AIMHIGH', 0, hyp$dthStat)
 hyp$dthStat=ifelse(hyp$study.1=='ACCORD', 1-hyp$dthStat, hyp$dthStat)
-#https://stackoverflow.com/questions/23479512/stratified-random-sampling-from-data-frame
 
+#https://stackoverflow.com/questions/23479512/stratified-random-sampling-from-data-frame
 hyp %>%
     select(study.1, BP.s, BP.d, dthDays) %>%
     group_by(study.1) %>%
