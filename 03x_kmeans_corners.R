@@ -23,6 +23,10 @@ enrolid=base_nmiss[,1]
 
 # remove Race2, Htn, HxDM, type_hype, study.1
 base_nmiss=base_nmiss[, -c(1,7,8,20,21)]
+
+####polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1 
+base_nmiss=base_nmiss[, -c(3,8,9,11,12,13,14,15)]
+
 ppr=preProcess(base_nmiss, method=c('center','scale'))
 
 

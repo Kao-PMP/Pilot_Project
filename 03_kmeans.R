@@ -20,6 +20,10 @@ enrolid=base_nmiss[,1]
 
 # remove Race2, Htn, HxDM, type_hype, study.1
 base_nmiss=base_nmiss[, -c(1,7,8,20,21)]
+print(names(base_nmiss))
+####polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1 
+base_nmiss=base_nmiss[, -c(3,8,9,11,12,13,14,15)]
+print(names(base_nmiss))
 ppr=preProcess(base_nmiss, method=c('center','scale'))
 
 
@@ -55,20 +59,14 @@ plot(k.values, wss_values,
        xlab="Number of clusters K",
        ylab="Total within-clusters sum of squares")
 
-# going to use 4 or 5 clusters, or 2
+# going to use 3 or 5 clusters
 
 set.seed(123)
-cluster0 <- kmeans(base_scale, 2, iter.max=15, nstart = 6)
-cluster1 <- kmeans(base_scale, 4, iter.max=15, nstart = 6)
+cluster1 <- kmeans(base_scale, 3, iter.max=15, nstart = 6)
 cluster2 <- kmeans(base_scale, 5, iter.max=15, nstart = 6)
 
 
 # Show the clusters.
-base_nmiss %>%
-  mutate(Cluster = cluster0$cluster) %>%
-  group_by(Cluster) %>%
-  summarise_all("mean")
-
 base_nmiss %>%
   mutate(Cluster = cluster1$cluster) %>%
   group_by(Cluster) %>%
@@ -83,10 +81,14 @@ base_nmiss %>%
 # Show how the clusters split out among the studies.
 #table(base_nmiss$studyn, final$cluster)
 #head(check)
-check=data.frame(person_id=enrolid, study=studyn, cluster0=cluster0$cluster, cluster1=cluster1$cluster, cluster2=cluster2$cluster)
-table(check$study, check$cluster0)
+check=data.frame(person_id=enrolid, study=studyn, cluster1=cluster1$cluster, cluster2=cluster2$cluster)
 table(check$study, check$cluster1)
 table(check$study, check$cluster2)
+
+
+
+stop("OK")
+
 
 
 # Predict...stuff.
@@ -115,22 +117,18 @@ predict.kmeans <- function(object,
 test_nmiss2=test_nmiss[, -c(1,7,8,20,21)]
 #test_scale=scale(_nmiss)
 test_scale=predict(ppr, newdata=test_nmiss)
-pred0=predict.kmeans(cluster0, newdata=test_scale, method="classes")
-pred2=predict.kmeans(cluster1, newdata=test_scale, method="classes")
+pred1=predict.kmeans(cluster1, newdata=test_scale, method="classes")
 pred2=predict.kmeans(cluster2, newdata=test_scale, method="classes")
-std=data.frame(person_id=test_enrolid, study=test_studyn, cluster0=pred0, cluster1=pred1, cluster2=pred2)
+std=data.frame(person_id=test_enrolid, study=test_studyn, cluster1=pred1, cluster2=pred2)
 #head(std)
-table(std$study, std$cluster0)
 table(std$study, std$cluster1)
 table(std$study, std$cluster2)
 
 # predict by centers
-pred2=predict.kmeans(cluster0, newdata=test_scale, method="centers")
-pred4=predict.kmeans(cluster1, newdata=test_scale, method="centers")
-pred5=predict.kmeans(cluster2, newdata=test_scale, method="centers")
-std=data.frame(person_id=test_enrolid, study=test_studyn, cluster0=pred2, cluster1=pred4, cluster2=pred5)
+pred1=predict.kmeans(cluster1, newdata=test_scale, method="centers")
+pred2=predict.kmeans(cluster2, newdata=test_scale, method="centers")
+std=data.frame(person_id=test_enrolid, study=test_studyn, cluster1=pred1, cluster2=pred2)
 #head(std)
-table(std$study, std$cluster0)
 table(std$study, std$cluster1)
 table(std$study, std$cluster2)
 
