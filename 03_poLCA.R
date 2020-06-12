@@ -21,8 +21,6 @@ train_columns=c(1:3, 5, 6, 9:19, 20:22, 50, 51)
 #[19] "antihyp"   "study.1"   "type_hyp" 
 ####base_nmiss=train[, train_columns]
 base_nmiss=data[, train_columns]
-studyn=base_nmiss$study.1
-enrolid=base_nmiss[,1]
 
 # poLCA needs categorized variables :BMI, BP.s, BP.d, LDL, HDL, TChol, Trig
 base_nmiss$age <- cut(base_nmiss$age, breaks=c(0, 55, 65, Inf), include.lowest=T, labels=c("low", "med", "high"))
@@ -61,21 +59,23 @@ polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1
 #polca_formula_4 <- cbind(age, Sex, Race2, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1 
 # not so good, perhaps race instead of race2?
 
-polca_model <- poLCA(f=polca_formula_3, dat=base_nmiss, nclass=3, nrep=10, na.rm=FALSE, verbose=FALSE, graphs=T)
-
+polca_model <- poLCA(f=polca_formula_3, dat=base_nmiss, nclass=3, nrep=3, na.rm=FALSE, verbose=FALSE, graphs=T)
+base_nmiss$polca_class <- polca_model$predclass
+print(summary(base_nmiss[base_nmiss$polca_class == 1, ]))
+print(summary(base_nmiss[base_nmiss$polca_class == 2, ]))
+print(summary(base_nmiss[base_nmiss$polca_class == 3, ]))
 
 set.seed(123)
 
+# Show the clusters.  XXX doesn't work for factors.
+#print("a------------------------------------")
+#base_nmiss %>%
+#  group_by(polca_class) %>%
+#  summarise_all("mean")
 
-# Show the clusters.
-base_nmiss %>%
-  mutate(Cluster = polca_model$predclass) %>%
-  group_by(Cluster) %>%
-  summarise_all("mean")
-
+warnings()
 
 # Show how the clusters split out among the studies.
-check <- data.frame(person_id=enrolid, study=studyn, cluster0=polca_model$predclass)
+check <- data.frame(person_id=base_nmiss$person_id, study=base_nmiss$study.1, cluster0=base_nmiss$polca_class)
 table(check$study, check$cluster0)
 
-stop("OK")
