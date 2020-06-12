@@ -3,6 +3,9 @@
 [15] "asprin"  "antihyp"
 [1] "age"     "Sex"     "BMI"     "Toba"    "HxMIStr" "revasc"  "LDL"    
 [8] "antihyp"
+[1] 40685    55
+[1] 32906    16
+[1] 24646     8
 # A tibble: 3 x 9
   Cluster   age   Sex   BMI  Toba HxMIStr revasc   LDL antihyp
     <int> <dbl> <dbl> <dbl> <dbl>   <dbl>  <dbl> <dbl>   <dbl>
@@ -63,3 +66,9 @@
   AIMHIGH   26   96   75 2526  377
   ALLHAT  4373 4173 1265 1062 2026
   BARI2D   154  488   30  301  403
+
+ ACCORD AIMHIGH  ALLHAT  BARI2D 
+   7271    3100   12899    1376 
+
+   1    2    3    4    5 
+4834 5160 2244 5309 7099 
