@@ -64,8 +64,11 @@ polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1
 
 polca_model <- poLCA(f=polca_formula_3, dat=base_nmiss, nclass=3, nrep=20, na.rm=FALSE, verbose=T, graphs=T)
 base_nmiss$polca_class <- polca_model$predclass
+print("--- 1 ---")
 print(summary(base_nmiss[base_nmiss$polca_class == 1, ]))
+print("--- 2 ---")
 print(summary(base_nmiss[base_nmiss$polca_class == 2, ]))
+print("--- 3 ---")
 print(summary(base_nmiss[base_nmiss$polca_class == 3, ]))
 
 set.seed(123)

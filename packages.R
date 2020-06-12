@@ -1,6 +1,10 @@
 # This script installs packages if they haven't been already, and then outputs their versions.
 
-packages.list <- c("table1", "tidyr", "boot", "caret", "cluster", "dplyr", "ggplot2", "Hmisc", "lattice", "purrr", "ranger", "risksetROC", "splines", "survival", "table1", "sfsmisc", "poLCA")
+packages.list <- c("table1", "tidyr", "boot", "caret", "dplyr", "ggplot2", "Hmisc", "lattice", "purrr", "ranger", "risksetROC", "splines", "survival", "sfsmisc", 
+# clustering
+"cluster", "poLCA",
+# variable categorization
+ "CatPredi")
 
 new.packages <- packages.list[!(packages.list %in% installed.packages() [,"Package"])]
 if (length(new.packages)) install.packages(new.packages, repos="http://cran.us.r-project.org")
