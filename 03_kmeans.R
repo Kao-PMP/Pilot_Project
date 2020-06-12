@@ -65,7 +65,6 @@ kmax=15
 # going to use 3 or 5 clusters
 
 set.seed(123)
-print(dim(test_nmiss))
 print(dim(base_scale))
 cluster1 <- kmeans(base_scale, 3, iter.max=15, nstart = 6)
 cluster2 <- kmeans(base_scale, 5, iter.max=15, nstart = 6)
@@ -82,13 +81,21 @@ base_nmiss %>%
 #  group_by(Cluster) %>%
 #  summarise_all("mean")
 
+#test_nmiss=test[complete.cases(test[, c(1:3, 5, 6, 9:19, 20:22, 50, 51)]), c(1:3, 5, 6, 9:19, 20:22, 50, 51)]
 ####polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1 
-base_nmiss$Sex <- as.factor(base_nmiss$Sex)
-base_nmiss$Toba <- as.factor(base_nmiss$Toba)
-base_nmiss$HxMIStr <- as.factor(base_nmiss$HxMIStr)
-base_nmiss$revasc <- as.factor(base_nmiss$revasc)
-base_nmiss$antihyp <- as.factor(base_nmiss$antihyp)
-base_nmiss$cluster <- as.factor(cluster1$cluster)
+#base_nmiss$Sex <- as.factor(base_nmiss$Sex)
+#base_nmiss$Toba <- as.factor(base_nmiss$Toba)
+#base_nmiss$HxMIStr <- as.factor(base_nmiss$HxMIStr)
+#base_nmiss$revasc <- as.factor(base_nmiss$revasc)
+#base_nmiss$antihyp <- as.factor(base_nmiss$antihyp)
+#base_nmiss$cluster <- as.factor(cluster1$cluster)
+base_nmiss$Sex <- as.numeric(base_nmiss$Sex)
+base_nmiss$Toba <- as.numeric(base_nmiss$Toba)
+base_nmiss$HxMIStr <- as.numeric(base_nmiss$HxMIStr)
+base_nmiss$revasc <- as.numeric(base_nmiss$revasc)
+base_nmiss$antihyp <- as.numeric(base_nmiss$antihyp)
+base_nmiss$cluster <- as.numeric(cluster1$cluster)
+base_nmiss <- base_nmiss[complete.cases(base_nmiss),]
 print(summary(base_nmiss[base_nmiss$cluster == 1,]))
 print(summary(base_nmiss[base_nmiss$cluster == 2,]))
 print(summary(base_nmiss[base_nmiss$cluster == 3,]))

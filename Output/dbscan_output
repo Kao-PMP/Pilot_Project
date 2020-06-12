@@ -73,6 +73,7 @@ The clustering contains 3 cluster(s) and 36 noise points.
 Available fields: cluster, eps, minPts
 [1] "c----------------"
 [1] "--- 1 ---"
+[1] 32852    12
       age            Sex            Race2            BMI       
  Min.   :40.0   Min.   :1.000   Min.   :1.000   Min.   :11.58  
  1st Qu.:59.1   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:26.60  
@@ -95,6 +96,7 @@ Available fields: cluster, eps, minPts
  3rd Qu.: 88.00   3rd Qu.:144.0   3rd Qu.:1.0000   3rd Qu.:1  
  Max.   :120.00   Max.   :282.0   Max.   :1.0000   Max.   :1  
 [1] "--- 2 ---"
+[1] 14 12
       age             Sex            Race2            BMI       
  Min.   :55.00   Min.   :1.000   Min.   :1.000   Min.   :22.73  
  1st Qu.:59.50   1st Qu.:1.250   1st Qu.:1.000   1st Qu.:27.19  
@@ -117,6 +119,7 @@ Available fields: cluster, eps, minPts
  3rd Qu.:301.0   3rd Qu.:1.0000   3rd Qu.:2  
  Max.   :313.0   Max.   :1.0000   Max.   :2  
 [1] "--- 3 ---"
+[1]  4 12
       age             Sex           Race2          BMI             Toba     
  Min.   :58.00   Min.   :1.00   Min.   :1.0   Min.   :23.08   Min.   :0.00  
  1st Qu.:58.00   1st Qu.:1.75   1st Qu.:1.0   1st Qu.:25.90   1st Qu.:0.75  
