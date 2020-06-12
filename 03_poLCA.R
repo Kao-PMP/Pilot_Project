@@ -22,6 +22,9 @@ train_columns=c(1:3, 5, 6, 9:19, 20:22, 50, 51)
 ####base_nmiss=train[, train_columns]
 base_nmiss=data[, train_columns]
 
+# print(summary(cut(base_nmiss$LDL, 10)))
+
+
 # poLCA needs categorized variables :BMI, BP.s, BP.d, LDL, HDL, TChol, Trig
 base_nmiss$age <- cut(base_nmiss$age, breaks=c(0, 55, 65, Inf), include.lowest=T, labels=c("low", "med", "high"))
 base_nmiss$BMI <- cut(base_nmiss$BMI, breaks=c(0, 18.5, 25, 30, Inf), include.lowest=T, 
@@ -41,8 +44,8 @@ for (col in names(base_nmiss)) {
     base_nmiss[,col] = as.factor(base_nmiss[,col])
 }
 
-summary(base_nmiss)
-
+base_nmiss=base_nmiss[complete.cases(base_nmiss),]
+print(summary(base_nmiss))
 polca_formula_all <- cbind(age, Sex, Race2, BMI, Toba, Htn, HxDM, 
 	HxMIStr, revasc, BP.s, BP.d, LDL, HDL, TChol, Trig, 
 	HMG, asprin, antihyp, study.1, type_hyp)~1 
@@ -59,7 +62,7 @@ polca_formula_3 <- cbind(age, Sex, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1
 #polca_formula_4 <- cbind(age, Sex, Race2, BMI, Toba, HxMIStr, revasc, LDL, antihyp )~1 
 # not so good, perhaps race instead of race2?
 
-polca_model <- poLCA(f=polca_formula_3, dat=base_nmiss, nclass=3, nrep=3, na.rm=FALSE, verbose=FALSE, graphs=T)
+polca_model <- poLCA(f=polca_formula_3, dat=base_nmiss, nclass=3, nrep=20, na.rm=FALSE, verbose=T, graphs=T)
 base_nmiss$polca_class <- polca_model$predclass
 print(summary(base_nmiss[base_nmiss$polca_class == 1, ]))
 print(summary(base_nmiss[base_nmiss$polca_class == 2, ]))
