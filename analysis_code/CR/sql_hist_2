@@ -1,0 +1,586 @@
+insert into study_files values (21, 'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/CVDOUTCOMES.csv')
+;
+ls test/studies/
+\q
+insert into study_files values (22, 'AIM-HIGH/SASData/Tabulations/DEATH.csv');
+\q
+insert into study_files values (24, 'BARI-2D/data/BARI2D_ENDPTS.csv');
+\q
+\d information_schema.columns
+select distinct table_schema from information_schema.columns;
+select table_schema, table_name, column_name from information_schema.columns where table_schema in ('accord', 'aimhigh', 'allhat', 'bari2d');
+select table_schema, table_name, column_name from information_schema.columns where table_schema in ('accord', 'aimhigh', 'allhat', 'bari2d');
+select table_schema, table_name, column_name from information_schema.columns where table_schema in ('accord', 'aimhigh', 'allhat', 'bari2d') limit 2;
+\q
+\d table_column
+select table_schema, table_name, column_name from information_schema.columns where table_schema in ('accord', 'aimhigh', 'allhat', 'bari2d') limit 2;
+\q
+\d study
+select distinct study_name from study;
+\q
+\d study_tables
+\d study_table
+\d 
+\d table_column
+\q
+select * from table_column where study_id > 20;
+  \q 
+select * from table_column where study_id > 20 limit 10;
+\q
+select * from table_column;
+select distinct table_name from table_column;
+select distinct table_name from table_column order by table_name;
+  \q
+select distinct table_name from table_column where study_id > 20;
+select distinct table_name from table_column where study_id > 20 order by table_name;
+select distinct table_name from table_column where table_name like 'acc%' order by table_name;
+select distinct table_name from table_column where table_name like 'ACC%' order by table_name;
+select distinct table_name from table_column where study_id=21 order by table_name;
+\q
+\q
+select * from study_to_ohdsi_mapping;
+select * from study_to_ohdsi_mapping where concept_code = 'UCD-Kao-27';
+select * from study_to_ohdsi_mapping where concept_code = 'UCD-Kao-26';
+select * from study_to_ohdsi_mapping where concept_code = 'UCD-Kao-26' order by study_id;
+\d accord."CVDOUTCOMES_201604" 
+select * from categorization_function_metadata where extract_study_id = 20003;
+select * from categorization_function_metadata where extract_study_id = 20003 order by sequence;
+insert into categorization_function_metadata values (20003, 'identity_number', 'Death Days', 0, 'UCD.Kao', 'UCD-Kao-26', null, 'observation', 'dthDays', 41);
+insert into categorization_function_metadata values (20003, 'map_concept_id', 'Death Days', 0, 'UCD.Kao', 'UCD-Kao-27', null, 'observation', 'dthDays', 42);
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, transform_factor, transform_shift) values (21, 'accord.CVDOUTCOMES_201604', 'fuyrs_tm', 'linear_equation', 365.25, 0);
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity');
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity', 'linear_equation');
+update study_to_ohdsi_mapping set function_name = 'map_number' where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity', 'linear_equation');
+update study_to_ohdsi_mapping set to_table = 'observation' where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-27') and function_name = 'map_number';
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity', 'linear_equation');
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('linear_equation');
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity');
+select * from study_to_ohdsi_mapping where study_id in (22) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') ;
+select * from study_to_ohdsi_mapping where study_id in (22) and concept_code in ('UCD-Kao-27') ;
+update study_to_ohdsi_mapping set function_name = 'not_null' where study_id in (22) and concept_code in ('UCD-Kao-27') ;
+select * from study_to_ohdsi_mapping where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity');
+select * from study_mapping_arguments where study_id in (21,22,23,24) and concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity');
+select * from study_mapping_arguments where study_id in (21,22,23,24) and to_concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity');
+select * from study_mapping_arguments where study_id in (21,22,23,24) and to_concept_code in ('UCD-Kao-26', 'UCD-Kao-27') and function_name not in ('identity', 'not_null');
+select * from study_mapping_arguments where study_id in (21,22,23,24) and function_name = 'linear_equation';
+select * from study_mapping_arguments where study_id in (21,22,23,24) and function_name = 'map_number';
+select concept_name from concept where concept_code = '373066001';
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (24, 'bari2d.BARI2D_ENDPTS', 'death', 'map_number', 0, 'SNOMED', '373067005');
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (24, 'bari2d.BARI2D_ENDPTS', 'death', 'map_number', 1, 'SNOMED', '373066001');
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (23, 'allhat.DOX_VSC', 'death', 'map_number', 1, 'SNOMED', '373066001');
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (23, 'allhat.DOX_VSC', 'death', 'map_number', 2, 'SNOMED', '373067005');
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (21, 'accord.CVDOUTCOMES_201604', 'censor_tm', 'map_number', 1, 'SNOMED', '373067005');
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number, to_concept_vocabulary_id, to_concept_code) values (21, 'accord.CVDOUTCOMES_201604', 'censor_tm', 'map_number', 0, 'SNOMED', '373066001');
+insert into concept values (2000000066, 'Study Name', 'Observation', 'UCD.Kao', 'UCD.Kao CC', null, 'UCD-Kao-66', '2019-05-08', '2099-12-31');
+insert into categorizaton_metadata values (20003, 'identity_string', 'Study Name', 0, 'UCD.Kao', 'UCD-Kao-66', null, 'observation', 'study', 43);
+insert into categorizaton_function_metadata values (20003, 'identity_string', 'Study Name', 0, 'UCD.Kao', 'UCD-Kao-66', null, 'observation', 'study', 43);
+insert into categorization_function_metadata values (20003, 'identity_string', 'Study Name', 0, 'UCD.Kao', 'UCD-Kao-66', null, 'observation', 'study', 43);
+insert into vocabulary_concept values ('UCD.Kao', 'UCD-Kao-66');
+insert into vocabulary_concept values ('dual', 'ACCORD');
+insert into vocabulary_concept values ('dual', 'AIMHIGH');
+insert into vocabulary_concept values ('dual', 'ALLHAT');
+insert into vocabulary_concept values ('dual', 'BARI2D');
+insert into categorization_function_parameters values (20003, 'map_concept_id', 'Death Status', 0, null, 0, null, 4188540);
+insert into categorization_function_parameters values (20003, 'map_concept_id', 'Death Status', 0, null, 1, null, 4188539);
+\q
+\d allhat."DOX_VSC" 
+select diabetes from alllhat."DOX_VSC" ;
+select diabetes from allhat."DOX_VSC" ;
+select hx_diabetes from aimhigh."PATIENT" ;
+\d aimhigh."PATIENT" ;
+select hxdiab from aimhigh."PATIENT" ;
+select count(*), hxdiab from aimhigh."PATIENT" group by hxdiab;
+select count(*), hx_diabetes from aimhigh."HX' group  by hx_diabetes;;
+";
+select count(*), hx_diabetes from aimhigh."HX" group by hx_diabetes;
+\d bari2d."BARI2D_BL"
+select ccb, arb, acei, betab, sbp_sit, dbp_st from  bari2d."BARI2D_BL"
+;
+select ccb, arb, acei, betab, sbp_sit, dbp_sit from  bari2d."BARI2D_BL"
+;
+select ccb, arb, acei, betab, sbp_sit, dbp_st from  bari2d."BARI2D_BL"
+;
+select ccb, arb, acei, betab, sbp_sit, dbp_sit from  bari2d."BARI2D_BL"
+;
+select ccb, arb, acei, betab, sbp_sit, dbp_sit, priorrev, hxmi, hxcva, hxdm, hxhtn, smkcat, height, weight, bmi, race, sex, age from  bari2d."BARI2D_BL"
+;
+select ccb, arb, acei, betab, sbp_sit, dbp_sit, priorrev, hxmi, hxcva, hxhtn, smkcat, height, weight, bmi, race, sex, age from  bari2d."BARI2D_BL"
+;
+select ccb, tzd,  arb, acei, diur, nsgn, betab, asp, hmg, trig tchol, hdl, ldl, sbp_sit, dbp_sit, priorrev, hxmi, hxcva, hxhtn, smkcat, height, weight, bmi, race, sex, age from  bari2d."BARI2D_BL"
+;
+select ccb, tzd,  arb, acei, diur, nsgn, betab, asp, hmg, trig tchol, hdl, ldl, sbp_sit, dbp_sit, priorrev, hxmi, hxcva, hxhtn, smkcat, height, weight, bmi, race, sex, age from  bari2d."BARI2D_BL"
+;
+select ccb, tzd,  arb, acei, diur, nsgn, betab, asp, hmg, trig tchol, hdl, ldl, sbp_sit, dbp_sit, priorrev, hxmi, hxcva, hxhtn, smkcat, height, weight, bmi, race, sex, age from  bari2d."BARI2D_BL"
+;q
+select result from aimhigh."LAB" where test="CHOL" and base=1;
+select result from aimhigh."LAB" where test="CHOL" and base=1;
+select result from aimhigh."LAB" where test='CHOL' and base=1;
+select count(*)  from aimhigh."LAB" where test='CHOL' and base=1;
+select count(*)  from aimhigh."LAB" ;
+select count(*)  from aimhigh."LAB" where test='CHOL';
+\d aimhigh."LAB"
+select count(patientkey) from aimhigh."LAB" ;
+select count(distinct patientkey) from aimhigh."LAB" ;
+select count(*)  from aimhigh."LAB" ;
+select count(*)  from aimhigh."LAB" where test='CHOL' and result is not null;
+select count(*)  from aimhigh."LAB" where test='CHOL' and base=1 and result is not null;
+select count(*), base, visit, result = null  from aimhigh."LAB" where test='CHOL' group by base, visit, base = null;
+select count(*), base, visit, result = null  from aimhigh."LAB" where test='CHOL' group by base, visit, result = null;
+select lrzgrp, llt from aimhigh."LLT_Vs"
+;
+\dt aimhigh.*
+select count(*), lrzgrp, llt from allhat."DOX_VSC" group by lrzgrp, llt;
+\d allhat."DOX_VSC" 
+select count(*), lrzgrp, llt from allhat."LLT_VSC" group by lrzgrp, llt;
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" on l.index = d.index  group by lrzgrp, llt;
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" d on l.index = d.index  group by lrzgrp, llt;
+\d allhat."LLT_VSC" 
+\d allhat."DOX_VSC"" 
+\d allhat."DOX_VSC"
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" d on l.rzgrp = d.rzgrp  group by lrzgrp, llt;
+\d allhat."DOX_VSC"
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" d on l.rzgroup = d.rzgroup  group by lrzgrp, llt;
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l group by lrzgrp;
+select count(*), l.lrzgrp from allhat."LLT_VSC" l group by lrzgrp;
+select count(*), d.llt from allhat."DOX_VSC" d group by llt;
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" d on l.rzgroup = d.rzgroup  group by lrzgrp, llt;
+select count(*), l.lrzgrp, d.llt from allhat."LLT_VSC" l join  allhat."DOX_VSC" d on l.index = d.index  group by lrzgrp, llt;
+select hxdiab from aimhigh."PATIENT" ;
+\q
+\dt allhat.*
+select count(*) from allhat."DOX_VSC" 
+;
+\d allhat."DOX_VSC" 
+;
+select count(*) from allhat."DOX_VSC" 
+;
+select count(distinct index) from allhat."DOX_VSC" 
+; 
+\d allhat."DOX_VSC" 
+;
+select count(distinct index) from allhat."DOX_VSC" 
+; 
+\d allhat."DOX_VSC" 
+;
+select count(distinct studyid) from allhat."DOX_VSC" 
+; 
+select studyid, index from allhat."DOX_VSC" 
+; 
+select studyid, index, llt, rzt from allhat."DOX_VSC" 
+; 
+\d allhat."DOX_VSC" 
+;
+select studyid, index, llt, rzgroup from allhat."DOX_VSC" 
+; 
+\d allhat."LLT_VSC" 
+select count(*) from allhat."DOX_VSC" d join allhat."LLT_VSC" l on d.index = l.index;
+select count(*) from allhat."DOX_VSC" d join allhat."LLT_VSC" l on d.study_id = l.study_id;
+select count(*) from allhat."DOX_VSC" d join allhat."LLT_VSC" l on d.studyid = l.study_id;
+select count(*) from allhat."DOX_VSC" d join allhat."LLT_VSC" l on d.studyid = l.studyid;
+\q
+\d allhat."DOX_VSC" 
+select llt, count(*) from  allhat."DOX_VSC"  group by llt;
+\d aimhigh."PATIENT" 
+select trigbase frome aimhigh."PATIENT" ;
+select trigbase from aimhigh."PATIENT" ;
+select trig_base from aimhigh."PATIENT" ;
+select trig_base from aimhigh."PATIENT" ;
+\q
+select * from study_files;
+select * from study_files where study_id = 21;
+select distinct from_table  from study_to_ohdsi_mapping where study_id = 21;
+\q
+\d accord."ACCORD_KEY" 
+select min(baseline_age), avg(baseline_age), max(baseline_age) from accord."ACCORD_KEY" ;
+select * from study_to_ohdsi_mapping where study_id = 21 and from_column = 'baseline_age';
+select concept_code, concept_id from concept where concept_code = '424144002';
+select value_as_number from observation where observation_concept_id = 4314456 and person_id > 21000000 and person_id < 22000000;
+select min(value_as_number), avg(value_as_number), max(value_as_number) from observation where observation_concept_id = 4314456 and person_id > 21000000 and person_id < 22000000;
+\]q
+pwd
+;
+\q
+\d categorization_function_metadata 
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'diur';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'DIUR';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'htn';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'HTN';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'dthdays';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'CCB';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name = 'CaCB';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'CCB';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'revasc';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'hxmistr';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'hmg';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'htn';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'death-days';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'death-dys';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'dth-dys';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'dthdys';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'deatthdys';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'dthdays';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'race2';
+select c.concept_code, c.concept_name, c.concept_id, m.short_name from categorization_function_metadata m, concept c where m.from_vocabulary_id = c.vocabulary_id and m.from_concept_code = c.concept_code and m.extract_study_id = 20003 and short_name ilike 'antihyp';
+select * from ohdsi_calculation_function where study_id = 21 and from_concept_code = 'C03';
+select * from ohdsi_calculation_function where study_id = 21 and to_concept_code = 'C03';
+select * from ohdsi_calculation_argument where study_id = 21 and to_concept_code = 'C03';
+select s.from_table, s.from_column  from ohdsi_calculation_argument c join study_to_ohdsi_mapping s on s.vocabulary_id = c.vocabulary_id and s.concept_code = c.concept_code where study_id = 21 and to_concept_code = 'C03';
+select s.from_table, s.from_column  from ohdsi_calculation_argument c join study_to_ohdsi_mapping s on s.vocabulary_id = c.vocabulary_id and s.concept_code = c.concept_code where s.study_id = 21 and to_concept_code = 'C03';
+select s.concept_code, s.from_table, s.from_column  from ohdsi_calculation_argument c join study_to_ohdsi_mapping s on s.vocabulary_id = c.vocabulary_id and s.concept_code = c.concept_code where s.study_id = 21 and to_concept_code = 'C03';
+select c.function_name, s.concept_code, s.from_table, s.from_column  from ohdsi_calculation_argument c join study_to_ohdsi_mapping s on s.vocabulary_id = c.vocabulary_id and s.concept_code = c.concept_code where s.study_id = 21 and to_concept_code = 'C03';
+select loop, thiazide, ksparing from accord."CONCOMITANTMEDS"  limit 10;
+select count(*) from accord."CONCOMITANTMEDS" where loop =1 and thiazide =1 and ksparing =1 ;
+select count(*) from accord."CONCOMITANTMEDS" where loop =1 or thiazide =1 or ksparing =1 ;
+\d accord."CONCOMITANTMEDS" 
+select count(*) from accord."CONCOMITANTMEDS" where loop =1 or thiazide =1 or ksparing =1 and visit = 0;
+select distinct visit from accord."CONCOMITANTMEDS" 
+;
+select count(*) from accord."CONCOMITANTMEDS" where loop =1 or thiazide =1 or ksparing =1 and visit = 'BLR';
+select count(*) from accord."CONCOMITANTMEDS" where (loop =1 or thiazide =1 or ksparing =1) and visit = 'BLR';
+select count(*) from accord."CONCOMITANTMEDS" where (loop =0 or thiazide =0 or ksparing =0) and visit = 'BLR';
+\d ohdsi_calculation_function 
+select * from ohdsi_calculation_function where study_id = 23 and to_concept_code = '38341003');
+select * from ohdsi_calculation_function where study_id = 23 and to_concept_code = '38341003';
+\q
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code = '2000000026';
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code = '2000000026';
+select distinct concept_code from study_to_ohdsi_mapping where study_id = 21 ;
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code = 'UCD-Kao-26';
+select min(value_as_number), avg(value_as_number), max(value_as_number) from observation where observation_concept_id = 2000000026 and person_id >=21000000 and person_id < 22000000;
+\d accord."CVDOUTCOMES_201604" 
+select min(fuyrs_tm), avg(fuyrs_tm), max(fuyrs_tm), count(fuyrs_tm), count(*) from accord."CVDOUTCOMES_201604" ;
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code = 'UCD-Kao-26';
+select * from study_mapping_arguments where study_id = 21 and concept_code = 'UCD-Kao-26';
+select * from study_mapping_arguments where study_id = 21 ;
+select * from study_mapping_arguments where study_id = 21  and from_column = 'fuyrs_tm';
+select min(fuyrs_tm), avg(fuyrs_tm), max(fuyrs_tm), count(fuyrs_tm), count(*) from accord."CVDOUTCOMES_201604" ;
+select * from study where study_d = 21;
+select * from study where study_id = 21;
+select min(value_as_number), avg(value_as_number), max(value_as_number) from observation where observation_concept_id = 2000000026 and person_id >=21000000 and person_id < 22000000;
+select count(*), count(value_as_number), min(value_as_number), avg(value_as_number), max(value_as_number) from observation where observation_concept_id = 2000000026 and person_id >=21000000 and person_id < 22000000;
+select min(fuyrs_tm), avg(fuyrs_tm), max(fuyrs_tm), count(fuyrs_tm), count(*) from accord."CVDOUTCOMES_201604" ;
+\q
+select * from study_to_ohdsi_mapping where study_id in (21,24) and concept_code = '373304005';
+select * from ohdsi_calculation_function where study_id in (21,24) and concept_code = '373304005';
+select * from ohdsi_calculation_function where study_id in (21,24) and to_concept_code = '373304005';
+select * from ohdsi_calculation_argument where study_id in (21,24) and to_concept_code = '373304005';
+select concept_name from concept where concept_id in ('UCD-Kao-35', '406769001');
+select concept_name from concept where concept_code in ('UCD-Kao-35', '406769001');
+select concept_code, concept_name from concept where concept_code in ('UCD-Kao-35', '406769001');
+select from_table, from_column, concept_code from study_to_ohdsi_mapping where concept_code in ('UCD-Kao-35', '406769001');
+select * from ohdsi_calculation_argument where study_id in (21,24) and to_concept_code = '373304005';
+select dhp_ccb, nondhp_ccb from accord."CONCOMITANTMEDS"  limit 10;
+select count(*)  from accord."CONCOMITANTMEDS"  where dhp_ccb = 1 or nondhp_ccb = 1;
+\d accord."CONCOMITANTMEDS" 
+select distinct vist from accord."CONCOMITANTMEDS" 
+;
+select distinct visit from accord."CONCOMITANTMEDS" 
+;
+select count(*)  from accord."CONCOMITANTMEDS"  where (dhp_ccb = 1 or nondhp_ccb = 1) and visit = 'BLR';
+select * from ohdsi_calculation_argument where study_id in (22) and to_concept_code = '81266008';
+select * from study_to_ohdsi_mapping where study_id = 22 and concept_code in ('232717009', '415070008');
+select * from ohdsi_calculation_argument here study_id = 22 and to_concept_code ='81266008';
+select * from ohdsi_calculation_argument where study_id = 22 and to_concept_code ='81266008';
+select hx_pci, hx_cabg from aimhigh."HX" limit 10;
+select count(*) from aimhigh."HX" where hx_pci=1 or hx_cabg = 1;
+select * from ohdsi_calculation_argument where study_id in (22, 24) and to_concept_code ='2000000063';
+select * from study_to_ohdsi_mapping where study_id in (22, 24) and to_concept_code ='2000000063';
+select * from study_to_ohdsi_mapping where study_id in (22, 24) and concept_code ='2000000063';
+select count(*) from aimhigh."HX" where hx_pci=1 or hx_cabg = 1;
+select * from ohdsi_calculation_function where study_id in (22, 24) and to_concept_code ='2000000063';
+select * from categorization_function_metadata where short_name = 'hxmistr';
+select * from categorization_function_metadata where short_name ilike 'hxmistr';
+select * from ohdsi_calculation_function where study_id in (22, 24) and to_concept_code ='UCD-Kao-63';
+select * from ohdsi_calculation_argument where study_id in (22, 24) and to_concept_code ='UCD-Kao-63';
+select * from ohdsi_calculation_argument where study_id in (22, 24) and to_concept_code ='UCD-Kao-63' order by study_id, concept_code;
+select * from study_to_ohdsi_mapping where study_id in (22,24) and concept_code in ('22298006', '230690007');
+select distinct hx_mi, hx_stroke from aimhigh."HX" ;
+select count(*) from aimhigh."HX" where (hx_mi=1 or hx_stroke=1);
+select count(*) from bari2d."BARI2D_BL" ;
+select count(*) from bari2d."BARI2D_BL"  where hxmi=1 or hxcva =1 ;
+select distinct  hxmi,  hxcva  from bari2d."BARI2D_BL"  ;
+select count(*) from bari2d."BARI2D_BL"  where hxmi='1' or hxcva ='1' ;
+select * from ohdsi_calculation_argument where study_id in (22, 24) and to_concept_code ='UCD-Kao-63' order by study_id, concept_code;
+select  * from  study_to_ohdsi_mapping where study_id = 23 and concept_code = 'C10AA';
+select  * from  ohdsi_calculation_argument where study_id = 23 and to_concept_code = 'C10AA';
+select  * from  study_to_ohdsi_mapping where study_id = 23 and concept_code in ('UCD-Kao-67', 'UCD-Kao-68');
+select distinct lrzgrp from allhat."LLT_VSC" ;
+select distinct llt from allhat."DOX_VSC" ;
+\d allhat."DOX_VSC" ;
+select  * from  study_to_ohdsi_mapping where study_id = 23 and concept_code in ('UCD-Kao-67', 'UCD-Kao-68');
+select  * from  ohdsi_calculation_function where study_id = 23 and to_concept_code = 'C10AA';
+select * from study where study_id  = 23;
+select  * from  study_to_ohdsi_mapping where study_id = 23 and concept_code in ('UCD-Kao-67', 'UCD-Kao-68');
+select count(*) from allhat."LLT_VSC" l join allhat."DOX_VSC" d on l.index=d.index where lrzgrp =1 and llt=1;
+select * from study_to_ohdsi_mapping where from_column ilike 'race';
+select m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike 'race';
+select m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike 'toba';
+select m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike 'toba%';
+select m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike 'smoke%';
+select m.study_id, m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike 'smoke%';
+select m.study_id, m.from_column, c.concept_id, c.vocabulary_id, c.concept_code  from study_to_ohdsi_mapping m join concept c on m.vocabulary_id = c.vocabulary_id and m.concept_code = c.concept_code where m.from_column ilike '%smok%';
+select * from categorization_function_metadata where short_name = 'Toba';
+select concept_id, vocabulary_id, concept_code from concept where concept_code = '39240-7';
+select * from categorization_function_metadata where short_name = 'ONitra';
+select concept_id, vocabulary_id, concept_code from concept where concept_code = 'C01DA';
+select * from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22;
+select count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22;
+select count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id;
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, person_id / 1000000;
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, person_id / 1000000 order by person_id/1000000;
+select person_id/1000000, count(*) from observation where observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by person_id / 1000000 order by person_id/1000000;
+select distinct o.value_as_concept_id, c.concept_id, c.concept_code, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, person_id / 1000000 order by person_id/1000000;
+select distinct o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name, person_id / 1000000 order by person_id/1000000;
+select distinct o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name;
+select distinct person_id/1000000, o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name, person_id/1000000;
+select count(*), person_id/1000000, o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name, person_id/1000000;
+select count(*), person_id/1000000, o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 4013886 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name, person_id/1000000 order by person_id/1000000;
+select * from categorization_function_metadata where extract_study_id =20003 and long_name like '2 Class Race5';
+select * from categorization_function_metadata where extract_study_id =20003 and long_name ilike '2 Class Race';
+select * from categorization_function_metadata where extract_study_id =20003 and long_name ilike '2 Class Race%';
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike '2 Class Race%';
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike '%Race%';
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike 'Race%';
+insert INTO categorization_function_parameters select extract_study_id, function_name, long_name, rule_id, value_limit, 8, null, 4190758  from categorization_function_parameters where extract_study_id =20003 and long_name ilike 'Race%';
+\d categorization_function_parameters
+select * from categorization_function_parameters where extract_study_id =200-03 and rank=8;
+select * from categorization_function_parameters where extract_study_id =20003 and rank=8;
+insert INTO categorization_function_parameters values (20003, 'map_concept_id', 'Race 103579009', 0, null, 8, null, 4190758 );
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike 'Race%';
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike '2 Class Race%';
+select count(*), person_id/1000000, o.value_as_concept_id, c.concept_name from observation o join concept c on o.value_as_concept_id = c.concept_id where o.observation_concept_id = 2000000064 and person_id / 100000 >= 21 and person_id/1000000 <=22 group by value_as_concept_id, concept_name, person_id/1000000 order by person_id/1000000;
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike '2 Class Race%';
+update categorization_function_parameters  set from_concept_id = 2000000065 where extract_study_id =20003 and long_name ilike '2 Class Race%' and from_concept_id = 4190758;
+select * from categorization_function_parameters where extract_study_id =20003 and long_name ilike '2 Class Race%';
+\q
+select * from study_to_ohdsi_mapping where study_id =22 and from_column ilike '%race%';
+select * from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id/1000000 = 21 group by value_as_concept_id;
+select count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id/1000000 = 22 group by value_as_concept_id;
+select * from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select study_id, mapped_concept_code, to_concept_vocabulary_id from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select study_id, mapped_concept_code, to_concept_code from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select * from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select study_id, mapped_number,  mapped_concept_code, to_concept_code from study_mapping_arguments where study_id =22 and from_column ilike '%race%';
+select study_id, mapped_number,  mapped_concept_code, to_concept_code from study_mapping_arguments where study_id in (21, 22) and from_column ilike '%race%';
+select study_id, mapped_number,  mapped_concept_code, to_concept_code from study_mapping_arguments where study_id in (21, 22) and from_column ilike '%race%' order by study_id;
+select study_id, mapped_number,  to_concept_code from study_mapping_arguments where study_id in (21, 22) and from_column ilike '%race%' order by study_id;
+select study_id, mapped_number,  to_concept_code, concept_id from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id in (21, 22) and from_column ilike '%race%' order by study_id;
+select 
+select count(*), value_as_concept_id from observation where observation_concept_id = 2000000064 and person_id/1000000 = 22 group by value_as_concept_id;
+ 
+select count(*), value_as_concept_id from observation where observation_concept_id = 2000000064 and person_id/1000000 in(21, 22) group by value_as_concept_id;
+\d ohdsi_calculation_function 
+select * from  ohdsi_calculation_function where to_concept_code = 'UCD-Kao-64';
+select * from  ohdsi_calculation_argument where to_concept_code = 'UCD-Kao-64';
+select study_id, concept_code, argument_name from  ohdsi_calculation_argument where to_concept_code = 'UCD-Kao-64';
+select study_id, concept_code, argument_name from  ohdsi_calculation_argument where to_concept_code = 'UCD-Kao-64' order by study_id, concept_code;
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 2000000064 and person_id/1000000 = 22 group by person_id/1000000,value_as_concept_id;
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 2000000064 and person_id/1000000 in( 22, 21) group by person_id/1000000,value_as_concept_id;
+select * from concept where concept_id = 2000000061
+;
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 2000000064 and person_id/1000000 in( 22, 21) group by person_id/1000000,value_as_concept_id;
+select concept_name from concept where concept_id = 20000000064
+;
+select concept_name from concept where concept_id = 2000000064
+;
+select * from ohdsi_calculation_function where study_id in (21,22);
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 4013886 and person_id/1000000 in( 22, 21) group by person_id/1000000,value_as_concept_id;
+select * from ohdsi_calculation_argument where study_id in (21,22) and to_concept_id =1;
+\d ohdsi_calculation_argument ;
+select * from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+select study_id, concept_code, argument_name from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+select concept_name from concept where concept_id = 4185154;
+select study_id, concept_code, argument_name from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+select * from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+select study_id, concept_code, argument_name from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+select study_id, concept_code, argument_name from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64'; 
+select concept_name, concept_code, concept_id from concept where concept_id in (4185154, 4035165);
+select * from ohdsi_calculation_argument where study_id in (21,22) and to_concept_code = 'UCD-Kao-64';
+insert into ohdsi_calculation_argument values ('dual', 4185154, 22, 'map_concept_id', 1, '2000000065', 'value_as_concept_id', 'UCD-Kao-64', 'UCD.Kao', 'dual');
+insert into vocabulary_concept values ('dual', '4185154');
+insert into ohdsi_calculation_argument values ('dual', 4185154, 22, 'map_concept_id', 1, '2000000065', 'value_as_concept_id', 'UCD-Kao-64', 'UCD.Kao', 'dual');
+insert into ohdsi_calculation_argument values ('dual', 4185154, 21, 'map_concept_id', 1, '2000000065', 'value_as_concept_id', 'UCD-Kao-64', 'UCD.Kao', 'dual');
+\q
+select * from study_mapping_arguments where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct to_concept_code from study_mapping_arguments where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct to_vocabulary_id, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct vocabulary_id, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct study_id, vocabulary_id, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column like '%smok%' or from_column like '%toba%');
+select distinct study_id, vocabulary_id, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+\d study_mapping_arguments
+select distinct study_id, vocabulary_id, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+select distinct study_id, vocabulary_id, mapped_concept_code, to_concept_code, concept_name from study_mapping_arguments a join concept c on a.to_concept_code = c.concept_code and a.to_concept_vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+select distinct study_id, vocabulary_id, concept_code, concept_name from study_to_ohdsi_mapping  m join concept c on m.concept_code = c.concept_code and m.vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+select distinct study_id, m.vocabulary_id, concept_code, concept_name from study_to_ohdsi_mapping  m join concept c on m.concept_code = c.concept_code and m.vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+select distinct study_id, m.vocabulary_id, m.concept_code, concept_name from study_to_ohdsi_mapping  m join concept c on m.concept_code = c.concept_code and m.vocabulary_id = c.vocabulary_id where study_id > 20 and (from_column ilike '%smok%' or from_column ilike '%toba%' or from_column ilike '%smk%');
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code in ('UCD.Kao-69', '39240-7');
+select * from study_to_ohdsi_mapping where study_id = 21 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from study_to_ohdsi_mapping where study_id > 20 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from ohdsi_calculation_function where study_id > 20 ;
+select * from ohdsi_calculation_argument where study_id > 20 ;
+select * from ohdsi_calculation_argument where study_id > 20  and concept_code = 'UCD-Kao-69';
+select * from ohdsi_calculation_argument where study_id > 20  and concept_code = '39240-7';
+select * from ohdsi_calculation_argument where study_id = 22;
+select * from study_to_ohdsi_mapping where study_id > 20 and concept_code in ('UCD-Kao-69', '39240-7');
+update study_to_ohdsi_mapping set vocabulary_id = 'UCD.Kao', concept_code = 'UCD-Kao-69' where study_id = 23 and  from_column = 'cursmoke';
+select * from study_to_ohdsi_mapping where study_id > 20 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from study_to_ohdsi_mapping where study_id > 20 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke');
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') order by study_id;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id = 22;
+insert into study_mapping_arguments select 23, 'allhat.DOX_VSC', 'cursmoke', function_name, from_where_clause, from_where_column, mapped_string, mapped_number, mapped_concept_vocabulary_id, mapped_concept_code, transform_factor, transform_shift, id, to_concept_vocabulary_id, to_concept_code  from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id = 22;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id in (22,23);
+selectd max(id) from study_mapping_arguments;
+select max(id) from study_mapping_arguments;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =22;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =23;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =23 and id=424;
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =23 and id in (424, 408);
+delete from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =23 and id in (424, 408);
+update study_mapping_arguments set id = 775 where study_id =23 and from_column = 'cursmoke' and id =537;
+update study_mapping_arguments set id = 776 where study_id =23 and from_column = 'cursmoke' and id =542;
+update study_mapping_arguments set id = 777 where study_id =23 and from_column = 'cursmoke' and id =543;
+update study_mapping_arguments set id = 778 where study_id =23 and from_column = 'cursmoke' and id =544;
+select * from ohdsi_calculation_function where study_id in (22,23);
+select * from ohdsi_calculation_function where study_id in (22,23) and to_concept_code = '39240-7';
+select * from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select concept_code, argument_name, to_concept_code, to_vocabulary_id from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select concept_code, concept_name from concept where concept_id in (4188539, 4188540);
+select concept_id, concept_code, concept_name from concept where concept_id in (40766945, 45883458, 45879404, 37017610, 20000000069);
+select concept_id, concept_code, concept_name from concept where concept_id in (40766945, 45883458, 45879404, 37017610, 2000000069);
+select concept_code, argument_name, to_concept_code, to_vocabulary_id from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select concept_id, concept_code, concept_name from concept where concept_id in (4188539, 4188540);
+select concept_id, concept_code, concept_name from concept where concept_id in (40766945, 45883458, 45879404, 37017610, 2000000069);
+select * from ohdsi_calculation_function where study_id in (22,23) and to_concept_code = '39240-7';
+select concept_id from concept where concept_code = '39240-7'
+;
+select value-as_concept_id from observation where observation_concept_id = 3039561 and person_id/1000000 =22;
+select value_as_concept_id from observation where observation_concept_id = 3039561 and person_id/1000000 =22;
+select count(*),value_as_concept_id from observation where observation_concept_id = 3039561 and person_id/1000000 =22 group by value_as_concept_id;
+select concept_code, argument_name, to_concept_code, to_vocabulary_id from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 3039561 and person_id/1000000 =22 group by value_as_concept_id, person_id/1000000;
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 3039561 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000;
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 3039561 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000 order by person_id/1000000;
+select concept_code, argument_name, to_concept_code, to_vocabulary_id from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select study_id, concept_code, argument_name, to_concept_code, to_vocabulary_id from ohdsi_calculation_argument where study_id in (22,23) and to_concept_code = '39240-7';
+select * from study_mapping_arguments where study_id > 20 and from_column in ('smoke', 'smkcat', 'cigarett', 'cursmoke') and study_id =23 and id in (424, 408);
+select * from study_to_ohdsi_mapping where study_id > 20 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from study_to_ohdsi_mapping where concept_code = '39240-7';
+select * from ohdsi_calculation_function where to_concept_code = '39240-7';
+select * from ohdsi_calculation_function where to_concept_code = 200000069;
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 3039561 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000 order by person_id/1000000;
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 2000000069 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000 order by person_id/1000000;
+select * from ohdsi_calculation_function where to_concept_code = '39240-7';
+select * from ohdsi_calculation_argument where to_concept_code = '39240-7';
+\q
+select count(*),value_as_concept_id, person_id/1000000 from observation where observation_concept_id = 2000000069 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000 order by person_id/1000000;
+delete from observation where observation_concept_id = 2000000069 and person_id/1000000 > 20 group by value_as_concept_id, person_id/1000000 order by person_id/1000000;
+delete from observation where observation_concept_id = 2000000069 and person_id/1000000 = 22;
+delete from observation where observation_concept_id = 3039561 and person_id/1000000 = 22;
+select count(*), blmeds2 from allhat."DOX_VSC" group by blmeds2;
+select * from study where study_id = 23;
+select * from study_to_ohdsi_mapping where from_column = 'blmeds2';
+\d allhat."DOX_VSC" 
+select count(*) from  allhat."DOX_VSC" ;
+select count(*), blmeds2 from allhat."DOX_VSC" group by blmeds2;
+select * from study_to_ohdsi_mapping where from_column = 'blmeds2';
+select * from study_to_ohdsi_mapping where concept_code = '308116003';
+select * from study_to_ohdsi_mapping where concept_code = '3081160003';
+select * from ohdsi_calculation_function where to_concept_code = '308116003';
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = o.concept_id where o.person_id/1000000 in (22,23) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647');
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,23) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647');
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,23) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') group by person_id/1000000, concept_code;
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') group by person_id/1000000, concept_code;
+select o.value_as_concept_id, o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') group by person_id/1000000, concept_code, value_as_concept_id;
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') group by person_id/1000000, concept_code;
+select  count(distinct o.person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') and o.value_as_concept_id = 4188539 group by person_id/1000000, concept_code, value_as_concept_id;
+select * from concept where concept_id = 4188539;
+select o.person_id/1000000, count(o.*), c.concept_code from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') group by person_id/1000000, concept_code;
+select * from concept where concept_id = 4188539;
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') and value_as_concept_id = 41878539;
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') and value_as_concept_id = 41878539 group by o.person_id/1000000;
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ('A10BG', 'C01DA', 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61','N0000007647') and value_as_concept_id = 4188539 group by o.person_id/1000000;
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ( 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61') and value_as_concept_id = 4188539 group by o.person_id/1000000;
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '40679001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000;
+select c.concept_code o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '40679001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000, c.concept_code;
+select c.concept_code, o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '40679001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000, c.concept_code;
+select c.concept_code, o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '406769001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000, c.concept_code; 
+select  o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '406769001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000;
+\q
+select * from ohdsi_calculation_function where function_name = 'map_concept_id'
+;
+select concept_name from concept where concept_code =  'UCD-Kao-64';
+select * from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64');
+select study_id, concept_code, argument_order, argument_name, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by study_id, argument_order;
+select * from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64');
+select study_id, vocabulary_id, concept_code, argument_order, argument_name, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by study_id, argument_order;
+select study_id, vocabulary_id, concept_code, argument_order, argument_name, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by to_concept_code, study_id, argument_order;
+select study_id, vocabulary_id, concept_code, argument_order, argument_name, to_concept_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by to_concept_code, study_id, argument_order;
+\d ohdsi_calculation_argument 
+select study_id, vocabulary_id, concept_code, argument_order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by to_concept_code, study_id, argument_order;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') order by to_concept_code, study_id, argument_order;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id = 22 order by to_concept_code, study_id, argument_order;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 ;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and order=0;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and argument_order=0;
+update ohdsi_calculation_argument set vocbulary_id = 'UCD.Kao', concept_code = 'UCD-Kao-69' where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and argument_order=0;
+update ohdsi_calculation_argument set vocabulary_id = 'UCD.Kao', concept_code = 'UCD-Kao-69' where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and argument_order=0;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and argument_order=0;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id = 22 order by to_concept_code, study_id, argument_order;
+update ohdsi_calculation_argument set from_table = 'dual' where function_name = 'map_concept_id' and to_concept_code ='39240-7' and study_id = 22 and argument_order=1;
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id = 22 order by to_concept_code, study_id, argument_order;
+\
+\q
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id in( 22, 23) order by to_concept_code, study_id, argument_order;
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code = '39240-7';
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code = 'UCD-Kao-69';
+select * from study_mapping_arguments where study_id = 23 and concept_code = 'UCD-Kao-69';
+select * from study_mapping_arguments where study_id = 23 and to_concept_code = 'UCD-Kao-69';
+select * from study_mapping_arguments where study_id = 23;
+select * from study_mapping_arguments where study_id = 23 and from_column = 'cursmoke';
+select mapped_number, to_concept_code from study_mapping_arguments where study_id = 23 and from_column = 'cursmoke';
+select mapped_number, to_concept_code from study_to_ohdsi_mapping where study_id = 23 and from_column = 'cursmoke';
+select * from study_to_ohdsi_mapping where study_id = 23 and from_column = 'cursmoke';
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code in ('UCD-Kao-69', '39240-7');
+select * from ohdsi_calculation_function where study_id = 23;
+select * from study_to_ohdsi_mapping where concept_code = '3081160003';
+select study_id, vocabulary_id, concept_code, argument_order as order, argument_name, to_vocabulary_id, to_concept_code, from_table from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id in (22,23) order by to_concept_code, study_id, argument_order;
+select * from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id in (22,23) order by to_concept_code, study_id, argument_order;
+select * from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code in ('39240-7', 'UCD-Kao-64') and study_id in (22,23) order by to_concept_code, study_id;
+select * from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code in ('39240-7') and study_id in (22,23) order by to_concept_code, study_id;
+select * from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code = '39240-7' and study_id = 22 order by to_concept_code, study_id;
+\d ohdsi_calculation_function 
+insert into ohdsi_calculation_function select 23, function_name, to_vocabulary_id, to_concept_code, to_table, to_column, function_order, expression, module_name from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code = '39240-7' and study_id = 22 order by to_concept_code, study_id;
+select * from ohdsi_calculation_function where function_name = 'map_concept_id' and to_concept_code in ('39240-7') and study_id in (22,23) order by to_concept_code, study_id;
+select * from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7') and study_id in (22,23) order by to_concept_code, study_id;
+insert into ohdsi_calculation_argument select vocabulary_id, concept_code, 23, function_name, argument_order, argument_name, value_field, to_concept_code, to_vocabulary_id, from_table  from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7') and study_id =22 order by to_concept_code, study_id;
+select * from ohdsi_calculation_argument where function_name = 'map_concept_id' and to_concept_code in ('39240-7') and study_id in (22,23) order by to_concept_code, study_id;
+select * from concept where concept_code = 'UCD-Kao-69';
+select person_id/1000000, count(*), value_as_concept_id from observation where observation_concept_id = 2000000069 group by person_id/1000000, value_as_concept_id;
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code = 'UCD-Kao-69';
+select distinct blmeds from allhat."DOX_VSC" ;
+select count(*), blmeds from allhat."DOX_VSC"  group by blmeds;
+select count(*), blmeds2 from allhat."DOX_VSC"  group by blmeds2;
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code = 'UCD-Kao-69';
+select * from concept where concept_code = 'UCD-Kao-69';
+select * from study_to_ohdsi_mapping where study_id = 23 and concept_code = '308116003';
+select * from study_to_ohdsi_mapping where  concept_code = '308116003';
+update study_to_ohdsi_mapping set function_name = 'map_number' where  concept_code = '308116003';
+select * from study_mapping_arguments where concept_code = '308116003';
+select * from study_mapping_arguments where to_concept_code = '308116003';
+select * from study_mapping_arguments where to_concept_code = 'B01AC06';
+select * from study_mapping_arguments where to_concept_code = '22298006';
+select * from study_mapping_arguments;
+select * from study_mapping_arguments where from_column = 'aspirin';
+select * from study_mapping_arguments where from_column = 'aspirin' and study_id = 23;
+insert into study_mapping_arguments (study_id, from_table, from_column, function_name, mapped_number,  to_concept_vocabulary_id, to_concept_code) select study_id, from_table, 'blmeds2', function_name,  mapped_number, to_concept_vocabulary_id, to_concept_code  from study_mapping_arguments where from_column = 'aspirin' and study_id = 23;
+select * from study_mapping_arguments where from_column in('blmeds2', 'aspirin') and study_id = 23;
+select * from study_mapping_arguments where from_column in('blmeds2', 'aspirin') and study_id = 23 order by from_column, mapped_number;
+select * from study_mapping_arguments where from_column in('blmeds2', 'aspirin') and study_id = 23 and id in (775, 774);
+delete from study_mapping_arguments where from_column in('blmeds2', 'aspirin') and study_id = 23 and id in (775, 774);
+select * from study_mapping_arguments where from_column in('blmeds2', 'aspirin') and study_id = 23 order by from_column, mapped_number;
+\s > sql_hist_2
+\?
+\s sql_hist_2

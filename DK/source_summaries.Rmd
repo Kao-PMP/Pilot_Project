@@ -1,0 +1,451 @@
+---
+title: "source_summaries"
+author: "Chris Roeder"
+date: "5/22/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=TRUE, cache=FALSE}
+require("knitr")
+opts_knit$set(root.dir="/mnt/workspace/test/studies")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment=NA)
+library(table1)
+```
+s
+
+```{r ACCORD}
+
+files <- c(
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/ACCORD_KEY.csv',
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/OTHERLABS_201604.csv',
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/BLOODPRESSURE_201604.csv',
+    'ACCORD/4-Data Sets - CRFs/4a-CRF Data Sets/F01_INCLUSIONEXCLUSIONSUMMARY.csv',
+    'ACCORD/4-Data Sets - CRFs/4a-CRF Data Sets/F07_BASELINEHISTORYPHYSICALEXAM.csv',
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/LIPIDS_201604.csv',
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/CONCOMITANTMEDS.csv',
+    'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/CVDOUTCOMES_201604.csv')
+
+columns <- list(
+    c('raceclass', 'MaskID', 'baseline_age', 'female'),
+    c('fpg'), # where
+    c('hr', 'dbp', 'sbp'), # where
+    c('x2mi', 'x2stroke', 'cabg', 'ptci'),
+    c('wt_kg', 'ht_cm', 'cigarett', 'yrstens'),
+    c('ldl', 'hdl', 'chol', 'trig'), # where
+    c('statin', 'aspirin', 'loop', 'thiazide', 'ksparing', 'a2rb', 'acei', 'dhp_ccb', 'nondhp_ccb', 'beta_blocker','reserpine', 'other_bpmed', 'nitrate','tzd','vasodilator','central_agent', 'alpha_blocker', 'potassium', 'other_diabmed','other_lipidmed'), # where
+    c('fuyrs_tm', 'censor_tm')
+)
+facs <- list(
+    c('raceclass', 'female'),
+    c(),
+    c(),
+    c('x2mi', 'x2stroke','cabg','ptci'),
+    c('cigarett'),
+    c(),
+    c('statin', 'aspirin', 'loop', 'thiazide', 'ksparing', 'a2rb', 'acei', 'dhp_ccb', 'nondhp_ccb', 'beta_blocker','reserpine', 'other_bpmed', 'nitrate','tzd','vasodilator','central_agent', 'alpha_blocker', 'potassium', 'other_diabmed','other_lipidmed'),
+    c()
+)
+where_clause <- list(F, T, T, F, T, T, T, F)
+
+
+i=1
+for (file in files) {
+    print(file)
+    file_data <- read.csv(file)
+    if (where_clause[[i]]) {
+        file_data <- file_data[file_data$Visit=='BLR',]
+    }
+    for (fac_name in facs[[i]]){
+        if (!is.null(fac_name)) {
+            #print(fac_name)
+            a=factor(file_data[,fac_name])
+            #a=factor(file_data[[fac_name]])
+            #file_data[[fac_name]]=a
+        }
+    }
+    fmla <- paste('~', paste(columns[[i]], collapse=" + "))
+    table1(as.formula(fmla), data=file_data)
+    
+    # antihyp
+    #if (file == 'ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/CONCOMITANTMEDS.csv') {
+    #    file_data$antihyp = file_data$potassium || file_data$vasodilator || file_data$nitrate || file_data$reserpine || file_data$thiazide || file_data$beta_blocker || file_data$acei || file_data$acei || file_data$a2rb || file_data$alpha_blocker|| file_data$central_agent || file_data$tzd || file_data$loop || file_data$dhp_ccb || file_data$ksparing || file$nondhp_cb || file$other_bpmed 
+    #    print(file_data$antihyp)
+    #}
+    i=i+1
+}
+```
+
+
+```{r AIMHIGH}
+
+files <- c(
+    'AIM-HIGH/SASData/Tabulations/PE.csv',
+    'AIM-HIGH/SASData/Tabulations/HX.csv',
+    'AIM-HIGH/SASData/Tabulations/FOLLA6.csv',
+    'AIM-HIGH/SASData/Tabulations/EXC.csv',
+    'AIM-HIGH/SASData/Tabulations/DEMO.csv',
+    'AIM-HIGH/SASData/Analysis/LAB.csv',
+    'AIM-HIGH/SASData/Analysis/PATIENT.csv',
+    'AIM-HIGH/SASData/Tabulations/CONMED.csv',
+    'AIM-HIGH/SASData/Tabulations/INCL.csv',
+    'AIM-HIGH/SASData/Tabulations/DEATH.csv'
+   )
+
+columns <- list(
+    c('PE_Wt', 'PE_Ht','PE_BPsys', 'PE_BPdia'), 
+    c('Hx_Hyper', 'Hx_MI', 'Hx_Stroke', 'Hx_CABG', 'Hx_PCI'),
+    c(),
+    c(),
+    c(),
+    c('Result'), #lab test=CHOL visit=0
+    c('Age', 'Sex', 'Race', 'BMI', 'HxDiab', 'SysBP', 'DiasBP', 'LDL_C_Base', 'HDL_C_Base', 'Trig_Base', 'DtCensor', 'PatientKey', 'Smoke'),
+    c('CM_Aspirin', 'CM_ATII', 'CM_Ace', 'CM_Beta','CM_Nit','CM_TZD','CM_Diu', 'CM_CCB', 'CM_Metformin', 'CM_Plavix','CM_Insulin'), # visit=Baseline
+    c('Incl_CVD'),
+    c()
+)
+facs <- list(
+    c(), 
+    c('Hx_Hyper', 'Hx_MI', 'Hx_Stroke', 'Hx_CABG', 'Hx_PCI'),
+    c(),
+    c(),
+    c(),
+    c(), #lab test=CHOL visit=0
+    c('Sex', 'Race', 'HxDiab',  'Smoke'),
+    c('CM_Aspirin', 'CM_ATII', 'CM_Ace', 'CM_Beta','CM_Nit','CM_TZD','CM_Diu', 'CM_CCB', 'CM_Metformin', 'CM_Plavix','CM_Insulin'), # visit=Baseline
+    c('Incl_CVD'),
+    c()
+)
+where_clause <- list('Visit', 'no',  'no','no','no',  'Visit', 'no', 'visit', 'no')
+
+
+i=1
+for (file in files) {
+   
+    print(file)
+    file_data <- read.csv(file)
+    #print(names(file_data))
+    if (length(columns[[i]]) > 0){
+        
+        
+        # Where Clause
+        if (where_clause[[i]] != 'no') {
+           if (where_clause[[i]] =='Visit') {
+            file_data <- file_data[file_data$Visit=='Baseline',]
+           } else {
+            file_data <- file_data[file_data$visit=='Baseline',]
+           }
+        } 
+        
+        # factor conversions
+        print(names(file_data))
+        for (fac_name in facs[[i]]){
+            if (!is.null(fac_name)) {
+                print(paste("fac", i, fac_name))
+                #a=factor(file_data[,fac_name])
+                a=factor(file_data[[fac_name]])
+                file_data[[fac_name]]=a
+            }
+        }
+        fmla <- paste('~', paste(columns[[i]], collapse=" + "))
+        #print(fmla)
+        #print(names(file_data))
+        table1(as.formula(fmla), data=file_data)
+    } else {
+        print("no columns")
+    }
+    #if (file == 'AIM-HIGH/SASData/Tabulations/CONMED.csv') {
+    #    file_data$antihyp = file_data[, 'CM_Nit'] ||file_data[,'CM_Diu'] || file_data[,'CM_Beta'] || file_data[,'CM_Ace'] || file_data[,'CM_ATII'] || file_data[,'CM_TZD'] || file_data[,'CM_CCB']
+    #    print(file_data$antihyp)
+    #}
+    i=i+1
+}
+```
+
+
+```{r ALLHAT}
+
+files <- c(
+       'ALLHAT/DATA/Summary/DOX_VSC.csv',
+       'ALLHAT/DATA/Summary/LLT_VSC.csv'
+   )
+
+columns <- list(
+    c('llt',
+    'blbmi',
+    'blhgt',
+    'blwgt',
+    'sex',
+    'hispanic',
+    'aspirin',
+    'dydeath',
+    'age',
+    'mistroke',
+    'blmeds2',
+    'dbp6m12',
+    'bv2sbp',
+    'blgfr',
+    'achol',
+    'bv2dbp',
+    'rzgroup',
+    'cursmoke',
+    'sbp6m12',
+    'hxcabg',
+    'ahdl',
+    'aldl',
+    'aftrig',
+    'race',
+    'race2',
+  #  'index',
+    'death',
+    'diabetes'),
+  c('lrzgrp')
+)
+facs <- list(
+    c('llt',
+    'sex',
+    'hispanic',
+    'aspirin',
+    'mistroke',
+    'blmeds2',
+    'achol',
+    'rzgroup',
+    'cursmoke',
+    'hxcabg',
+    'race',
+    'race2',
+  #  'index',
+    'death',
+    'diabetes'),
+  c('lrzgrp')
+)
+
+
+i=1
+for (file in files) {
+    #print("--------------------------------------------------------------------")
+    #print(paste(i, file))
+    file_data <- read.csv(file)
+    #print(names(file_data))
+    if (length(columns[[i]]) > 0){
+        for (fac_name in facs[[i]]){
+            if (!is.null(fac_name)) {
+                #print(fac_name)
+                a=factor(file_data[,toupper(fac_name)])
+            }
+        }
+    
+        fmla <- paste('~', paste(toupper(columns[[i]]), collapse=" + "))
+        table1(as.formula(fmla), data=file_data)
+    }
+    i=i+1
+}
+
+```
+
+
+```{r BARI2D}
+files <- c('BARI-2D/data/BARI2D_BL.csv',
+           'BARI-2D/data/BARI2D_ENDPTS.csv',
+           'BARI-2D/data/BARI2D_LONG.csv'
+           #, 'BARI-2D/data/BARI2D_PE.csv'
+           )
+
+
+columns <- list(
+  c('smkcat',  #BL
+     'bmi',    #BL
+     'priorrev',#BL
+     'ccb',
+     'hxhtn',  #BL
+     'asp',    #BL
+     'race',   #BL
+ #    'id',
+     'dbp_sit',#BL
+     'pulse60_sit',
+     'sbp_sit',#BL
+     'height', #BL
+     'diur',
+     'acei',   #BL
+     'arb',    #BL
+     'tzd',    #BL
+     'nsgn',   #BL
+     'hba1c',
+     'hdl',    #BL
+     'ldl',    #BL
+     'trig',   #BL
+     'tchol',  #BL
+     'sex',    #BL
+     'weight', #BL
+     'age',    #BL
+     'betab',  #BL
+     'hmg',    #BL
+     'hxmi',   #BL
+     'hxcva'), #BL
+  c('deathfu','death'), #ENDPOINTS
+  c('omega',   #
+    'fibr',
+    'niac',
+    'sbp_sit',
+    'dpp',
+    'amylin',
+    'dbp_sit',
+    'insulin',
+    'apa',
+    'sulf',
+    'biguanide',
+    'incrmim')
+)
+facs <- list(
+  c('smkcat',  #BL
+     'priorrev',#BL
+     'ccb',
+     'hxhtn',  #BL
+     'asp',    #BL
+     'race',   #BL
+     'diur',
+     'acei',   #BL
+     'arb',    #BL
+     'tzd',    #BL
+     'nsgn',   #BL
+     'sex',    #BL
+     'betab',  #BL
+     'hmg',    #BL
+     'hxmi',   #BL
+     'hxcva'), #BL
+  c(), #ENDPOINTS
+  c('omega',   
+    'fibr',
+    'niac',
+    'dpp',
+    'amylin',
+    'insulin',
+    'apa',
+    'sulf',
+    'biguanide',
+    'incrmim')
+)
+
+nums <- list(
+    c('height','weight'), c(), c('sbp_sit', 'dbp_sit')
+)
+
+
+i=1
+for (file in files) {
+
+    print(file)
+    if (!file.exists(file)) {
+        print(paste("no good ", file))
+    } else {
+        file_data <- read.csv(file)
+        
+        # filter by fuper=-1 for BARI2D_LONG
+        if (file == 'BARI-2D/data/BARI2D_LONG.csv') {
+                        file_data <- file_data[file_data$fuper==-1,]
+        }
+        
+        # do antihyp when in BARI2D_LONG
+        if (file == 'BARI-2D/data/BARI2D_LONG.csv') {
+            # antihyp
+            file_data$antihyp = file_data[,'diur']=='1' || file_data[,'betab']=='1' || file_data[,'acei']=='1' || file_data[,'arb']=='1' || file_data[,'tzd']=='1' || file_data[,'ccb']=='1' || file_data[,'nsgn']=='1'
+            print("antihyp")
+#######            print(file_data$antihyp)
+        }
+        
+        #print(names(file_data))
+        #print(columns[[i]])
+        if (length(columns[[i]]) > 0){
+            for (fac_name in facs[[i]]){
+                if (!is.null(fac_name)) {
+                    #print(paste("factorizing:", fac_name))
+                    a=factor(file_data[,fac_name])
+                    #print(paste(fac_name, typeof(file_data[,fac_name])))
+                    
+                    #a=factor(file_data[[fac_name]])
+                    #file_data[[fac_name]]=a
+                } 
+            }
+            for (col_name in nums[[i]]) {
+                if (!is.null(col_name)) {
+                    #print(paste("numeric-izing:", col_name))
+                    a=as.numeric(file_data[,col_name])  
+                    #print(paste(col_name, typeof(file_data[,col_name])))
+                }
+            }
+        }
+        
+        
+        fmla <- paste('~', paste(columns[[i]], collapse=" + "))
+        table1(as.formula(fmla), data=file_data)
+    }
+    i=i+1
+}
+
+
+
+```
+
+```{r OMOP}
+files=c('/mnt/workspace/output/accord.csv', '/mnt/workspace/output/aimhigh.csv', '/mnt/workspace/output/allhat.csv', '/mnt/workspace/output/bari2d.csv')
+df_all <- data.frame()
+for (file in files) {
+    print(file)
+    file_data <- read.csv(file)
+    df_all <- rbind(df_all, file_data)
+}
+
+
+col_names <- lapply(names(df_all), function(y) Filter(function(x) x!='studyIDI' && x!='study.1' && x!='character(0)', y))
+cols_length = length(col_names)
+col_names <- c(col_names[1:46],col_names[48], col_names[49])
+print(col_names)
+fmla <- paste('~', paste(col_names, collapse=" + "))
+fmla <- paste(fmla, '| study.1', sep='')
+print(fmla)
+
+df_all$Sex=factor(df_all$Sex, levels=1:2)
+df_all$Race=factor(df_all$Race)
+df_all$Race2=factor(df_all$Race2)
+df_all$Toba=factor(df_all$Toba)
+df_all$Htn=factor(df_all$Htn)
+df_all$HxDM=factor(df_all$HxDM)
+df_all$HxMIStr=factor(df_all$HxMIStr)
+df_all$revasc=factor(df_all$revasc)
+df_all$HMG=factor(df_all$HMG)
+df_all$aspirin=factor(df_all$asprin)
+df_all$antihyp=factor(df_all$antihyp)
+df_all$MI=factor(df_all$MI)
+df_all$HxStr=factor(df_all$HxStr)
+df_all$CABF=factor(df_all$CABG)
+df_all$PCI=factor(df_all$PCI)
+df_all$Loop=factor(df_all$Loop)
+df_all$thiazide=factor(df_all$thiazide)
+df_all$KDir=factor(df_all$KDiur)
+df_all$ARB=factor(df_all$ARB)
+df_all$AceI=factor(df_all$AceI)
+df_all$Dihy=factor(df_all$Dihy)
+df_all$nonDihy=factor(df_all$nonDihy)
+df_all$BetaB=factor(df_all$BetaB)
+df_all$rese=factor(df_all$rese)
+df_all$othBPmed=factor(df_all$othBPmed)
+df_all$ONitra=factor(df_all$ONitra)
+df_all$nslNitrate=factor(df_all$nslNitrate)
+df_all$TZD=factor(df_all$TZD)
+df_all$VASO=factor(df_all$VASO)
+df_all$Cent=factor(df_all$Cent)
+df_all$AlphaB=factor(df_all$AlphaB)
+df_all$Tdf_all=factor(df_all$K)
+df_all$dthStat=factor(df_all$dthStat)
+df_all$study=factor(df_all$study)
+#df_all$studyIDI=factor(df_all$studyIDI)
+df_all$DIUR=factor(df_all$DIUR)
+df_all$CaCB=factor(df_all$CaCB)
+#df_all$study.1=factor(df_all$study.1)
+
+table1(as.formula(fmla), data=df_all)
+```
+
+
