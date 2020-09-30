@@ -1,0 +1,25 @@
+---
+title: "fml"
+author: "Chris Roeder"
+date: "5/28/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+ This is more plain text.
+ <b>I can use HTML here.</b>
+ <ul><li>first</li><li>second</li></ul>
+
+```{r cars}
+
+print("second line of plain text")
+print("<b>third line, but html</b>")
+
+write("second line of plain text")
+write("<b>third line, but html</b>")
+```
+

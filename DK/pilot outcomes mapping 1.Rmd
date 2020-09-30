@@ -1,0 +1,440 @@
+---
+title: "Pilot outcomes mapping"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load and harmonization protocol for NHLBI Pilot Outcomes
+
+This Rmd loads, checks and harmonizes outcomes for TOPCAT, ACCORD, AIM-HIGH, and BARI-2D. I am using Rmd so that data checking is transparent and easily visible.  Ultimately, a simple R script should be sufficient.
+
+Times to event will be converted to months
+
+```{r load libraries}
+# install.packages("survival","Hmisc","gmodels","sqldf","sas7bdat")
+library(survival)
+library(Hmisc)
+library(gmodels)
+library(sas7bdat)
+library(sqldf)
+source("~/DK clean output scripts.R")
+source("~/forest plot script.R")
+source("~/plot CrossTable lines.R")
+```
+
+
+## Load ACCORD and harmonize data
+
+```{r load and harmonize relevant ACCORD files, check event rates,do simple survival analysis using months, collapse=T}
+
+# ACCORD data labels event as 0 (e.g. death = 0, survived = 1) for all outcomes.  At least for R, this needs to be reversed to e.g. death=1, survived = 0 for plotting KM curves.  
+# Swap these first to death = 1, survived = 0 using library(car).recode and change names to match harmonization concepts wjere defined.  Otherwise keep study name
+
+accord_key <- read.csv("~/scratch/ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/ACCORD_KEY.csv")
+accord_outcomes <- read.csv("~/scratch/ACCORD/3-Data Sets - Analysis/3a-Analysis Data Sets/CVDOUTCOMES_201604.csv")
+
+recode_outcomes_status <- c("censor_po","censor_tm","censor_cm","censor_nmi","censor_nst","censor_tst","censor_chf","censor_ex","censor_maj")
+outcome_status_labels <- c("cvdth_mihosp_cva","dth_status","cvdth_status","mihosp_status","nonfatalstroke_status","cva_status","hfincident_status","accord_ex","accord_maj")
+
+recode_outcomes_date_labels <- c("fuyrs_po","fuyrs_tm","fuyrs_cm","fuyrs_nmi","fuyrs_nst","fuyrs_tst","fuyrs_chf","fuyrs_ex","fuyrs_maj")
+outcome_date_labels <- c("cvdth_mihosp_cva_dt","dth_dt","cvdth_dt","mihosp_dt","nonfatalcva_dt","cva_dt","hfincident_dt","accord_ex_dt","accord_majchd_dt")
+
+# Make sure you know what you did harmonization wise, break the chunk if the lengths are different.
+cbind(recode_outcomes_status,outcome_status_labels)
+cbind(recode_outcomes_date_labels,outcome_date_labels)
+
+
+
+for (i in 1:length(recode_outcomes_status)) {
+  this_outcome_status <- recode_outcomes_status[i]
+  this_outcome_date <- recode_outcomes_date_labels[i]
+  this_new_label <- outcome_status_labels[i]
+  this_new_date <- outcome_date_labels[i]
+  print(c(this_outcome_status,this_new_label))
+  accord_outcomes[accord_outcomes[,this_outcome_status]==0,this_new_label] <- 2
+  accord_outcomes[accord_outcomes[,this_outcome_status]==1,this_new_label] <- 0
+  accord_outcomes[accord_outcomes[,this_new_label]==2,this_new_label] <- 1
+  accord_outcomes[,this_new_date] <- accord_outcomes[,this_outcome_date] * 12  # Convert to standard of months
+}
+```
+
+## Check ACCORD results
+
+```{r merge with basic patient data to make example analyses}
+accord_outcomes_key <- merge(accord_key,accord_outcomes,by="MaskID",all.x=T)
+accord_outcomes_key$study <- "ACCORD"   # Add study label for joining together
+print(summary(female~dth_status+cvdth_status+mihosp_status+cva_status,data=accord_outcomes_key,fun=TABLE,method='reverse',test=T),prtest='P',pctdig=1)
+coxph(Surv(dth_dt,dth_status)~female,data=accord_outcomes_key)
+plot(survfit(Surv(dth_dt,dth_status)~female,data=accord_outcomes_key,conf.type="none"),col=c(1:8),ylim=c(0.8,1))
+```
+
+
+## Load TOPCAT data
+
+
+```{r load relevant TOPCAT files, check event rates,do simple survival analysis using months, collapse=T}
+
+# TOPCAT irritatingly has separate tables for nearly all outcomes.  Did I mention it's erritating?  Event = 1, censored = 0 (e.g. death = 1, survived = 0), so we'll leave it that way.  
+# There are also lots of conditionals about which date to use regarding reported vs. adjudicated outcomes. General principle is to use death date from adjudicated record where available and from site-reported record where no adjudicated record.  This appears to reproduce published results of survival analysis.  
+
+# I included full TOPCAT endpoint scripts because it includes protocol for composite outcomes.
+
+# Time to event given in years
+
+topcat_key <- read.csv("~/scratch/TOPCAT/datasets/T003.csv")
+topcat_death <- read.csv('~/scratch/TOPCAT/datasets/T079.csv')
+topcat_hfhosp <- read.csv('~/scratch/TOPCAT/datasets/T070.csv')
+topcat_mihosp <- read.csv('~/scratch/TOPCAT/datasets/T072.csv')
+topcat_cva <- read.csv('~/scratch/TOPCAT/datasets/T074.csv')
+topcat_arresthosp <- read.csv('~/scratch/TOPCAT/datasets/T076.csv')
+topcat_hosp <- read.csv('~/scratch/TOPCAT/datasets/T027.csv')
+topcat_eos <- read.csv('~/scratch/TOPCAT/datasets/T030.csv')
+
+topcat_death$dth_dt[topcat_death$DATE_DEATH==1] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1] 
+topcat_death$dth_dt[topcat_death$DATE_DEATH==2] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2] 
+topcat_death$cvdth_dt[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==1] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==1] 
+topcat_death$cvdth_dt[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==1] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==1] 
+topcat_death$noncvdth_dt[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==2] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==2] 
+topcat_death$noncvdth_dt[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==2] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==2] 
+topcat_hfhosp$hfh_dt[topcat_hfhosp$CRITERIA==1] <- topcat_hfhosp$site_dt3[topcat_hfhosp$CRITERIA==1] 
+topcat_hfhosp$hfh_dt[!is.na(topcat_hfhosp$cec_dt3)] <- topcat_hfhosp$cec_dt3[!is.na(topcat_hfhosp$cec_dt3)] 
+topcat_mihosp$mi_dt[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==1] <- topcat_mihosp$site_dt3[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==1] 
+topcat_mihosp$mi_dt[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==2] <- topcat_mihosp$cec_dt3[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==2] 
+topcat_cva$cva_dt[topcat_cva$STROKE_CRIT==1&topcat_cva$EVENT_DT==1] <- topcat_cva$site_dt3[topcat_cva$STROKE_CRIT==1&topcat_cva$EVENT_DT==1] 
+topcat_cva$cva_dt[topcat_cva$STROKE_CRIT==1&topcat_cva$EVENT_DT==2] <- topcat_cva$cec_dt3[topcat_cva$STROKE_CRIT==1&topcat_cva$EVENT_DT==2] 
+topcat_arresthosp$arrest_dt[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==1] <- topcat_arresthosp$site_dt3[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==1] 
+topcat_arresthosp$arrest_dt[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==2] <- topcat_arresthosp$cec_dt3[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==2] 
+topcat_hosp$cvhosp_dt[topcat_hosp$HOSP_REAS==1] <- topcat_hosp$hospital_dt3[topcat_hosp$HOSP_REAS==1]
+topcat_hosp$noncvhosp_dt[topcat_hosp$HOSP_REAS==2] <- topcat_hosp$hospital_dt3[topcat_hosp$HOSP_REAS==2]
+```
+
+Then derived status and time-to-event fields from raw data for the following outcomes:
+
+```{R Derive time-to-event based on minimum date from each table, include=F}
+topcat_outcomes <- topcat_eos[,c('ID','term_dt_1')]
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(dth_dt) as dth_date  from topcat_death group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(cvdth_dt) as cvdth_date from topcat_death group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(noncvdth_dt) as noncvdth_date from topcat_death group by ID'), by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(hfh_dt) as hfh_date from topcat_hfhosp where CRITERIA =1 group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(mi_dt) as mi_date from topcat_mihosp group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(cva_dt) as cva_date from topcat_cva group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(arrest_dt) as arrest_date from topcat_arresthosp  group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(hospital_dt3) as hosp_date from topcat_hosp  group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(cvhosp_dt) as cvhosp_date from topcat_hosp group by ID'),by='ID',all.x=T)
+topcat_outcomes <- merge(topcat_outcomes,sqldf('select ID,min(noncvhosp_dt) as noncvhosp_date from topcat_hosp  group by ID'),by='ID',all.x=T)
+```
+
+Composite TOPCAT endpoint was CV death + HF hospitalization
+
+```{R Make TOPCAT composite endpoint}
+topcat_outcomes$cvdth_hfh <- 0
+topcat_outcomes$cvdth_hfh[!is.na(topcat_outcomes$cvdth_date)|!is.na(topcat_outcomes$hfh_date)|!is.na(topcat_outcomes$arrest_date)] <- 1
+topcat_outcomes$cvdth_hfh_dt <- pmin(topcat_outcomes[,'cvdth_date'],topcat_outcomes[,'hfh_date'],topcat_outcomes[,'arrest_date'],na.rm=T)
+topcat_outcomes$cvdth_hfh_status[!is.na(topcat_outcomes$cvdth_hfh_dt)] <- 1
+topcat_outcomes$cvdth_hfh_status[is.na(topcat_outcomes$cvdth_hfh_dt)] <- 0
+topcat_outcomes$cvdth_hfh_dt[is.na(topcat_outcomes$cvdth_hfh_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$cvdth_hfh_dt==0]
+topcat_outcomes$cvdth_hfh_dt <- topcat_outcomes$cvdth_hfh_dt*12  # Convert to standard of months
+```
+
+
+Composite IPRESERVE endpoint was All-cause death + CV hospitalization (HF, MI, CVA, cardiac arrest)
+
+```{R Make IPRESERVE composite endpoint}
+topcat_outcomes$dth_cvh <- 0
+topcat_outcomes$dth_cvh[!is.na(topcat_outcomes$dth_date)|!is.na(topcat_outcomes$hfh_date)|!is.na(topcat_outcomes$mi_date)|!is.na(topcat_outcomes$cva_date)|!is.na(topcat_outcomes$arrest_date)] <- 1
+topcat_outcomes$dth_cvh_dt <- pmin(topcat_outcomes[,'dth_date'],topcat_outcomes[,'hfh_date'],topcat_outcomes[,'mi_date'],topcat_outcomes[,'cva_date'],topcat_outcomes[,'arrest_date'],na.rm=T)
+topcat_outcomes$dth_cvh_status[!is.na(topcat_outcomes$dth_cvh_dt)] <- 1
+topcat_outcomes$dth_cvh_status[is.na(topcat_outcomes$dth_cvh_dt)] <- 0
+topcat_outcomes$dth_cvh_dt[is.na(topcat_outcomes$dth_cvh_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$dth_cvh_status==0]
+topcat_outcomes$dth_cvh_dt <- topcat_outcomes$dth_cvh_dt*12 
+```
+
+All-case mortality
+
+```{R Make all-cause mortality endpoint}
+topcat_outcomes$dth_dt <- pmin(topcat_outcomes[,'dth_date'],na.rm=T)
+topcat_outcomes$dth_status[!is.na(topcat_outcomes$dth_dt)] <- 1
+topcat_outcomes$dth_status[is.na(topcat_outcomes$dth_dt)] <- 0
+topcat_outcomes$dth_dt[is.na(topcat_outcomes$dth_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$dth_status==0]
+topcat_outcomes$dth_dt <- topcat_outcomes$dth_dt*12
+```
+
+CV mortality
+
+```{R Make CV mortality endpoint}
+topcat_outcomes$cvdth_dt <- pmin(topcat_outcomes[,'cvdth_date'],na.rm=T)
+topcat_outcomes$cvdth_status[!is.na(topcat_outcomes$cvdth_dt)] <- 1
+topcat_outcomes$cvdth_status[is.na(topcat_outcomes$cvdth_dt)] <- 0
+topcat_outcomes$cvdth_dt[is.na(topcat_outcomes$cvdth_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$cvdth_status==0]
+topcat_outcomes$cvdth_dt <- topcat_outcomes$cvdth_dt*12
+```
+
+Non-CV mortality
+
+```{R Make Non-CV mortality endpoint}
+topcat_outcomes$noncvdth_dt <- pmin(topcat_outcomes[,'noncvdth_date'],na.rm=T)
+topcat_outcomes$noncvdth_status[!is.na(topcat_outcomes$noncvdth_dt)] <- 1
+topcat_outcomes$noncvdth_status[is.na(topcat_outcomes$noncvdth_dt)] <- 0
+topcat_outcomes$noncvdth_dt[is.na(topcat_outcomes$noncvdth_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$noncvdth_status==0]
+topcat_outcomes$noncvdth_dt <- topcat_outcomes$noncvdth_dt*12
+```
+
+All-cause hospitalization
+
+```{R Make all-cause hospitalization endpoint}
+topcat_outcomes$hosp_dt <- pmin(topcat_outcomes[,'hosp_date'],na.rm=T)
+topcat_outcomes$hosp_status[!is.na(topcat_outcomes$hosp_dt)] <- 1
+topcat_outcomes$hosp_status[is.na(topcat_outcomes$hosp_dt)] <- 0
+topcat_outcomes$hosp_dt[is.na(topcat_outcomes$hosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$hosp_status==0]
+topcat_outcomes$hosp_dt <- topcat_outcomes$hosp_dt *12
+```
+
+CV hospitalization
+
+```{R Make CV hospitalization endpoint}
+topcat_outcomes$cvhosp_dt <- pmin(topcat_outcomes[,'cvhosp_date'],na.rm=T)
+topcat_outcomes$cvhosp_status[!is.na(topcat_outcomes$cvhosp_dt)] <- 1
+topcat_outcomes$cvhosp_status[is.na(topcat_outcomes$cvhosp_dt)] <- 0
+topcat_outcomes$cvhosp_dt[is.na(topcat_outcomes$cvhosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$cvhosp_status==0]
+topcat_outcomes$cvhosp_dt <- topcat_outcomes$cvhosp_dt*12
+```
+
+Non-CV hospitalization
+
+```{R Make non-CV hospitalization endpoint}
+topcat_outcomes$noncvhosp_dt <- pmin(topcat_outcomes[,'noncvhosp_date'],na.rm=T)
+topcat_outcomes$noncvhosp_status[!is.na(topcat_outcomes$noncvhosp_dt)] <- 1
+topcat_outcomes$noncvhosp_status[is.na(topcat_outcomes$noncvhosp_dt)] <- 0
+topcat_outcomes$noncvhosp_dt[is.na(topcat_outcomes$noncvhosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$noncvhosp_status==0]
+topcat_outcomes$noncvhosp_dt <- topcat_outcomes$noncvhosp_dt*12
+```
+
+HF hospitalization
+
+```{R Make HF hospitalization endpoint}
+topcat_outcomes$hfhosp_dt <- pmin(topcat_outcomes[,'hfh_date'],na.rm=T)
+topcat_outcomes$hfhosp_status[!is.na(topcat_outcomes$hfhosp_dt)] <- 1
+topcat_outcomes$hfhosp_status[is.na(topcat_outcomes$hfhosp_dt)] <- 0
+topcat_outcomes$hfhosp_dt[is.na(topcat_outcomes$hfhosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$hfhosp_status==0]
+topcat_outcomes$hfhosp_dt <- topcat_outcomes$hfhosp_dt*12
+```
+
+Nonfatal MI hospitalization
+
+```{R Make MI hospitalization endpoint}
+topcat_outcomes$mihosp_dt <- pmin(topcat_outcomes[,'mi_date'],na.rm=T)
+topcat_outcomes$mihosp_status[!is.na(topcat_outcomes$mihosp_dt)] <- 1
+topcat_outcomes$mihosp_status[is.na(topcat_outcomes$mihosp_dt)] <- 0
+topcat_outcomes$mihosp_dt[is.na(topcat_outcomes$mihosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$mihosp_status==0]
+topcat_outcomes$mihosp_dt <- topcat_outcomes$mihosp_dt*12
+```
+
+CVA hospitalization
+
+```{R Make CVA hospitalization endpoint}
+topcat_outcomes$cva_dt <- pmin(topcat_outcomes[,'cva_date'],na.rm=T)
+topcat_outcomes$cva_status[!is.na(topcat_outcomes$cva_dt)] <- 1
+topcat_outcomes$cva_status[is.na(topcat_outcomes$cva_dt)] <- 0
+topcat_outcomes$cva_dt[is.na(topcat_outcomes$cva_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$cva_status==0]
+topcat_outcomes$cva_dt <- topcat_outcomes$cva_dt <- 12
+```
+
+Cardiac arrest hospitalization
+
+```{R Make cardiac arrest hospitalization endpoint}
+topcat_outcomes$arresthosp_dt <- pmin(topcat_outcomes[,'arrest_date'],na.rm=T)
+topcat_outcomes$arresthosp_status[!is.na(topcat_outcomes$arresthosp_dt)] <- 1
+topcat_outcomes$arresthosp_status[is.na(topcat_outcomes$arresthosp_dt)] <- 0
+topcat_outcomes$arresthosp_dt[is.na(topcat_outcomes$arresthosp_dt)] <- topcat_outcomes$term_dt_1[topcat_outcomes$arresthosp_status==0]
+topcat_outcomes$arresthosp_dt <- topcat_outcomes$arresthosp_dt *12
+```
+
+### Check TOPCAT results
+
+```{r Merge key with outcomes and do test table + survival analysis}
+topcat_outcomes_key <- merge(topcat_key,topcat_outcomes,all.x=T,by="ID")
+topcat_outcomes_key$study <- "TOPCAT"
+print(summary(GENDER~cvdth_hfh_status+cvdth_hfh_status+dth_status+cvdth_status+noncvdth_status+hosp_status+cvhosp_status+noncvhosp_status+hfhosp_status+mihosp_status+cva_status,data=topcat_outcomes_key,FUN=table,method='reverse',test=T),prtest='P',prn=F,pctdig=1)
+coxph(Surv(dth_dt,dth_status)~GENDER,data=topcat_outcomes_key)
+plot(survfit(Surv(dth_dt,dth_status)~GENDER,data=topcat_outcomes_key,conf.type="none"),col=c(1:8),ylim=c(0.5,1))
+
+```
+
+
+# AIM-HIGH
+
+Load 
+
+```{r load relevant AIM-HIGH data and summarize}
+# Like TOPCAT, AIM-HIGH irritatingly uses multiple tables for outcomes.  This will be challenging to deal with at scale. 
+
+# Dates reported in days.  Will convert to months as standard (date/30.4)
+
+# Here we will use admission date (not onset of symptoms date) for e.g. stroke, as other studies have used hospitalization (admission) date.
+
+aimhigh_patient <- read.csv("~/scratch/AIM-HIGH/SASData/Analysis/PATIENT.csv")
+aimhigh_death <- read.csv("~/scratch/AIM-HIGH/SASData/Tabulations/DEATH.csv")
+aimhigh_term <- read.csv("~/scratch/AIM-HIGH/SASData/Tabulations/TERM.csv")
+aimhigh_revasc <- read.csv("~/scratch/AIM-HIGH/SASData/Tabulations/REVASC.csv")
+aimhigh_acs <- read.csv("~/scratch/AIM-HIGH/SASData/Tabulations/ACS.csv")
+aimhigh_cns <- read.csv("~/scratch/AIM-HIGH/SASData/Tabulations/CNS.csv")
+
+aimhigh_key <- subset(aimhigh_patient,!is.na(RandAssi))
+
+aimhigh_outcomes_key <- aimhigh_key
+aimhigh_outcomes_key$censor_dt <- aimhigh_outcomes_key$DtCensor
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(DTH_Date) as dth_date from aimhigh_death group by PatientKey"),
+                              by="PatientKey",all.x=T)
+
+# Used cardiac death or vascular death for cardivascular death outcome
+
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(DTH_Date) as cvdth_date from aimhigh_death where DTH_Cause in (1,2) group by PatientKey"),
+                              by="PatientKey",all.x=T)
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(DTH_Date) as noncvdth_date from aimhigh_death where DTH_Cause = 3 group by PatientKey"),
+                              by="PatientKey",all.x=T)
+
+# For  non-death outcomes, use onset of symptoms date, since this is most specific and will capture for example events that happen in the hospital after admission.
+
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(ACS_OnsetDt) as mi_date from aimhigh_acs where ACS_event==1 group by PatientKey"),
+                              by="PatientKey",all.x=T)
+
+# Counted only definitive ischemic strokes as stroke
+
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(CNS_SymDt) as cva_date from aimhigh_cns where CNS_Type = 1 group by PatientKey"),
+                              by="PatientKey",all.x=T)
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(CNS_SymDt) as tia_date from aimhigh_cns where CNS_Type=3 group by PatientKey"),
+                              by="PatientKey",all.x=T)
+
+# Used definitive ischemic stroke + TIA
+
+aimhigh_outcomes_key <- merge(aimhigh_outcomes_key,
+                              sqldf("select PatientKey,min(CNS_SymDt) as cvatia_date from aimhigh_cns where CNS_Type in (1,3) group by PatientKey"),
+                              by="PatientKey",all.x=T)
+```
+
+
+
+```{r Make AIM-HIGH all-cause mortality endpoint}
+aimhigh_outcomes_key$dth_dt <- pmin(aimhigh_outcomes_key[,"dth_date"],na.rm=T)/30.4
+aimhigh_outcomes_key$dth_status[!is.na(aimhigh_outcomes_key$dth_dt)&aimhigh_outcomes_key$dth_dt<= aimhigh_outcomes_key$DtCensor] <- 1
+aimhigh_outcomes_key$dth_status[is.na(aimhigh_outcomes_key$dth_dt)|aimhigh_outcomes_key$dth_dt > aimhigh_outcomes_key$DtCensor] <- 0
+aimhigh_outcomes_key$dth_dt[aimhigh_outcomes_key$dth_status==0] <- aimhigh_outcomes_key$DtCensor[aimhigh_outcomes_key$dth_status==0]/30.4
+```
+
+```{r Make AIM-HIGH CV mortality endpoint}
+aimhigh_outcomes_key$cvdth_dt <- pmin(aimhigh_outcomes_key[,"cvdth_date"],na.rm=T)/30.4
+aimhigh_outcomes_key$cvdth_status[!is.na(aimhigh_outcomes_key$cvdth_dt)&aimhigh_outcomes_key$cvdth_dt <= aimhigh_outcomes_key$DtCensor] <- 1
+aimhigh_outcomes_key$cvdth_status[is.na(aimhigh_outcomes_key$cvdth_dt)|aimhigh_outcomes_key$cvdth_dt > aimhigh_outcomes_key$DtCensor] <- 0
+aimhigh_outcomes_key$cvdth_dt[aimhigh_outcomes_key$cvdth_status==0] <- aimhigh_outcomes_key$DtCensor[aimhigh_outcomes_key$cvdth_status==0]/30.4
+```
+
+```{r Make AIM-HIGH MI endpoint}
+aimhigh_outcomes_key$mihosp_dt <- pmin(aimhigh_outcomes_key[,"mi_date"],na.rm=T)/30.4
+aimhigh_outcomes_key$mihosp_status[!is.na(aimhigh_outcomes_key$mihosp_dt)&aimhigh_outcomes_key$mihosp_dt<= aimhigh_outcomes_key$DtCensor] <- 1
+aimhigh_outcomes_key$mihosp_status[is.na(aimhigh_outcomes_key$mihosp_dt)|aimhigh_outcomes_key$mihosp_dt> aimhigh_outcomes_key$DtCensor] <- 0
+aimhigh_outcomes_key$mihosp_dt[aimhigh_outcomes_key$mihosp_status==0] <- aimhigh_outcomes_key$DtCensor[aimhigh_outcomes_key$mihosp_status==0]/30.4
+```
+
+```{r Make AIM-HIGH CVA endpoint}
+aimhigh_outcomes_key$cva_dt <- pmin(aimhigh_outcomes_key[,"cva_date"],na.rm=T)/30.4
+aimhigh_outcomes_key$cva_status[!is.na(aimhigh_outcomes_key$cva_dt)&aimhigh_outcomes_key$cva_dt <= aimhigh_outcomes_key$DtCensor] <- 1
+aimhigh_outcomes_key$cva_status[is.na(aimhigh_outcomes_key$cva_dt)|aimhigh_outcomes_key$cva_dt > aimhigh_outcomes_key$DtCensor] <- 0
+aimhigh_outcomes_key$cva_dt[aimhigh_outcomes_key$cva_status==0] <- aimhigh_outcomes_key$DtCensor[aimhigh_outcomes_key$cva_status==0]/30.4
+```
+
+```{r Make AIM-HIGH CVA/TIA endpoint}
+aimhigh_outcomes_key$cvatia_dt <- pmin(aimhigh_outcomes_key[,"cvatia_date"],na.rm=T)/30.4
+aimhigh_outcomes_key$cvatia_status[!is.na(aimhigh_outcomes_key$cvatia_dt)] <- 1
+aimhigh_outcomes_key$cvatia_status[is.na(aimhigh_outcomes_key$cvatia_dt)] <- 0
+aimhigh_outcomes_key$cvatia_dt[aimhigh_outcomes_key$cvatia_status==0] <- aimhigh_outcomes_key$DtCensor[aimhigh_outcomes_key$cvatia_status==0]/30.4
+```
+
+```{r Make example AIM-HIGH tables and figures}
+aimhigh_outcomes_key$study <- "AIM-HIGH"
+print(summary(Sex~dth_status+cvdth_status+mihosp_status+cva_status,data=aimhigh_outcomes_key,FUN=table,method='reverse',test=T),prtest='P',prn=F,pctdig=1)
+coxph(Surv(dth_dt,dth_status)~Sex,data=aimhigh_outcomes_key)
+plot(survfit(Surv(dth_dt,dth_status)~Sex,data=aimhigh_outcomes_key,conf.type="none"),col=c(1:8),ylim=c(0.5,1))
+
+```
+
+# BARI-2D
+
+## Load BARI-2D files
+
+```{r Load BARI2D files}
+
+# BARI-2D uses a similar structure for outcomes to AIM-HIGH.  Therefore, the code for harmonization will be similar.
+# Event (e.g. death) = 1, no event (e.g. survived) = 0
+# Time to randomization expressed in days
+
+bari2d_patient <- read.csv("~/scratch/BARI-2D/data/BARI2D_BL.csv")[,c("id","sex","race","strata")]
+bari2d_outcomes <- read.csv("~/scratch/BARI-2D/data/BARI2D_ENDPTS.csv")
+```
+
+## Harmonize BARI-2D to outcomes standards
+
+```{r rename BARI2D columns}
+recode_outcomes_status <- c("death","cvddth","mi","stroke","cardth","cabg","pci")
+outcome_status_labels <- c("dth_status","cvdth_status","mihosp_status","cva_status","cardth_status","cabg_status","pci_status")
+
+recode_outcomes_date_labels <- c("deathfu","deathfu","mifu","strokefu","cardth","cabgfu","pcifu")
+outcome_date_labels <- c("dth_dt","cvdth_dt","mihosp_dt","cva_dt","cardth_dt","cabg_dt","pci_dt")
+
+# Make sure you know what you did harmonization wise, break the chunk if the lengths are different.
+cbind(recode_outcomes_status,outcome_status_labels)
+cbind(recode_outcomes_date_labels,outcome_date_labels)
+
+
+
+for (i in 1:length(recode_outcomes_status)) {
+  this_outcome_status <- recode_outcomes_status[i]
+  this_outcome_date <- recode_outcomes_date_labels[i]
+  this_new_label <- outcome_status_labels[i]
+  this_new_date <- outcome_date_labels[i]
+  bari2d_outcomes[,this_new_label] <- bari2d_outcomes[,this_outcome_status]
+  bari2d_outcomes[,this_new_date] <- bari2d_outcomes[,this_outcome_date]/30.4  # Convert to standard of months
+}
+
+print(head(bari2d_outcomes))
+```
+
+## Check BARI-2D results
+
+```{r Make example BARI-2D tables and figures}
+bari2d_outcomes_key <- merge(bari2d_patient,bari2d_outcomes,by='id')
+bari2d_outcomes_key$study <- "BARI-2D"
+print(summary(sex~dth_status+cvdth_status+mihosp_status+cva_status,data=bari2d_outcomes_key,FUN=table,method='reverse',test=T),prtest='P',prn=F,pctdig=1)
+coxph(Surv(dth_dt,dth_status)~sex,data=bari2d_outcomes_key)
+plot(survfit(Surv(dth_dt,dth_status)~sex,data=bari2d_outcomes_key,conf.type="none"),col=c(1:8),ylim=c(0.5,1))
+```
+
+# Make combined outcomes table (death, CV death, MI, CVA) and make some tables.
+
+```{r Combine all harmonized outcomes}
+names(accord_outcomes_key)[names(accord_outcomes_key)=="MaskID"] <- "patientid"
+names(topcat_outcomes_key)[names(topcat_outcomes_key)=="ID"] <- "patientid"
+names(aimhigh_outcomes_key)[names(aimhigh_outcomes_key)=="PatientKey"] <- "patientid"
+names(bari2d_outcomes_key)[names(bari2d_outcomes_key)=="id"] <- "patientid"
+
+outcomes_combined <- accord_outcomes_key[,c("patientid","study","dth_status","dth_dt","cvdth_status","cvdth_dt","mihosp_status","mihosp_dt","cva_status","cva_dt")]
+outcomes_combined <- rbind(outcomes_combined,topcat_outcomes_key[,c("patientid","study","dth_status","dth_dt","cvdth_status","cvdth_dt","mihosp_status","mihosp_dt","cva_status","cva_dt")])
+outcomes_combined <- rbind(outcomes_combined,aimhigh_outcomes_key[,c("patientid","study","dth_status","dth_dt","cvdth_status","cvdth_dt","mihosp_status","mihosp_dt","cva_status","cva_dt")])
+outcomes_combined <- rbind(outcomes_combined,bari2d_outcomes_key[,c("patientid","study","dth_status","dth_dt","cvdth_status","cvdth_dt","mihosp_status","mihosp_dt","cva_status","cva_dt")])
+
+print(summary(study~dth_status+cvdth_status+mihosp_status+cva_status,data=outcomes_combined,FUN=table,method='reverse',test=T),prtest='P',prn=F,pctdig=1)
+coxph(Surv(dth_dt,dth_status)~study,data=outcomes_combined)
+plot(survfit(Surv(dth_dt,dth_status)~study,data=outcomes_combined,conf.type="none"),col=c(1:8),ylim=c(0.5,1))
+
+## Since it looks good, write the result.
+
+write.csv(outcomes_combined,"~/ACCORD+AIMHIGH+BARI2D+TOPCAT harmonized outcomes.csv",row.names=F)
+```

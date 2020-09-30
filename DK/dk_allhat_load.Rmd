@@ -1,0 +1,195 @@
+---
+title: "ALLHAT"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# ALLHAT Data load and examination
+
+Making a separate Rmd to document ALLHAT. 
+
+```{r load libraries}
+# install.packages("survival","Hmisc","gmodels","sqldf","sas7bdat")
+library(survival)
+library(Hmisc)
+library(gmodels)
+library(sas7bdat)
+library(sqldf)
+```
+
+```{r load hypertension and lipid-lowering trial files, collapse=T}
+
+## There are 3 ALLHAT analysis files with lots of redundancies.  There are total 42418 subjects that are comprised primarily of the intersection between allhat_hyp and allhat_dox.  Every subject in allhat_llt is in one of the other two tables (llt = Lipid lowering therapy).  There are 4 HTN treatment arms.  3 are in allhat_hyp (diuretic, ACE, CCB) and 2 in allhat_dox (diuretic, doxazosin).  The diuretic subjects are in both allhat_hyp and allhat_dox.  
+
+##  There are several identical columns between all three columns, some that are measured in different ways (ACHOL vs. CCHOL), and some where a column is only present in one table but not another for the same patient.  For the purposes of the pilot, we'll trim down to unique columns as much as possible.
+
+## To build the dataset we will combine select columns from allhat_hyp and allhat_dox, then update from allhat_llt.
+
+## Load the three files
+
+allhat_hyp <- read.csv("~/scratch/ALLHAT/DATA/Summary/FP1_HYP.csv")
+print(head(allhat_hyp))
+allhat_llt <- read.csv("~/scratch/ALLHAT/DATA/Summary/FP2_LLT.csv")
+print(head(allhat_llt))
+allhat_dox <- read.csv("~/scratch/ALLHAT/DATA/Summary/FP_DOX.csv")
+print(head(allhat_dox))
+
+## select common columns from  HYP and only the doxazosin subjects from DOX (RZGROU==1)
+
+allhat_hyp_sub <- allhat_hyp[,c("STUDYID","RZGROUP","AGE","SEX","RACE","HISPANIC","BLWGT","BLHGT","BLBMI","BV2SBP","BV2DBP","MISTROKE","HXCABG","DIABETES","ACHOL","AFGLUC","LCHD","CURSMOKE","ASPIRIN","BLGFR","EDUCAT","SBP6M12","DBP6M12","SBP6M24","DBP6M24","DEATH","DYDEATH","EP_CHD","DYCHD","STROKE","DYSTROKE","CHF","DYCHF","CCHD","DYCCHD","OCHF","DYOCHF","CRVSC","DYCRVSC")]
+
+names(allhat_hyp_sub)[names(allhat_hyp_sub)=="LCHD"] <- "CHD"
+
+allhat_dox_sub <- allhat_dox[allhat_dox$RZGROUP==1,c("STUDYID","RZGROUP","AGE","SEX","RACE","HISPANIC","BLWGT","BLHGT","BLBMI","BV2SBP","BV2DBP","MISTROKE","HXCABG","DIABETES","ACHOL","AFGLUC","ACHD","CURSMOKE","ASPIRIN","BLGFR","EDUCAT","SBP6M12","DBP6M12","SBP6M24","DBP6M24","DEATH","DYDEATH","EP_CHD","DYCHD","STROKE","DYSTROKE","CHF","DYCHF","CCHD","DYCCHD","OCHF","DYOCHF","CRVSC","DYCRVSC")]
+
+
+## This updates the dox_sub table with event dates from the LLT table, since the follow-up in that study was longer.  See section below on sorting out outcomes and timing vs. early termination of doxazosin arm
+
+
+names(allhat_dox_sub)[names(allhat_dox_sub)=="ACHD"] <- "CHD"
+
+nrow(allhat_llt)
+allhat_master <- rbind(allhat_hyp_sub,allhat_dox_sub)
+nrow(allhat_hyp_sub)
+nrow(allhat_dox) # in case  yo missed the subsetting of the dox data
+nrow(allhat_dox_sub)
+nrow(allhat_master)
+length(allhat_master[,"STUDYID"])
+length(unique(allhat_master[,"STUDYID"]))
+## Show that you've added doxazosin subjects properly and print top of table
+
+table(allhat_master$RZGROUP)
+print(head(allhat_master))
+```
+
+```{r Add in fields only present in certain substudies}
+
+###  Add lipids from allhat_dox
+
+allhat_master <- merge(allhat_master,allhat_dox[,c("STUDYID","AHDL","ALDL","AFTRIG")],by="STUDYID",all.x=T)
+
+### Add in core lipid values from LLT study 
+
+allhat_master <- merge(allhat_master,allhat_llt[,c("STUDYID","CCHOL","CHDL","CFTRIG","CLDL","CFGLUC","LRZGRP","CHOLY2","HDLY2","LDLY2","FGLUCY2","FTRIGY2")],by="STUDYID",all.x=T)
+
+names(allhat_master)
+
+```
+
+
+## Harmonize ALLHAT to outcomes standards
+
+```{r Check ALLHAT outcome timing issues}
+
+## You're not going to believe it, but the death columns across the three datasets are not entirely consistent.  This is due in large part to the doxazosin vs. diuretic study being terminated early for possibility of harm.  I believe that this lead to censoring outcomes at different timepoints (I think corresponding to the official termination of the study) for of the diuretic patients, who were in both the HYP and DOX tables.  
+
+## For the purposes of this pilot project, we will use the latest event date set for the diuretic patients for all outcomes.  This corresponds to dates recorded the HYP table for the diuretic patients.
+
+## 
+
+allhat_deathcheck <- merge(allhat_hyp[,c("STUDYID","DEATH","DYDEATH","RZGROUP")], allhat_dox[,c("STUDYID","DEATH","DYDEATH","RZGROUP")],by=c("STUDYID","RZGROUP"),all=T)
+allhat_deathcheck <- merge(allhat_deathcheck,allhat_llt[,c("STUDYID","LDEATH","LDYDEATH","LRZGRP","RZGROUP")],by=c("STUDYID","RZGROUP"),all=T)
+
+allhat_deathcheck$hyp_llt[!is.na(allhat_deathcheck$DEATH.x)&!is.na(allhat_deathcheck$LDEATH)] <- 0
+allhat_deathcheck$hyp_llt[allhat_deathcheck$DEATH.x==allhat_deathcheck$LDEATH&!is.na(allhat_deathcheck$DEATH.x)&!is.na(allhat_deathcheck$LDEATH)] <- 1
+
+allhat_deathcheck$hyp_dox[!is.na(allhat_deathcheck$DEATH.x)&!is.na(allhat_deathcheck$DEATH.y)] <- 0
+allhat_deathcheck$hyp_dox[allhat_deathcheck$DEATH.x==allhat_deathcheck$DEATH.y&!is.na(allhat_deathcheck$DEATH.x)&!is.na(allhat_deathcheck$DEATH.y)] <- 1
+
+allhat_deathcheck$dox_llt[!is.na(allhat_deathcheck$DEATH.y)&!is.na(allhat_deathcheck$LDEATH)] <- 0
+allhat_deathcheck$dox_llt[allhat_deathcheck$DEATH.y==allhat_deathcheck$LDEATH&!is.na(allhat_deathcheck$DEATH.y)&!is.na(allhat_deathcheck$LDEATH)] <- 1
+
+## Encode rand groups just for ease of reading tables
+
+allhat_deathcheck$rzgroup_char[allhat_deathcheck$RZGROUP==1] <- "Doxazosin" 
+allhat_deathcheck$rzgroup_char[allhat_deathcheck$RZGROUP==2] <- "Diuretic" 
+allhat_deathcheck$rzgroup_char[allhat_deathcheck$RZGROUP==3] <- "CCB" 
+allhat_deathcheck$rzgroup_char[allhat_deathcheck$RZGROUP==4] <- "ACE-inhibitor" 
+
+allhat_deathcheck$lrzgrp_char[allhat_deathcheck$LRZGRP==1] <- "Statin" 
+allhat_deathcheck$lrzgrp_char[allhat_deathcheck$LRZGRP==2] <-  "No Statin"
+
+table(allhat_deathcheck$lrzgrp_char,allhat_deathcheck$rzgroup_char)
+
+## This shows that death status in HYP matches LLT, but the exact time doesn't.  In all cases, censored date in HYP is later than LLT.  Consequently, we will use HYP event dates for maximum followup.  Examples are given.
+table(allhat_deathcheck$rzgroup_char,allhat_deathcheck$hyp_llt)
+table(allhat_deathcheck$DYDEATH.x==allhat_deathcheck$LDYDEATH)
+subset(allhat_deathcheck,hyp_llt==1)[1:10,]
+table(allhat_deathcheck$DYDEATH.x>allhat_deathcheck$LDYDEATH)
+
+
+## This shows that for diuretic DEATH status in HYP (DEATH.x) does not always match DEATH status in DOX
+table(allhat_deathcheck$DEATH.x,allhat_deathcheck$DEATH.y)
+
+## 951 are marked dead in HYP and alive in DOX - this is consistent with truncated.early censoring in the diuretic vs. doxazosin analysis
+## Here are examples
+subset(allhat_deathcheck,DEATH.x==1&DEATH.y==2)[1:10,]
+
+
+## There are 6 marked dead in DOX and alive in HYP, which is inconsistent with the censoring hypothesis.  I suspect these are errors, but would need to check with investigators.  For the purposes of the study, we will keep using HYP
+
+## This will check to see in which groups, LDEATH doesn't match DEATH [DOX]
+table(allhat_deathcheck$lrzgrp_char,allhat_deathcheck$dox_llt)
+table(allhat_deathcheck$rzgroup_char,allhat_deathcheck$dox_llt)
+
+## We suspect that DOX events were censored early, so DYDEATH [DOX] should be < LDYDEATH in nearly all cases. 
+table(allhat_deathcheck$DYDEATH.y[allhat_deathcheck$rzgroup_char=="Doxazosin"&allhat_deathcheck$dox_llt==0] < allhat_deathcheck$LDYDEATH[allhat_deathcheck$rzgroup_char=="Doxazosin"&allhat_deathcheck$dox_llt==0] )
+
+## There are 8 where this does not match.  In all cases, they are marked dead in LLT at a time point before alive in DOX.  For this pilot, we will use LDYDEATH for to remain consistent
+
+
+###  Summary: Event status and dates from RZGROUPs 2-4 (Diuretic, CCB, ACEI) will be taken from HYP table.  These decisions mean that certain results may not match published papers, although the data will accurately reflect source data as above. Paper results for the LLT can be achieved by using the datees from the LLT table, which comprise later follow-up than in DOX.  For example, a patient might be recorded as 'survived' in DOX at 1200 days, but 'died' in LLT at 1300 days.  Thus the status differenes is due to different follow-up interval.  This could be altered as required by a given analysis. 
+
+
+
+
+```
+
+```{r  rename ALLHAT outcome columns}
+
+## CHD/MI outcomes include fatal events here.  Including them for demo purposes only for NHLBI Pilot.
+## It should be possible to extract CV and Non-CV death, but missing the 'Cause of death' codes, since they do not seem to match the forms.
+
+recode_outcomes_status <- c("DEATH","EP_CHD","STROKE","CRVSC","OCHF","CHF")
+outcome_status_labels <- c("dth_status","mihosp_status","cva_status","revasc_status","hfhosp_status","hfincident_status")
+
+recode_outcomes_date_labels <- c("DYDEATH","DYCHD","DYSTROKE","DYCRVSC","DYOCHF","DYCHF")
+outcome_date_labels <- c("dth_dt","mihosp_dt","cva_dt","revasc_dt","hfhosp_dt","hfincident_dt")
+
+# Make sure you know what you did harmonization wise, break the chunk if the lengths are different.
+cbind(recode_outcomes_status,outcome_status_labels)
+cbind(recode_outcomes_date_labels,outcome_date_labels)
+
+
+
+for (i in 1:length(recode_outcomes_status)) {
+  this_outcome_status <- recode_outcomes_status[i]
+  this_outcome_date <- recode_outcomes_date_labels[i]
+  this_new_label <- outcome_status_labels[i]
+  this_new_date <- outcome_date_labels[i]
+  allhat_master[allhat_master[,this_outcome_status]==2,this_new_label] <- 0 
+  allhat_master[allhat_master[,this_outcome_status]==1,this_new_label] <- 1 
+  allhat_master[,this_new_date] <- allhat_master[,this_outcome_date]/30.4  # Convert to standard of months
+}
+
+print(head(allhat_master))
+```
+
+## Make sample tables, KM curve, and Cox PH analysis
+
+```{r Make example tables and figures ALLHAT}
+names(allhat_master)[names(allhat_master)=="STUDYID"] <- "patientid"
+allhat_master$study <- "ALLHAT"
+print(summary(as.factor(SEX)~dth_status+mihosp_status+cva_status+hfhosp_status+hfincident_status+revasc_status,data=allhat_master,FUN=table,method='reverse',test=T),prtest='P',prn=F,pctdig=1)
+coxph(Surv(dth_dt,dth_status)~as.factor(SEX),data=allhat_master)
+plot(survfit(Surv(dth_dt,dth_status)~as.factor(SEX),data=allhat_master,conf.type="none"),col=c(1:8),ylim=c(0.5,1))
+
+## Since it looks good, write out the result.
+
+write.csv(allhat_master,"~/ALLHAT basic with outcomes.csv")
+
+```
+```

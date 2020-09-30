@@ -1,0 +1,145 @@
+### Endpoints
+
+
+```{R Load and prepare endpoint tables, echo=F}
+topcat_death <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t079.sas7bdat')
+topcat_death$dth_dt[topcat_death$DATE_DEATH==1] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1] 
+topcat_death$dth_dt[topcat_death$DATE_DEATH==2] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2] 
+topcat_death$cvdth_dt[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==1] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==1] 
+topcat_death$cvdth_dt[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==1] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==1] 
+topcat_death$noncvdth_dt[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==2] <- topcat_death$site_dt3[topcat_death$DATE_DEATH==1&topcat_death$DEATH_CAUSE==2] 
+topcat_death$noncvdth_dt[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==2] <- topcat_death$cec_dt3[topcat_death$DATE_DEATH==2&topcat_death$DEATH_CAUSE==2] 
+topcat_hfhosp <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t070.sas7bdat')
+topcat_hfhosp$hfh_dt[topcat_hfhosp$CRITERIA==1] <- topcat_hfhosp$site_dt3[topcat_hfhosp$CRITERIA==1] 
+topcat_hfhosp$hfh_dt[!is.na(topcat_hfhosp$cec_dt3)] <- topcat_hfhosp$cec_dt3[!is.na(topcat_hfhosp$cec_dt3)] 
+topcat_mihosp <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t072.sas7bdat')
+topcat_mihosp$mi_dt[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==1] <- topcat_mihosp$site_dt3[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==1] 
+topcat_mihosp$mi_dt[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==2] <- topcat_mihosp$cec_dt3[topcat_mihosp$MI_CRIT==1&topcat_mihosp$EVENT_DT==2] 
+topcat_cvahosp <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t074.sas7bdat')
+topcat_cvahosp$cva_dt[topcat_cvahosp$STROKE_CRIT==1&topcat_cvahosp$EVENT_DT==1] <- topcat_cvahosp$site_dt3[topcat_cvahosp$STROKE_CRIT==1&topcat_cvahosp$EVENT_DT==1] 
+topcat_cvahosp$cva_dt[topcat_cvahosp$STROKE_CRIT==1&topcat_cvahosp$EVENT_DT==2] <- topcat_cvahosp$cec_dt3[topcat_cvahosp$STROKE_CRIT==1&topcat_cvahosp$EVENT_DT==2] 
+topcat_arresthosp <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t076.sas7bdat')
+topcat_arresthosp$arrest_dt[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==1] <- topcat_arresthosp$site_dt3[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==1] 
+topcat_arresthosp$arrest_dt[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==2] <- topcat_arresthosp$cec_dt3[topcat_arresthosp$ACA_CRIT==1&topcat_arresthosp$EVENT_DT==2] 
+topcat_hosp <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t027.sas7bdat')
+topcat_hosp$cvhosp_dt[topcat_hosp$HOSP_REAS==1] <- topcat_hosp$hospital_dt3[topcat_hosp$HOSP_REAS==1]
+topcat_hosp$noncvhosp_dt[topcat_hosp$HOSP_REAS==2] <- topcat_hosp$hospital_dt3[topcat_hosp$HOSP_REAS==2]
+topcat_eos <- read.sas7bdat('~/Dropbox/BioLINCC files/TOPCAT/Data/t030.sas7bdat')
+```
+
+Then derived status and time-to-event fields from raw data for the following endpoints:
+
+```{R Derive time-to-event based on minimum date from each table, echo=F, include=F}
+topcat_endpoints <- topcat_eos[,c('ID','term_dt_1')]
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(dth_dt) as dth_date  from topcat_death group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(cvdth_dt) as cvdth_date from topcat_death group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(noncvdth_dt) as noncvdth_date from topcat_death group by ID'), by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(hfh_dt) as hfh_date from topcat_hfhosp where CRITERIA =1 group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(mi_dt) as mi_date from topcat_mihosp group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(cva_dt) as cva_date from topcat_cvahosp group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(arrest_dt) as arrest_date from topcat_arresthosp  group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(hospital_dt3) as hosp_date from topcat_hosp  group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(cvhosp_dt) as cvhosp_date from topcat_hosp group by ID'),by='ID',all.x=T)
+topcat_endpoints <- merge(topcat_endpoints,sqldf('select ID,min(noncvhosp_dt) as noncvhosp_date from topcat_hosp  group by ID'),by='ID',all.x=T)
+```
+
+Composite TOPCAT endpoint was CV death + HF hospitalization
+
+```{R Make TOPCAT composite endpoint, echo=F}
+topcat_endpoints$topcat_prim <- 0
+topcat_endpoints$topcat_prim[!is.na(topcat_endpoints$cvdth_date)|!is.na(topcat_endpoints$hfh_date)|!is.na(topcat_endpoints$arrest_date)] <- 1
+topcat_endpoints$topcat_prim_dt <- pmin(topcat_endpoints[,'cvdth_date'],topcat_endpoints[,'hfh_date'],topcat_endpoints[,'arrest_date'],na.rm=T)
+topcat_endpoints$topcat_prim_status[!is.na(topcat_endpoints$topcat_prim_dt)] <- 1
+topcat_endpoints$topcat_prim_status[is.na(topcat_endpoints$topcat_prim_dt)] <- 0
+topcat_endpoints$topcat_prim_dt[is.na(topcat_endpoints$topcat_prim_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$topcat_prim_status==0]
+```
+
+
+Composite IPRESERVE endpoint was All-cause death + CV hospitalization (HF, MI, CVA, cardiac arrest)
+
+```{R Make IPRESERVE composite endpoint, echo=F}
+topcat_endpoints$ip_prim <- 0
+topcat_endpoints$ip_prim[!is.na(topcat_endpoints$dth_date)|!is.na(topcat_endpoints$hfh_date)|!is.na(topcat_endpoints$mi_date)|!is.na(topcat_endpoints$cva_date)|!is.na(topcat_endpoints$arrest_date)] <- 1
+topcat_endpoints$ip_prim_dt <- pmin(topcat_endpoints[,'dth_date'],topcat_endpoints[,'hfh_date'],topcat_endpoints[,'mi_date'],topcat_endpoints[,'cva_date'],topcat_endpoints[,'arrest_date'],na.rm=T)
+topcat_endpoints$ip_prim_status[!is.na(topcat_endpoints$ip_prim_dt)] <- 1
+topcat_endpoints$ip_prim_status[is.na(topcat_endpoints$ip_prim_dt)] <- 0
+topcat_endpoints$ip_prim_dt[is.na(topcat_endpoints$ip_prim_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$ip_prim_status==0]
+```
+
+All-case mortality
+
+```{R Make all-cause mortality endpoint, echo=F}
+topcat_endpoints$dth_dt <- pmin(topcat_endpoints[,'dth_date'],na.rm=T)
+topcat_endpoints$dth_status[!is.na(topcat_endpoints$dth_dt)] <- 1
+topcat_endpoints$dth_status[is.na(topcat_endpoints$dth_dt)] <- 0
+topcat_endpoints$dth_dt[is.na(topcat_endpoints$dth_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$dth_status==0]
+```
+
+CV mortality
+
+```{R Make CV mortality endpoint, echo=F}
+topcat_endpoints$cvdth_dt <- pmin(topcat_endpoints[,'cvdth_date'],na.rm=T)
+topcat_endpoints$cvdth_status[!is.na(topcat_endpoints$cvdth_dt)] <- 1
+topcat_endpoints$cvdth_status[is.na(topcat_endpoints$cvdth_dt)] <- 0
+topcat_endpoints$cvdth_dt[is.na(topcat_endpoints$cvdth_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$cvdth_status==0]
+```
+
+Non-CV mortality
+
+```{R Make Non-CV mortality endpoint, echo=FALSE}
+topcat_endpoints$noncvdth_dt <- pmin(topcat_endpoints[,'noncvdth_date'],na.rm=T)
+topcat_endpoints$noncvdth_status[!is.na(topcat_endpoints$noncvdth_dt)] <- 1
+topcat_endpoints$noncvdth_status[is.na(topcat_endpoints$noncvdth_dt)] <- 0
+topcat_endpoints$noncvdth_dt[is.na(topcat_endpoints$noncvdth_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$noncvdth_status==0]
+```
+
+All-cause hospitalization
+
+```{R Make all-cause hospitalization endpoint, echo=F}
+topcat_endpoints$hosp_dt <- pmin(topcat_endpoints[,'hosp_date'],na.rm=T)
+topcat_endpoints$hosp_status[!is.na(topcat_endpoints$hosp_dt)] <- 1
+topcat_endpoints$hosp_status[is.na(topcat_endpoints$hosp_dt)] <- 0
+topcat_endpoints$hosp_dt[is.na(topcat_endpoints$hosp_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$hosp_status==0]
+```
+
+CV hospitalization
+
+```{R Make CV hospitalization endpoint, echo=F}
+topcat_endpoints$cvhosp_dt <- pmin(topcat_endpoints[,'cvhosp_date'],na.rm=T)
+topcat_endpoints$cvhosp_status[!is.na(topcat_endpoints$cvhosp_dt)] <- 1
+topcat_endpoints$cvhosp_status[is.na(topcat_endpoints$cvhosp_dt)] <- 0
+topcat_endpoints$cvhosp_dt[is.na(topcat_endpoints$cvhosp_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$cvhosp_status==0]
+```
+
+Non-CV hospitalization
+
+```{R Make non-CV hospitalization endpoint, echo=F}
+topcat_endpoints$noncvhosp_dt <- pmin(topcat_endpoints[,'noncvhosp_date'],na.rm=T)
+topcat_endpoints$noncvhosp_status[!is.na(topcat_endpoints$noncvhosp_dt)] <- 1
+topcat_endpoints$noncvhosp_status[is.na(topcat_endpoints$noncvhosp_dt)] <- 0
+topcat_endpoints$noncvhosp_dt[is.na(topcat_endpoints$noncvhosp_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$noncvhosp_status==0]
+```
+
+HF hospitalization
+
+```{R Make HF hospitalization endpoint, echo=F}
+topcat_endpoints$hfhosp_dt <- pmin(topcat_endpoints[,'hfh_date'],na.rm=T)
+topcat_endpoints$hfhosp_status[!is.na(topcat_endpoints$hfhosp_dt)] <- 1
+topcat_endpoints$hfhosp_status[is.na(topcat_endpoints$hfhosp_dt)] <- 0
+topcat_endpoints$hfhosp_dt[is.na(topcat_endpoints$hfhosp_dt)] <- topcat_endpoints$term_dt_1[topcat_endpoints$hfhosp_status==0]
+```
+
+```{r Add character tags for ease of reading, echo=F}
+topcat_endpoints$topcat_prim_status_char[topcat_endpoints$topcat_prim_status==1] <- "Yes"
+topcat_endpoints$topcat_prim_status_char[topcat_endpoints$topcat_prim_status==0] <- "No"
+topcat_endpoints$ip_prim_status_char[topcat_endpoints$ip_prim_status==1] <- "Yes"
+topcat_endpoints$ip_prim_status_char[topcat_endpoints$ip_prim_status==0] <- "No"
+topcat_endpoints$hosp_status_char[topcat_endpoints$hosp_status==1] <- "Yes"
+topcat_endpoints$hosp_status_char[topcat_endpoints$hosp_status==0] <- "No"
+topcat_endpoints$cvhosp_status_char[topcat_endpoints$cvhosp_status==1] <- "Yes"
+topcat_endpoints$cvhosp_status_char[topcat_endpoints$cvhosp_status==0] <- "No"
+topcat_endpoints$hfhosp_status_char[topcat_endpoints$hfhosp_status==1] <- "Yes"
+topcat_endpoints$hfhosp_status_char[topcat_endpoints$hfhosp_status==0] <- "No"
+topcat_endpoints$noncvhosp_status_char[topcat_endpoints$noncvhosp_status==1] <- "Yes"
+topcat_endpoints$noncvhosp_status_char[topcat_endpoints$noncvhosp_status==0] <- "No"
+```
