@@ -1,0 +1,23 @@
+---
+#title: 'Heat MAP'
+#author: "Hillary Mulder"
+#date: "10/21/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+require("knitr")
+opts_knit$set(root.dir="/mnt/workspace/DCRI/Progs")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment=NA)
+source('/mnt/workspace/DCRI/Progs/04_cox_BP.R')
+#source('/mnt/workspace/DCRI/Progs/07_bp_risk.R')
+```
+
+
+```{r echo=FALSE}
+p0
+
+```
+
+
