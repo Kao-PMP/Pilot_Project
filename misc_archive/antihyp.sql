@@ -1,0 +1,3 @@
+select o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 in (22,24) and c.concept_code in ( 'C03', 'C07', 'C09A', 'C09C', '109086001', '373304005', 'UCD-Kao-61') and value_as_concept_id = 4188539 group by o.person_id/1000000;
+
+select  o.person_id/1000000, count(distinct person_id) from observation o join concept c on o.observation_concept_id = c.concept_id where o.person_id/1000000 = 21 and c.concept_code in ('A10BG', 'A12B', 'C01D', 'C01DA', 'C02AA02', 'C03AA', 'C07', 'C09A', 'C09C', 'N0000007647', 'N0000175553', 'N0000175554', '109086001', '29051009', '406769001', '47755009', 'UCD-Kao-35', 'UCD-Kao-62') and value_as_concept_id = 4188539 group by o.person_id/1000000;
