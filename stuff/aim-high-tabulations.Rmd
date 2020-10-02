@@ -1,3 +1,0 @@
-setwd('/mnt/workspace/scratchbucket/AIM_HIGH/SASData/Tabulations')
-aim=read.csv("PE.csv")
-base=aim[aim$Visit=='Baseline',]

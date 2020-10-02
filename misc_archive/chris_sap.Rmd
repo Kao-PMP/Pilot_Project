@@ -1,0 +1,169 @@
+---
+title: "Chris SAP"
+author: "Chris Roeder"
+date: "7/25/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+This notebook is Chris's work on the SAP, if only for the R practice, poLCA clustering.
+    
+
+```{r setup, include=TRUE, cache=FALSE}
+require("knitr")
+opts_knit$set(root.dir="/mnt/workspace/test/studies")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment=NA)
+#knitr::opts_chunk$set(results='asis') #   R code that outputs HTML (table1) needs NOT to have its output sourrounded with <pre> etc.
+
+```
+
+
+# COMBINED, HARMONIZED
+```{r OMOP,  results='asis'}
+#install.packages('sirt')
+#install.packages('furniture', repos='http://CRAN.R-project.org')
+
+#library(table1)
+files=c('/mnt/workspace/output/accord.csv', '/mnt/workspace/output/aimhigh.csv', '/mnt/workspace/output/allhat.csv', 
+        '/mnt/workspace/output/bari2d.csv')
+df_all <- data.frame()
+for (file in files) {
+    file_data <- read.csv(file)
+    df_all <- rbind(df_all, file_data)
+}
+df_all <- as.data.frame(df_all)
+
+
+
+
+# patch a late-breaking bug
+df_all[df_all$study=='AIMHIGH','HMG']=T
+df_all[df_all$study=='ALLHAT', 'Htn']=T
+df_all[df_all$study=='BARI2D', 'HxDM']=T
+
+
+#REMOVE inputs to antihyp calculation, and others as they make for a lot of NAs in the ALLHAT data that doesn't have these. A na.rm=TRUE would drop all of ALLHAT.
+remove_cols = c('Race', 'MI', 'PCI', 'Loop', 'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy', 'BetaB', 'rese', 'otherBPmed','ONitra','nslNitrate','TZD','VASO', 'Cent', 'AlphaB', 'K', 'DIUR', 'CaCB', 'HxStr', 'othBPmed', 'studyIDI' )
+df_all = df_all[, ! (names(df_all) %in% remove_cols), drop=F ]
+
+
+## INCUSIONS
+df_all = df_all[df_all$Htn == TRUE,]
+df_all = df_all[df_all$antihyp == TRUE,]
+
+df_control = df_all[df_all$BP.s < 130 & df_all$BP.d <80,]
+df_hyp = df_all[!(df_all$BP.s < 130 & df_all$BP.d < 80),]
+
+# now remove antihyp and Htn since they will have the same value, adn the table fucntions want vars with > 2 values
+df_control = df_control[, ! names(df_control) %in% c('antihyp', 'Htn'), drop=F]
+df_hyp = df_hyp[, ! names(df_hyp) %in% c('antihyp', 'Htn'), drop=F]
+
+# make a formula for Table 1
+# removed uneeded/unwanted columns
+col_names <- lapply(names(df_all), function(y) Filter(function(x) x!='studyIDI' && x!='study.1' && x!='character(0)', y))
+cols_length = length(col_names)
+col_names <- c(col_names[1:25])
+fmla <- paste('~', paste(col_names, collapse=" + "))
+fmla <- paste(fmla, '| study.1', sep='')
+
+# NEED QUARTILES!!!!!!
+
+cat("<h2>Hypothesis</h2>")
+#cat(table1::table1(as.formula(fmla), data=df_hyp, output="markdown"))
+#cat("<h2>Control</h2>")
+#cat(table1::table1(as.formula(fmla), data=df_control, output="markdown"))
+# do Table1 using the furniture code
+print(summary(df_hyp))
+cat(furniture::table1(df_hyp))
+```
+
+```{r all categorized & included, results="asis"}
+library(sirt)
+
+# Categorize some Columns
+cat_cols = c('age','BMI','weight', 'height','BP.s','BP.d', 'LDL','HDL','TChol', 'Trig')
+cat_quants = c(3,3,3, 3,3,3, 3,3,3, 3)
+names(cat_quants) = cat_cols
+#df_all = categorize(dat=df_all, categorical=cat_cols, quant=cat_quants, lowest=1)
+###df_all = categorize(dat=df_all, categorical=cat_cols, quant=cat_quants)
+###df_all = df_all$data
+
+
+# Bump some categorized variables and booleans up from 0 since "lowest=1" doesn't work, others need it too.
+zero_one_cols = c(
+    #'Toba', 'Htn', 'HxDM', 'HxMIStr', 'revasc', 'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI', 'Loop',
+    #'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy','BetaB', 'rese', 'othBPmed',
+    #'ONitra', 'nslNitrate', 'VASO', 'Cent', 'AlphaB', 'K', 'dthStat', 'DIUR', 'CaCB',
+    'age', 'BMI', 'weight', 'height', 'BP.s', 'BP.d', 'LDL', 'HDL', 'TChol', 'Trig', 'antihyp','TZD')
+#for (col in zero_one_cols) {
+#        df_all[,col] = (df_all[, col] + 1)
+#}
+
+# Convert to Factors after categorization
+###for (col in cat_cols) {
+###    df_all[,col] = factor(df_all[,col])
+###}
+
+#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+# # factorize some columns
+# factor_cols = c('Sex', 'Race', 'Race2', 'Toba', 'Htn', 'HxDM', 'HxMIStr', 'revasc', 'HMG', 'asprin', 'antihyp', 
+#     'MI', 'HxStr', 'CABG', 'PCI', 'Loop', 'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy', 'BetaB',
+#     'rese', 'othBPmed', 'ONitra', 'nslNitrate', 'VASO', 'Cent', 'AlphaB', 'K', 'dthStat', 'study', 'DIUR',
+#     'CaCB', 'TZD')
+# for (col in factor_cols) {
+#     df_all[,col] = factor(x=df_all[,col], levels=c(1,2))
+# }
+# 
+# ####cat(table1(as.formula(fmla), data=df_all, output="markdown"))
+# 
+# #print(summary(df_all))
+# 
+# 
+# accord_fields  = c('age', 'Sex', 'Race', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM', 
+#                   'BP.s', 'BP.d', 'LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',
+#                    'Loop', 'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy', 'BetaB', 'rese', 
+#                   'othBPmed', 'ONitra','TZD', 'VASO', 'Cent', 'AlphaB', 'K')
+# aimhigh_fields= c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM', 
+#                   'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI', 
+#                   'ARB', 'AceI',  'BetaB', 'ONitra','TZD', 'DIUR', 'CaCB')
+# allhat_fields  = c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM',
+#                    'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig', 'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',    'antihyp')
+# bari2d_fields  = c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM',
+#                    'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI',
+#                    'ARB', 'AceI',  'BetaB', 'ONitra','TZD', 'DIUR', 'CaCB')
+# 
+# analysis_fields  = c('age', 'Sex', 'Race2', 'BMI', 'Toba', 'Htn', 'HxDM',
+#                    'BP.s', 'HDL', 'Trig', 'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',    'antihyp')
+# #fields_list = list(accord_fields, aimhigh_fields, allhat_fields, bari2d_fields)
+# #fields_list = list(accord_fields)
+# fields_list = list(analysis_fields, analysis_fields, analysis_fields)
+# #studies_list = list('ACCORD') 
+# studies_list = list('ACCORD', 'AIMHIGH', 'ALLHAT', 'BARI2D')
+
+```
+
+
+
+```{r polca}
+# #install.packages("poLCA")
+# library(poLCA)
+# i=0
+# for (flist in fields_list) {
+#     i=i+1
+#     #formula_string = paste(paste(flist, collapse=" + "), '~1')
+#     formula_string=paste("cbind(", paste(flist, collapse=", "), ")~1")
+#     print(formula_string)
+#     study_formula <- as.formula(formula_string)
+#     print(studies_list[i])
+#     #print(study_formula)
+#     #print(summary(df_all))
+#     
+#     # NEED ITERATE
+#     
+#     
+#     lca_model <- poLCA(f=study_formula, data=df_all, nclass=4, nrep=10, na.rm=T, graphs=T)
+#}
+
+```

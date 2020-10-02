@@ -1,0 +1,13 @@
+extract_study_id,study_id,name,comment
+1001,2,hf-action-base,
+1002,2,hf-action-physical,
+1,,general-purpose,
+1009,2,hf-action-progression,
+2,2,unknown,
+6001,3,esc-hf-2018-vienna,"just like 5001, but different for bmi"
+5001,5,paradigm-atmosphere,also used for esc-hf-2018-vienna
+5002,5,para-atmo-DK,paradigm-atmosphere to mirror DKs extract and names
+20000,21,"NHLBI Pilot, studies 21-24",
+20001,21,generated for NHLBI,
+8001,8,echo,started with I-PRESERVE
+20003,21,generated for NHLBI,

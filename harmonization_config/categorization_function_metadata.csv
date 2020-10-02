@@ -1,0 +1,433 @@
+extract_study_id,function_name,long_name,rule_id,from_vocabulary_id,from_concept_code,comment,from_table,short_name,sequence
+1,map_concept_id,Gender,0,SNOMED,263495000,,observation,Sex,
+1,map_concept_id,Tobacco use,0,LOINC,39240-7,,observation,Smoke,
+1,map_concept_id,Prior PCI,0,SNOMED,41339005,,observation,PCI,
+1,ranges_to_rank_asc,MLHF,0,LOINC,71938-5,,observation,MLHF,
+1,x,Billirubin tertile,0,x,y,,measurement,Bill,
+1,map_concept_id,Stroke,0,SNOMED,230690007,,observation,Stro,
+1,identity_number,Total billirubin,0,LOINC,1975-2,,measurement,Tota,
+1,identity_number,Weight,0,LOINC,29463-7,,measurement,Weig,
+1,identity_number,EQ5D,0,SNOMED,273447005,eurother ESC hear score?,observation,EQ5D,
+1,identity_number,RVEF value,0,LOINC,10231-9,,measurement,RVEF,
+1,identity_number,HR value,0,LOINC,8867-4,,measurement,HR v,
+1,ranges_to_rank_asc,WBC count,0,LOINC,30406-3,,measurement,WBC,
+1,ranges_to_rank_asc,Albumin,0,LOINC,1751-7,,measurement,Albu,
+1,ranges_to_rank_desc,AST,0,LOINC,1920-8,,measurement,AST,
+1,ranges_to_rank_asc,Age,0,SNOMED,424144002,,observation,Age,
+1,map_concept_id,Race,0,SNOMED,103579009,,observation,Race,
+1,identity_number,NYHA,0,SNOMED,420816009,,observation,NYHA,
+1,map_concept_id,ICD,0,SNOMED,19257004,,observation,ICD,
+1,map_concept_id,CAD,0,SNOMED,53741008,,observation,CAD,
+1,ranges_to_rank_asc,BMI,0,LOINC,39156-5,,measurement,BMI,
+1,ranges_to_rank_asc,BUN,0,LOINC,6299-2,,measurement,BUN,
+1,ranges_to_rank_desc,ALT,0,LOINC,76625-3,,measurement,ALT,
+1,map_concept_id,Atrial fibrillation/flutter,0,SNOMED,49436004,,observation,Afib,
+1,map_concept_id,Myocardial infarction,0,SNOMED,22298006,,observation,MI,
+1,ranges_to_rank_asc,Systolic blood pressure,0,LOINC,8480-6,,measurement,SBP,
+1,ranges_to_rank_desc,Creatinine clearance,0,SNOMED,442407001,,measurement,CrCl,
+1,ranges_to_rank_asc,Heart rate,0,LOINC,8867-4,,measurement,HR,
+1,ranges_to_rank_asc,Diastolic blood pressure,0,LOINC,8462-4,,measurement,DBP,
+1,ranges_to_rank_desc,Sodium,0,LOINC,2951-2,,measurement,Na,
+20000,map_concept_id,Gender,0,SNOMED,263495000,,observation,Sex,
+1,map_concept_id,Left bundle branch block,0,SNOMED,63467002,,observation,LBBB,
+1,ranges_to_rank_asc,Hemoglobin,0,LOINC,4635-9,,measurement,HGlob,
+1,map_concept_id,Right bundle branch block,0,SNOMED,59118001,,observation,RBBB,
+1,map_concept_id,Diabetes mellitus,0,SNOMED,161445009,,observation,DM,
+1,map_concept_id,Any BBB,0,SNOMED,6374002,,observation,ABBB,
+20000,map_concept_id,Tobacco use,0,LOINC,39240-7,,observation,Smoke,
+20000,map_concept_id,Prior PCI,0,SNOMED,41339005,,observation,PCI,
+1,map_concept_id,Angina,0,SNOMED,194828000,,measurement,Angi,
+1,map_concept_id,COPD,0,LOINC,45670-7,copd,observation,COPD,
+1,ranges_to_rank_asc,Time since diagnosis,0,UCD.Kao,UCD-Kao-1,,observation,Time,
+1,identity_number,BMI value,0,LOINC,39156-5,,measurement,BMIv,
+1,identity_number,DBP value,0,LOINC,8462-4,,measurement,DBPv,
+1,identity_number,SBP value,0,LOINC,8480-6,,measurement,SBPv,
+1,identity_number,LVEF value,0,LOINC,10230-1,,measurement,LVFv,
+1,identity_number,CrCl value,0,SNOMED,442407001,,measurement,CrCv,
+1,identity_string,Alt Patient ID,0,UCD.Kao,UCD-Kao-17,,observation,AID,
+1,map_concept_id,Treatment Arm,0,UCD.Kao,UCD-Kao-19,,observation,plcbo,
+1,identity_number,DeathDays,0,UCD.Kao,UCD-Kao-20,,observation,dthds,
+1001,map_concept_id,Gender,0,SNOMED,263495000,,observation,Sex,
+5001,identity_number,EQ5D,0,SNOMED,273447005,eurother ESC hear score?,observation,EQ5D,
+5001,map_concept_id,Stroke,0,SNOMED,230690007,,observation,Stro,
+1,ranges_to_rank_asc,NTBNP,0,LOINC,33762-6,probnp,measurement,NTBN,
+1,ranges_to_rank_desc,Hematocrit,0,SNOMED,365616005,,measurement,HCrit,
+5001,ranges_to_rank_asc,NTBNP,0,LOINC,33762-6,probnp,measurement,NTBN,
+1,ranges_to_rank_asc,BNP,0,LOINC,42637-9,bnp,measurement,BNP,
+5001,ranges_to_rank_asc,BNP,0,LOINC,42637-9,bnp,measurement,BNP,
+1,identity_number,HF duration value,0,UCD.Kao,UCD-Kao-1,,observation,HFtm,
+1,map_concept_id,Valvular disease,0,SNOMED,368009,,observation,Valv,
+1,map_concept_id,Hypertension,0,SNOMED,38341003,,observation,HxTen,
+1,map_concept_id,Hyperlipidemia,0,SNOMED,55822004,,observation,HxLip,
+1002,ranges_to_rank_asc,NTBNP,0,LOINC,33762-6,probnp,measurement,NTBN,
+1001,ranges_to_rank_asc,Age,0,SNOMED,424144002,,observation,Age,
+1001,map_concept_id,Race,0,SNOMED,103579009,,observation,Race,
+1001,identity_number,Death Days,0,UCD.Kao,UCD-Kao-18,,observation,DthDs,
+1001,map_concept_id,CAD,0,SNOMED,53741008,,observation,CAD,
+1001,ranges_to_rank_asc,BMI,0,LOINC,39156-5,,measurement,BMI,
+1,map_concept_id,Prior CABG,0,SNOMED,232717009,,observation,CABG,
+1001,map_concept_id,Hyperlipidemia,0,SNOMED,55822004,,observation,HxLip,
+1001,map_concept_id,Atrial fibrillation/flutter,0,SNOMED,49436004,,observation,Afib,
+5001,map_concept_id,CRT,0,SNOMED,69031000119105,pace maker (? check this one ?),observation,CRT,
+5001,identity_number,HF duration value,0,UCD.Kao,UCD-Kao-1,,observation,hftime,
+1001,map_concept_id,Hypertension,0,SNOMED,38341003,,observation,HxTen,
+1001,ranges_to_rank_desc,Creatinine clearance,0,SNOMED,442407001,,measurement,CrCl,
+1009,map_concept_id,Valvular disease,0,SNOMED,368009,,observation,Valv,
+1001,ranges_to_rank_asc,Left Ventricle Mass Value,0,SNOMED,373941003,,observation,LVm,
+1001,ranges_to_rank_asc,Left Ventricle Diameter Value,0,SNOMED,250933001,,observation,LVd,
+1001,map_concept_id,Left bundle branch block,0,SNOMED,63467002,,observation,LBBB,
+1001,map_concept_id,Diabetes mellitus,0,SNOMED,161445009,,observation,DM,
+1002,ranges_to_rank_asc,WBC count,0,LOINC,30406-3,,measurement,WBC,
+1002,ranges_to_rank_asc,Systolic blood pressure,0,LOINC,8480-6,,measurement,SBP,
+1002,ranges_to_rank_desc,Creatinine clearance,0,SNOMED,442407001,,measurement,CrCl,
+1002,ranges_to_rank_asc,Heart rate,0,LOINC,8867-4,,measurement,HR,
+1002,ranges_to_rank_desc,Sodium,0,LOINC,2951-2,,measurement,Na,
+1001,ranges_to_rank_desc,Hemoglobin,0,LOINC,4635-9,Hb mg/dL,measurement,Hb,
+1002,ranges_to_rank_asc,NYHA,0,SNOMED,420816009,,observation,NYHA,
+1009,ranges_to_rank_desc,Hematocrit,0,SNOMED,365616005,,measurement,HCrit,
+1009,ranges_to_rank_asc,Time since diagnosis,0,UCD.Kao,UCD-Kao-1,,observation,Time,
+5001,map_concept_id,Tobacco use,0,LOINC,39240-7,,observation,Smoke,
+5001,map_concept_id,Prior PCI,0,SNOMED,41339005,,observation,PCI,
+5001,ranges_to_rank_asc,WBC count,0,LOINC,30406-3,,measurement,WBC,
+5001,ranges_to_rank_asc,Albumin,0,LOINC,1751-7,,measurement,Albu,
+5001,ranges_to_rank_desc,AST,0,LOINC,1920-8,,measurement,AST,
+5001,identity_number,NYHA,0,SNOMED,420816009,,observation,NYHA,
+5001,map_concept_id,ICD,0,SNOMED,19257004,,observation,ICD,
+5001,ranges_to_rank_asc,BUN,0,LOINC,6299-2,,measurement,BUN,
+5001,ranges_to_rank_desc,ALT,0,LOINC,76625-3,,measurement,ALT,
+5001,map_concept_id,Myocardial infarction,0,SNOMED,22298006,,observation,MI,
+5001,ranges_to_rank_asc,Systolic blood pressure,0,LOINC,8480-6,,measurement,SBP,
+5001,ranges_to_rank_asc,Heart rate,0,LOINC,8867-4,,measurement,HR,
+5001,ranges_to_rank_asc,Diastolic blood pressure,0,LOINC,8462-4,,measurement,DBP,
+5001,ranges_to_rank_desc,Sodium,0,LOINC,2951-2,,measurement,Na,
+5001,map_concept_id,Right bundle branch block,0,SNOMED,59118001,,observation,RBBB,
+5001,map_concept_id,Any BBB,0,SNOMED,6374002,,observation,ABBB,
+5001,ranges_to_rank_asc,Time since diagnosis,0,UCD.Kao,UCD-Kao-1,,observation,Time,
+2,map_concept_id,Gender,0,SNOMED,263495000,,observation,Sex,
+2,map_concept_id,Tobacco use,0,LOINC,39240-7,,observation,Smoke,
+2,ranges_to_rank_asc,Age,0,SNOMED,424144002,,observation,Age,
+2,map_concept_id,Race,0,SNOMED,103579009,,observation,Race,
+2,map_concept_id,CAD,0,SNOMED,53741008,,observation,CAD,
+2,ranges_to_rank_asc,BMI,0,LOINC,39156-5,,measurement,BMI,
+2,ranges_to_rank_asc,Heart rate,0,LOINC,8867-4,,measurement,HR,
+2,map_concept_id,Diabetes mellitus,0,SNOMED,161445009,,observation,DM,
+2,identity_number,DeathDays,0,UCD.Kao,UCD-Kao-20,,observation,dthds,
+20001,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,UCD.Kao,UCD-Kao-35,,observation,AccCCB,
+2,identity_number,Weight value,0,LOINC,29463-7,,measurement,WeiVl,
+2,ranges_to_rank_asc,Weight,0,LOINC,29463-7,,measurement,Weight,
+5001,identity_number,DeathDays,0,UCD.Kao,UCD-Kao-20,,observation,dthds,
+5001,ranges_to_rank_asc,Weight,0,LOINC,29463-7,,measurement,Weight,
+5001,map_concept_id,Treatment Arm,0,UCD.Kao,UCD-Kao-19,,observation,Plcbo,
+20000,map_concept_id,Stroke,0,SNOMED,230690007,,observation,Stro,
+1002,ranges_to_rank_desc,LV ejection fraction,0,LOINC,10230-1,,measurement,LVEF,4
+5001,ranges_to_rank_desc,LV ejection fraction,0,LOINC,10230-1,,measurement,LVEF,4
+1,ranges_to_rank_asc,Anemia,m,SNOMED,365616005,,measurement,Anem,
+5002,map_concept_id,PPM,0,SNOMED,14106009,pace maker,observation,ppm,12
+1,ranges_to_rank_asc,Anemia,f,SNOMED,365616005,,measurement,Anem,
+5002,map_concept_id,Hyperlipidemia,0,SNOMED,55822004,,observation,hld,7
+5002,map_concept_id,Hypertension,0,SNOMED,38341003,,observation,htn,8
+5002,map_concept_id,Myocardial infarction,0,SNOMED,22298006,,observation,mi,9
+5002,map_concept_id,Prior PCI,0,SNOMED,41339005,,observation,pci,10
+5001,map_concept_id,Valvular disease,0,SNOMED,368009, used by Pardeep,observation,vhd,
+20000,identity_number,Weight,0,LOINC,29463-7,,measurement,Weig,
+20000,identity_number,HR value,0,LOINC,8867-4,,measurement,HR v,
+20000,ranges_to_rank_asc,WBC count,0,LOINC,30406-3,,measurement,WBC,
+20000,ranges_to_rank_asc,Albumin,0,LOINC,1751-7,,measurement,Albu,
+20000,ranges_to_rank_desc,AST,0,LOINC,1920-8,,measurement,AST,
+20000,ranges_to_rank_asc,Age,0,SNOMED,424144002,,observation,Age,
+20000,map_concept_id,Race,0,SNOMED,103579009,,observation,Race,
+20000,identity_number,NYHA,0,SNOMED,420816009,,observation,NYHA,
+20000,map_concept_id,ICD,0,SNOMED,19257004,,observation,ICD,
+20000,map_concept_id,CAD,0,SNOMED,53741008,,observation,CAD,
+20000,ranges_to_rank_asc,BUN,0,LOINC,6299-2,,measurement,BUN,
+20000,ranges_to_rank_desc,ALT,0,LOINC,76625-3,,measurement,ALT,
+5001,ranges_to_rank_asc,QRS interval,0,SNOMED,251208001,,observation,QRS,
+5002,map_concept_id,Gender,0,SNOMED,263495000,,observation,sex,15
+5002,map_concept_id,CAD,0,SNOMED,53741008,,observation,cad,16
+20000,map_concept_id,Atrial fibrillation/flutter,0,SNOMED,49436004,,observation,Afib,
+20000,map_concept_id,Myocardial infarction,0,SNOMED,22298006,,observation,MI,
+20000,ranges_to_rank_desc,Sodium,0,LOINC,2951-2,,measurement,Na,
+20000,map_concept_id,Left bundle branch block,0,SNOMED,63467002,,observation,LBBB,
+20000,ranges_to_rank_asc,Hemoglobin,0,LOINC,4635-9,,measurement,HGlob,
+20000,map_concept_id,Right bundle branch block,0,SNOMED,59118001,,observation,RBBB,
+20000,map_concept_id,Diabetes mellitus,0,SNOMED,161445009,,observation,DM,
+20000,map_concept_id,Any BBB,0,SNOMED,6374002,,observation,ABBB,
+5002,map_concept_id,Tobacco use,0,LOINC,39240-7,,observation,smoke,13
+5002,map_concept_id,ICD,0,SNOMED,19257004,,observation,icd,36
+5002,ranges_to_rank_desc,AST,0,LOINC,1920-8,,measurement,ast,19
+20000,map_concept_id,Angina,0,SNOMED,194828000,,measurement,Angi,
+5002,ranges_to_rank_desc,ALT,0,LOINC,76625-3,,measurement,alt,20
+5002,ranges_to_rank_asc,BUN,0,LOINC,6299-2,,measurement,bun,21
+5002,ranges_to_rank_desc,Creatinine clearance,0,SNOMED,442407001,,measurement,crcl,22
+5002,ranges_to_rank_asc,BNP,0,LOINC,42637-9,bnp,measurement,bnp,23
+5002,ranges_to_rank_asc,NTBNP,0,LOINC,33762-6,probnp,measurement,ntbnp,24
+5002,map_concept_id,COPD,0,LOINC,45670-7,,observation,copd,26
+20000,map_concept_id,COPD,0,LOINC,45670-7,copd,observation,COPD,
+20000,identity_number,BMI value,0,LOINC,39156-5,,measurement,BMIv,
+20000,identity_number,DBP value,0,LOINC,8462-4,,measurement,DBPv,
+20000,identity_number,SBP value,0,LOINC,8480-6,,measurement,SBPv,
+20000,identity_number,LVEF value,0,LOINC,10230-1,,measurement,LVFv,
+20000,identity_number,CrCl value,0,SNOMED,442407001,,measurement,CrCv,
+20000,ranges_to_rank_asc,NTBNP,0,LOINC,33762-6,probnp,measurement,NTBN,
+20000,ranges_to_rank_desc,Hematocrit,0,SNOMED,365616005,,measurement,HCrit,
+20000,ranges_to_rank_asc,BNP,0,LOINC,42637-9,bnp,measurement,BNP,
+5002,map_concept_id,Stroke,0,SNOMED,230690007,,observation,stroke,27
+5002,map_concept_id,Race,0,SNOMED,103579009,,observation,race,28
+5002,identity_number,NYHA,0,SNOMED,420816009,,observation,nyha,29
+20000,identity_number,Total billirubin,0,LOINC,1975-2,,measurement,Bili,
+5002,ranges_to_rank_asc,WBC count,0,LOINC,30406-3,,measurement,wbc,32
+5002,map_concept_id,CRT,0,SNOMED,69031000119105,pace maker,observation,crt,35
+20000,map_concept_id,Valvular disease,0,SNOMED,368009,,observation,Valv,
+20000,identity_number,Height,0,LOINC,8302-2,,measurement,Heig,
+20000,ranges_to_rank_asc,Anemia,m,SNOMED,365616005,,measurement,Anem,
+20000,ranges_to_rank_asc,Anemia,f,SNOMED,365616005,,measurement,Anem,
+20000,map_concept_id,Hypertension,0,SNOMED,38341003,,observation,HTen,
+20000,map_concept_id,Hyperlipidemia,0,SNOMED,55822004,,observation,HLip,
+20000,identity_concept,antihypertensives,0,ATC,C02,,observation,xhtn,
+20000,identity_concept,beta-blockers,0,ATC,C07,,observation,bblk,
+20000,identity_concept,diuretics,0,ATC,C03,,observation,diur,
+20000,identity_concept,aldosterone antatgonist,0,ATC,C03DA,,observation,aldo,
+20000,identity_concept,ACE-Inhibitor,0,ATC,C09A,,observation,acei,
+20000,identity_concept,ARB,0,ATC,C09C,,observation,arb,
+20000,identity_concept,Statin,0,ATC,C10AA,,observation,stn,
+20000,identity_concept,Insulin,0,ATC,A10A,,observation,isln,
+20000,identity_concept,Non Insulin,0,ATC,A10B,,observation,nsln,
+5002,map_concept_id,Left bundle branch block,0,SNOMED,63467002,,observation,lbbb,1
+20000,map_concept_id,Prior CABG,0,SNOMED,232717009,,observation,CABG,
+5002,map_concept_id,Right bundle branch block,0,SNOMED,59118001,,observation,rbbb,2
+5002,map_concept_id,Any BBB,0,SNOMED,6374002,,observation,bbb,3
+20000,identity_concept,Aspirin,0,ATC,N02BA01,,observation,aspn,
+20000,identity_concept,p2y12 inhibitors,0,ATC,B01AC,,observation,pltl,
+20000,identity_concept,anticoagulant,0,ATC,B01,,observation,xcog,
+20000,identity_concept,cardiovascular disease,0,SNOMED,266995000,,observation,cvd,
+5002,ranges_to_rank_asc,Systolic blood pressure,0,LOINC,8480-6,,measurement,sbp,33
+5002,ranges_to_rank_asc,Diastolic blood pressure,0,LOINC,8462-4,,measurement,dbp,34
+5002,ranges_to_rank_asc,BMI,0,LOINC,39156-5,,measurement,bmi,17
+5002,ranges_to_rank_desc,Sodium,0,LOINC,2951-2,,measurement,na,25
+20000,identity_concept,Transient Ischemic Attack,0,SNOMED,161511000,,observation,tia,
+20000,identity_concept,Carotid Stenosis,0,SNOMED,64586001,,observation,cstn,
+5002,map_concept_id,Atrial fibrillation/flutter,0,SNOMED,49436004,,observation,af,5
+5002,map_concept_id,Diabetes mellitus,0,SNOMED,161445009,,observation,dm,6
+5002,identity_number,EQ5D,0,SNOMED,273447005,eurother ESC hear score?,observation,eq5d,37
+5002,ranges_to_rank_asc,Heart rate,0,LOINC,8867-4,,measurement,hr,39
+20000,identity_concept,AAA,0,SNOMED,233985008,,observation,aaa,
+20000,identity_concept,Systolic HF,0,SNOMED,417996009,,observation,sHF,
+5002,ranges_to_rank_desc,Anemia,f,SNOMED,365616005,,measurement,anemia,31
+5002,ranges_to_rank_desc,Anemia,m,SNOMED,365616005,,measurement,anemia,31
+5002,ranges_to_rank_desc,Albumin,0,LOINC,1751-7,,measurement,alb,30
+20000,identity_concept,Diastolic HF,0,SNOMED,418304008,,observation,dHF,
+1,ranges_to_rank_desc,LV ejection fraction,0,LOINC,10230-1,,measurement,LVEF,4
+5002,ranges_to_rank_desc,LV ejection fraction,0,LOINC,10230-1,,measurement,LVEF,4
+20001,identity_number,NHLBI delta sbp,0,UCD.Kao,UCD-Kao-42,,measurement,dSBP,
+20001,identity_number,NHLBI delta dbp,0,UCD.Kao,UCD-Kao-43,,measurement,dDBP,
+20001,identity_number,Body mass index 39156-5,0,LOINC,39156-5,,measurement,BMI,
+20001,identity_number,Overall summary score [KCCQ] 71940-1,0,LOINC,71940-1,,observation,KCCQ,
+20001,identity_number,Plasma fasting glucose measurement 167096006,0,SNOMED,167096006,,measurement,fGluc,
+20001,identity_number,Plasma glucose level 167094009,0,SNOMED,167094009,,measurement,gluc,
+8001,identity_number,laesat,0,LOINC,79974-2,,measurement,laesat,
+20001,identity_number,Serum HDL cholesterol measurement 166832000,0,SNOMED,166832000,,measurement,HDL,
+20001,identity_number,Serum LDL cholesterol measurement 166833005,0,SNOMED,166833005,,measurement,LDL,
+20001,identity_number,Alanine aminotransferase [Enzymatic activity/volume] in Blood 76625-3,0,LOINC,76625-3,,measurement,Alan,
+20001,identity_number,Albumin serum/plasma 1751-7,0,LOINC,1751-7,,measurement,Albu,
+20001,identity_number,Aspartate aminotransferase serum/plasma 1920-8,0,LOINC,1920-8,,measurement,Aspa,
+20001,identity_number,BP diastolic 8462-4,0,LOINC,8462-4,,measurement,BP d,
+20001,identity_number,BP systolic 8480-6,0,LOINC,8480-6,,measurement,BP s,
+20001,identity_number,Cardiac ejection fraction 10230-1,0,LOINC,10230-1,,measurement,Card,
+20001,identity_number,Creatinine serum/plasma 2160-0,0,LOINC,2160-0,,measurement,Crea,
+20001,identity_number,End Of Study Days UCD-Kao-2,0,UCD.Kao,UCD-Kao-20,,observation,End,
+20001,identity_number,HbA1c measurement 313835008,0,SNOMED,313835008,,measurement,HbA1,
+20001,identity_number,Hematocrit - finding 365616005,0,SNOMED,365616005,,measurement,Hema,
+20001,identity_number,Leukocytes other [#/volume] in Blood 30406-3,0,LOINC,30406-3,,measurement,Leuk,
+20001,identity_number,Body height 8302-2,0,LOINC,8302-2,,measurement,height,
+20001,identity_number,Body weight 29463-7,0,LOINC,29463-7,,measurement,weight,
+20001,identity_number,Estimation of creatinine clearance by Cockcroft-Gault formula 442407001,0,SNOMED,442407001,,measurement,CrCl,
+20001,identity_number,Free Hemoglobin [Mass/volume] in Serum 4635-9,0,LOINC,4635-9,,measurement,hgb,
+20001,identity_number,Heart rate 8867-4,0,LOINC,8867-4,,measurement,HR,
+20001,identity_number,New York Heart Association Classification 420816009,0,SNOMED,420816009,,observation,NYHAC,
+20001,identity_number,NHLBI Pilot DBP-later UCD-Kao-4,0,UCD.Kao,UCD-Kao-40,,measurement,dbpFup,
+20001,identity_number,Triglycerides measurement 14740000,0,SNOMED,14740000,,measurement,Trig,
+20001,identity_number,Urea nitrogen [Mass/volume] in Blood 6299-2,0,LOINC,6299-2,,measurement,Urea,
+20001,identity_string,Randomization UCD-Kao-6,0,UCD.Kao,UCD-Kao-6,,observation,Rand,
+20001,map_concept_id,Alpha glucosidase inhibitors A10BF,0,ATC,A10BF,,observation,Alph,
+20001,map_concept_id,Amylin 417736001,0,SNOMED,417736001,,observation,Amyl,
+20001,map_concept_id,Angina pectoris 194828000,0,SNOMED,194828000,,observation,Angi,
+20001,map_concept_id,Arterial graft 261240000,0,SNOMED,261240000,,observation,Arte,
+20001,map_concept_id,Atrial fibrillation 49436004,0,SNOMED,49436004,,observation,Atri,
+20001,map_concept_id,BARI-2D nonsublingual nitrate UCD-Kao-3,0,UCD.Kao,UCD-Kao-34,,observation,BARI,
+20001,map_concept_id,Biguanides A10BA,0,ATC,A10BA,,observation,Bigu,
+20001,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,NDFRT,N0000175554,,observation,Cent,
+20001,map_concept_id,Cerebrovascular accident 230690007,0,SNOMED,230690007,,observation,Cere,
+20001,map_concept_id,Defibrillator 19257004,0,SNOMED,19257004,,observation,Defi,
+20001,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,SNOMED,406769001,,observation,Dihy,
+20001,map_concept_id,Dipeptidyl peptidase 4 (DPP-4) inhibitors A10BH,0,ATC,A10BH,,observation,Dipe,
+20001,map_concept_id,DIURETICS C03,0,ATC,C03,,observation,DIUR,
+20001,map_concept_id,Emphysema or COPD [Minimum Data Set] 45670-7,0,LOINC,45670-7,,observation,Emph,
+20001,map_concept_id,Fibric Acids N00001821,0,NDFRT,N0000182116,,observation,Fibr,
+20001,map_concept_id,Fish oil 226359003,0,SNOMED,226359003,,observation,Fish,
+20001,map_concept_id,Heparin group B01AB,0,ATC,B01AB,,observation,Hepa,
+20001,map_concept_id,HMG CoA reductase inhibitors C10AA,0,ATC,C10AA,,observation,HMG,
+20001,map_concept_id,Incretin 417524005,0,SNOMED,417524005,,observation,Incr,
+20001,map_concept_id,INSULINS AND ANALOGUES A10A,0,ATC,A10A,,observation,INSU,
+20001,map_concept_id,Loop diuretic 29051009,0,SNOMED,29051009,,observation,Loop,
+20001,map_concept_id,Meglitinide 109075003,0,SNOMED,109075003,,observation,Megl,
+20001,map_concept_id,alpha-Adrenergic Blocker N00001755,0,NDFRT,N0000175553,,observation,AlphaB,
+20001,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,ATC,C09A,,observation,AceI,
+20001,map_concept_id,BETA BLOCKING AGENTS C07,0,ATC,C07,,observation,BetaB,
+20001,identity_number,NHLBI Pilot SBP-later UCD-Kao-3,0,UCD.Kao,UCD-Kao-41,,measurement,sbpFup,
+20001,identity_number,Current chronological age 424144002,0,SNOMED,424144002,,observation,age,1
+20001,identity_number,Glomerular filtration rate 80274001,0,SNOMED,80274001,,observation,Glom,
+20001,identity_number,QRS complex duration 251208001,0,SNOMED,251208001,,observation,QRS,
+20001,map_concept_id,Lipid lowering agents LP31452-3,0,LOINC,LP31452-3,,measurement,Lipi,
+20001,map_concept_id,metformin A10BA02,0,ATC,A10BA02,,observation,metf,
+20001,map_concept_id,ACCORD other bp med UCD-Kao-3,0,UCD.Kao,UCD-Kao-38,,observation,AccOBP,
+20001,map_concept_id,ACCORD  other lipid med UCD-Kao-3,0,UCD.Kao,UCD-Kao-36,,observation,AccOLM,
+20001,map_concept_id,ACCORD other bolus insulines UCD-Kao-3,0,UCD.Kao,UCD-Kao-31,,observation,AccOBI,
+20001,map_concept_id,ACCORD other diabetes treatments UCD-Kao-3,0,UCD.Kao,UCD-Kao-33,,observation,AccDt,
+20001,map_concept_id,ACCORD premixed insulins UCD-Kao-3,0,UCD.Kao,UCD-Kao-32,,observation,AccpDt,
+20001,map_concept_id,acetylsalicylic acid B01AC06,0,ATC,B01AC06,,observation,asprin,
+20001,map_concept_id,ANTITHROMBOTIC AGENTS B01,0,ATC,B01,,observation,xThrm,
+20001,map_concept_id,"BLOOD GLUCOSE LOWERING DRUGS, EXCL. INSULINS A10B",0,ATC,A10B,,observation,GluLow,
+20001,map_concept_id,Bundle branch block 6374002,0,SNOMED,6374002,,observation,BBB,
+20001,map_concept_id,Dietary cholesterol absorption inhibitor 468638005,0,SNOMED,468638005,,observation,xChol,
+20001,map_concept_id,Coronary angioplasty 41339005,0,SNOMED,41339005,,observation,Angpy,
+20001,map_concept_id,Current drinker 219006,0,SNOMED,219006,,observation,Alcohl,
+20001,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,ATC,C08,,observation,CaCB,
+20001,map_concept_id,Fibrates C10AB,0,ATC,C10AB,,observation,Fibrat,
+20001,map_concept_id,Gender 263495000,0,SNOMED,263495000,,observation,Sex,
+20001,map_concept_id,Heart revascularization 81266008,0,SNOMED,81266008,,observation,Revasc,
+20001,map_concept_id,H/O: cardiovascular disease 266995000,0,SNOMED,266995000,,observation,HxCVD,
+20001,map_concept_id,H/O: diabetes mellitus 161445009,0,SNOMED,161445009,,observation,HxDM,
+20001,map_concept_id,Hypertensive disorder 38341003,0,SNOMED,38341003,,observation,Htn,
+20001,map_concept_id,Hyperlipidemia 55822004,0,SNOMED,55822004,,observation,hyLip,
+20001,map_concept_id,insulin (human) A10AB01,0,ATC,A10AB01,,observation,nslnB,
+20001,map_concept_id,insulin (human) A10AC01,0,ATC,A10AC01,,observation,nslnC,
+20001,map_concept_id,insulin (human) A10AE01,0,ATC,A10AE01,,observation,nslnE,
+20001,map_concept_id,Myocardial infarction 22298006,0,SNOMED,22298006,,observation,MI,
+20001,identity_number,Sodium serum/plasma 2951-2,0,LOINC,2951-2,,measurement,Na,
+20001,identity_number,Topcat CEC death years UCD-Kao-2,0,UCD.Kao,UCD-Kao-24,,observation,TCdyr,
+20001,identity_number,Topcat Site death years UCD-Kao-2,0,UCD.Kao,UCD-Kao-23,,observation,TCsdyr,
+20001,identity_number,Topcat Site vs CEC UCD-Kao-2,0,UCD.Kao,UCD-Kao-25,,observation,TCsite,
+20001,identity_number,Total cholesterol measurement 121868005,0,SNOMED,121868005,,measurement,TChol,
+20001,identity_number,Total Bilirubin serum/plasma 1975-2,0,LOINC,1975-2,,measurement,TBili,
+20001,map_concept_id,Niacin 55013001,0,SNOMED,55013001,,observation,Niac,
+20001,map_concept_id,Omega-3 Fatty Acid N00001755,0,NDFRT,N0000175583,,observation,Omeg,
+20001,map_concept_id,Race 103579009,0,SNOMED,103579009,,observation,Race,
+20001,map_concept_id,reserpine C02AA02,0,ATC,C02AA02,,observation,rese,
+20001,map_concept_id,Tmt is placebo/std of care UCD-Kao-1,0,UCD.Kao,UCD-Kao-19,,observation,Tmt,
+20001,map_concept_id,Tobacco use status CPHS 39240-7,0,LOINC,39240-7,,observation,Toba,
+20001,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,ATC,C01D,,observation,VASO,
+20001,map_concept_id,warfarin B01AA03,0,ATC,B01AA03,,observation,warf,
+1,identity_number,Height,0,LOINC,8302-2,,measurement,height,
+2,identity_number,Height value,0,LOINC,8302-2,,measurement,height,
+2,ranges_to_rank_asc,Height,0,LOINC,8302-2,,measurement,height,
+20000,identity_number,Height,0,LOINC,8302-2,,measurement,height,
+20001,map_concept_id,Organic nitrates C01DA,0,ATC,C01DA,,observation,ONitra,
+20001,map_concept_id,Percutaneous coronary intervention 415070008,0,SNOMED,415070008,,observation,PCI,
+20001,map_concept_id,Potassium-sparing diuretic 47755009,0,SNOMED,47755009,,observation,KDiur,
+20001,map_concept_id,POTASSIUM A12B,0,ATC,A12B,,observation,K,
+20001,map_concept_id,Sulfonylureas A10BB,0,ATC,A10BB,,observation,Sulfas,
+20001,map_concept_id,Sulfonylurea 34012005,0,SNOMED,34012005,,observation,Sulf2,
+20001,map_concept_id,Sulfaurea 419204001,0,SNOMED,419204001,,observation,Sulf3,
+20001,map_concept_id,"Thiazides, plain C03AA",0,ATC,C03AA,,observation,tzd,
+1001,map_concept_id,Prior CABG,0,SNOMED,232717009,,observation,CABG,
+5001,map_concept_id,Prior CABG,0,SNOMED,232717009,,observation,CABG,
+5002,map_concept_id,Prior CABG,0,SNOMED,232717009,,observation,cabg,11
+5001,map_concept_id,PPM,0,SNOMED,14106009,pacemaker not nec. biventricular,observation,PPM,
+5001,identity_number,Death days,0,UCD.Kao,UCD-Kao-18,,observation,dth_d,
+5001,identity_number,CV Death days,0,UCD.Kao,UCD-Kao-29,,observation,cvdth_d,
+20001,map_concept_id,Thiazolidinedione 109086001,0,SNOMED,109086001,,observation,glitaz,
+5001,map_concept_id,HF hospital status,0,UCD.Kao,UCD-Kao-34,,observation,hfhsp_s,
+5001,map_concept_id,CV death status,0,UCD.Kao,UCD-Kao-28,,observation,cvdth_s,
+5001,map_concept_id,Death status,0,UCD.Kao,UCD-Kao-27,,observation,dth_s,
+5001,map_concept_id,Primary outcome status,0,UCD.Kao,UCD-Kao-36,,observation,po_s,
+5001,identity_string,Orig. Subject Id,0,UCD.Kao,UCD-Kao-38,,observation,studyID,
+5001,map_concept_id,Gender,0,SNOMED,263495000, used by Pardeep,observation,sex,
+5001,map_concept_id,CAD,0,SNOMED,53741008, used by Pardeep,observation,cad,
+20001,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,ATC,C09C,,observation,ARB,
+5001,map_concept_id,Atrial fibrillation/flutter,0,SNOMED,49436004, used by Pardeep,observation,af,
+5001,ranges_to_rank_asc,BMI,0,LOINC,39156-5, used by Pardeep,measurement,bmi,
+5001,map_concept_id,Diabetes mellitus,0,SNOMED,161445009, used by Pardeep,observation,dm,
+5001,map_concept_id,Hyperlipidemia,0,SNOMED,55822004, used by Pardeep,observation,hld,
+5001,map_concept_id,Hypertension,0,SNOMED,38341003, used by Pardeep,observation,htn,
+5001,map_concept_id,COPD,0,LOINC,45670-7, used by Pardeep,observation,copd,
+5001,map_concept_id,Left bundle branch block,0,SNOMED,63467002, used by Pardeep,observation,lbbb,
+5001,ranges_to_rank_asc,Anemia,m,SNOMED,365616005, used by Pardeep,measurement,anemia,
+5001,ranges_to_rank_asc,Anemia,f,SNOMED,365616005, used by Pardeep,measurement,anemia,
+5001,ranges_to_rank_desc,Creatinine clearance,0,SNOMED,442407001, used by Pardeep,measurement,crcl,
+5001,map_concept_id,Race,0,SNOMED,103579009, used by Pardeep,observation,race,
+20003,identity_string,Orig. Study Id,0,UCD.Kao,UCD-Kao-38,,observation,studyIDI,
+8001,identity_number,lvma,0,SNOMED,373941003,,measurement,lvma,
+8001,identity_number,laesaf,0,LOINC,17977-0,,measurement,laesaf,
+8001,identity_number,laapdm,0,LOINC,17985-3,,measurement,laapdm,
+8001,identity_number,lvdidm,0,SNOMED,3545003,,measurement,lvdidm,
+8001,identity_number,afib_ecg,0,SNOMED,49436004,,measurement,afib_ecg,
+20001,identity_string,Orig. Study Id,0,UCD.Kao,UCD-Kao-38,,observation,studyIDI,
+8001,identity_number,age,0,SNOMED,424144002,,observation,age,1
+8001,map_concept_id,sex,0,SNOMED,263495000,,observation,sex,
+8001,map_concept_id,race,0,SNOMED,103579009,,observation,race,
+8001,identity_number,Treatment is std of care,0,UCD.Kao,UCD-Kao-19,,observation,plcbo,
+8001,identity_number,Body surface area,0,LOINC,8277-6,,measurement,bsa,
+8001,identity_number,Relative wall thickness,0,UCD.Kao,UCD-Kao-39,,measurement,rwt,
+5001,identity_number,HF hospital days,0,UCD.Kao,UCD-Kao-58,,observation,hfhsp_d,
+20003,map_concept_id,Nonsublingual nitrates,0,UCD.Kao,UCD-Kao-61,,observation,nslNitrate,36
+20003,map_concept_id,Thiazolidinedione 109086001,0,SNOMED,109086001,,observation,TZD,36
+8001,identity_number,rvsp,0,SNOMED,276772001,,observation,rvsp,
+8001,identity_number,LV ejection fraction,0,SNOMED,250908004,,observation,lvef,
+20003,identity_number,Total cholesterol measurement,0,SNOMED,121868005,,measurement,TChol,16
+20001,map_concept_id,AIM-HIGH other diabetes treatments UCD-Kao-3,0,UCD.Kao,UCD-Kao-37,,observation,othDibTmt,
+20003,map_concept_id,MI Stroke,0,UCD.Kao,UCD-Kao-63,,observation,HxMIStr,10
+20003,map_concept_id,"2 Class Race UCD-Kao-64 Black, Other",0,UCD.Kao,UCD-Kao-64,,observation,Race2,3
+1,identity_number,KCCQ,0,LOINC,71940-1,kccqosb,observation,KCCQ,
+1,ranges_to_rank_asc,QRS interval,0,SNOMED,251208001,,observation,QRS,
+1,ranges_to_rank_asc,Pulse pressure,0,SNOMED,87179004,,observation,PulsP,
+5001,ranges_to_rank_desc,KCCQ,0,LOINC,71940-1,kccqosb,observation,KCCQ,
+5001,ranges_to_rank_asc,Pulse pressure,0,SNOMED,87179004,,observation,PulsP,
+20000,identity_number,KCCQ,0,LOINC,71940-1,kccqosb,observation,KCCQ,
+20000,ranges_to_rank_asc,QRS interval,0,SNOMED,251208001,,observation,QRS,
+20000,ranges_to_rank_asc,Pulse pressure,0,SNOMED,87179004,,observation,PulsP,
+5002,ranges_to_rank_asc,Pulse pressure,0,SNOMED,87179004,,observation,pupr,18
+5002,ranges_to_rank_desc,KCCQ,0,LOINC,71940-1,kccqosb,observation,kccq,38
+20003,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,ATC,C09A,,observation,AceI,29
+20003,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,SNOMED,406769001,,observation,Dihy,30
+20003,map_concept_id,BETA BLOCKING AGENTS C07,0,ATC,C07,,observation,BetaB,32
+20003,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,NDFRT,N0000175554,,observation,Cent,38
+20003,map_concept_id,alpha-Adrenergic Blocker N00001755,0,NDFRT,N0000175553,,observation,AlphaB,39
+20003,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,UCD.Kao,UCD-Kao-35,,observation,nonDihy,31
+20003,identity_number,Current chronological age 424144002,0,SNOMED,424144002,,observation,age,1
+20003,identity_number,Body mass index 39156-5,0,LOINC,39156-5,,measurement,BMI,4
+20003,identity_number,Body weight 29463-7,0,LOINC,29463-7,,measurement,weight,5
+20003,identity_number,Body height 8302-2,0,LOINC,8302-2,,measurement,height,6
+20003,identity_number,BP systolic 8480-6,0,LOINC,8480-6,,measurement,BP.s,12
+20003,identity_number,BP diastolic 8462-4,0,LOINC,8462-4,,measurement,BP.d,13
+20003,identity_number,Serum LDL cholesterol measurement 166833005,0,SNOMED,166833005,,measurement,LDL,14
+20003,identity_number,Serum HDL cholesterol measurement 166832000,0,SNOMED,166832000,,measurement,HDL,15
+20003,identity_number,Triglycerides measurement 14740000,0,SNOMED,14740000,,measurement,Trig,17
+20003,map_concept_id,Cerebrovascular accident 230690007,0,SNOMED,230690007,,observation,HxStr,22
+20003,map_concept_id,Coronary artery bypass graft,0,SNOMED,232717009,,observation,CABG,23
+20003,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,ATC,C09C,,observation,ARB,28
+20003,map_concept_id,Antihypertensives - flexible,0,SNOMED,308116003,different def. for different studies,observation,antihyp,20
+20003,map_concept_id,DIURETICS C03,0,ATC,C03,,observation,DIUR,
+20003,map_concept_id,Death Status,0,UCD.Kao,UCD-Kao-27,,observation,dthStat,42
+20003,identity_number,Death Days,0,UCD.Kao,UCD-Kao-26,,observation,dthDays,41
+20003,map_concept_id,POTASSIUM A12B,0,ATC,A12B,,observation,K,40
+5002,ranges_to_rank_asc,Age,0,SNOMED,424144002,,observation,age,1
+5001,ranges_to_rank_asc,Age,0,SNOMED,424144002, used by Pardeep,observation,age,1
+20003,map_concept_id,Gender 263495000,0,SNOMED,263495000,,observation,Sex,2
+20003,map_concept_id,Race 103579009,0,SNOMED,103579009,,observation,Race,3
+20003,map_concept_id,Tobacco use status CPHS 39240-7,0,LOINC,39240-7,,observation,Toba,7
+20003,map_concept_id,Hypertensive disorder 38341003,0,SNOMED,38341003,,observation,Htn,8
+20003,map_concept_id,H/O: diabetes mellitus 161445009,0,SNOMED,161445009,,observation,HxDM,9
+20003,map_concept_id,Heart revascularization 81266008,0,SNOMED,81266008,,observation,revasc,11
+20003,map_concept_id,HMG CoA reductase inhibitors C10AA,0,ATC,C10AA,,observation,HMG,18
+20003,map_concept_id,acetylsalicylic acid B01AC06,0,ATC,B01AC06,,observation,asprin,19
+20003,map_concept_id,Myocardial infarction 22298006,0,SNOMED,22298006,,observation,MI,21
+20003,map_concept_id,Percutaneous coronary intervention 415070008,0,SNOMED,415070008,,observation,PCI,24
+20003,map_concept_id,Loop diuretic 29051009,0,SNOMED,29051009,,observation,Loop,25
+20003,map_concept_id,"Thiazides, plain C03AA",0,ATC,C03AA,,observation,thiazide,26
+20003,map_concept_id,Potassium-sparing diuretic 47755009,0,SNOMED,47755009,,observation,KDiur,27
+20003,map_concept_id,reserpine C02AA02,0,ATC,C02AA02,,observation,rese,33
+20003,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,ATC,C01D,,observation,VASO,37
+20003,map_concept_id,ACCORD Other BP med,0,UCD.Kao,UCD-Kao-62,,observation,othBPmed,34
+20003,map_concept_id,Organic nitrates C01DA,0,ATC,C01DA,,observation,ONitra,35
+20003,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,SNOMED,373304005,,observation,CaCB,
+20003,identity_string,Study Name,0,UCD.Kao,UCD-Kao-66,,observation,study,43

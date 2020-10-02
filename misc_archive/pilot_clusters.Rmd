@@ -1,0 +1,157 @@
+---
+title: "pilot_clusters"
+author: "Chris Roeder"
+date: "78/24/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+This notebook creates clusters from the pilot data and does a few different things:
+    * creates synthetic data from models for each study.
+    * clusters the studies independently and together...
+
+```{r setup, include=TRUE, cache=FALSE}
+require("knitr")
+opts_knit$set(root.dir="/mnt/workspace/test/studies")
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment=NA)
+#knitr::opts_chunk$set(results='asis') #   R code that outputs HTML (table1) needs NOT to have its output sourrounded with <pre> etc.
+
+```
+
+
+# COMBINED, HARMONIZED
+```{r OMOP,  results='asis'}
+#install.packages('sirt')
+library(sirt)
+files=c('/mnt/workspace/output/accord.csv', '/mnt/workspace/output/aimhigh.csv', '/mnt/workspace/output/allhat.csv', '/mnt/workspace/output/bari2d.csv')
+df_all <- data.frame()
+for (file in files) {
+    cat("<br><b>"); cat(file); cat("</b><br>")
+    file_data <- read.csv(file)
+    df_all <- rbind(df_all, file_data)
+}
+
+df_all <- as.data.frame(df_all)
+
+col_names <- lapply(names(df_all), function(y) Filter(function(x) x!='studyIDI' && x!='study.1' && x!='character(0)', y))
+cols_length = length(col_names)
+col_names <- c(col_names[1:46],col_names[48], col_names[49])
+fmla <- paste('~', paste(col_names, collapse=" + "))
+fmla <- paste(fmla, '| study.1', sep='')
+
+print(names(df_all))
+
+
+cat_cols = c('age','BMI','weight', 'height','BP.s','BP.d', 'LDL','HDL','TChol', 'Trig')
+cat_quants = c(3,3,3, 3,3,3, 3,3,3, 3)
+names(cat_quants)=cat_cols
+print(cat_cols)
+print(summary(df_all))
+#df_all = categorize(dat=df_all, categorical=cat_cols, quant=cat_quants, lowest=1)
+df_all = categorize(dat=df_all, categorical=cat_cols, quant=cat_quants)
+df_all = df_all$data
+print(summary(df_all))
+# df_all$Sex=factor(df_all$Sex, levels=1:2)
+# df_all$Race=factor(df_all$Race)
+# df_all$Race2=factor(df_all$Race2)
+# df_all$Toba=factor(df_all$Toba)
+# df_all$Htn=factor(df_all$Htn)
+# df_all$HxDM=factor(df_all$HxDM)
+# df_all$HxMIStr=factor(df_all$HxMIStr)
+# df_all$revasc=factor(df_all$revasc)
+# df_all$HMG=factor(df_all$HMG)
+# df_all$asprin=factor(df_all$asprin)  # A S P R I N, not asp-i-rin
+# df_all$antihyp=factor(df_all$antihyp)
+# df_all$MI=factor(df_all$MI)
+# df_all$HxStr=factor(df_all$HxStr)
+# df_all$CABG=factor(df_all$CABG)
+# df_all$PCI=factor(df_all$PCI)
+# df_all$Loop=factor(df_all$Loop)
+# df_all$thiazide=factor(df_all$thiazide)
+# df_all$KDiur=factor(df_all$KDiur)
+# df_all$ARB=factor(df_all$ARB)
+# df_all$AceI=factor(df_all$AceI)
+# df_all$Dihy=factor(df_all$Dihy)
+# df_all$nonDihy=factor(df_all$nonDihy)
+# df_all$BetaB=factor(df_all$BetaB)
+# df_all$rese=factor(df_all$rese)
+# df_all$othBPmed=factor(df_all$othBPmed)
+# df_all$ONitra=factor(df_all$ONitra)
+# df_all$nslNitrate=factor(df_all$nslNitrate)
+# 
+# df_all$VASO=factor(df_all$VASO)
+# df_all$Cent=factor(df_all$Cent)
+# df_all$AlphaB=factor(df_all$AlphaB)
+# df_all$K=factor(df_all$K)
+# df_all$dthStat=factor(df_all$dthStat)
+# df_all$study=factor(df_all$study)
+# #df_all$studyIDI=factor(df_all$studyIDI)
+# df_all$DIUR=factor(df_all$DIUR)
+# df_all$CaCB=factor(df_all$CaCB)
+# #df_all$study.1=factor(df_all$study.1)
+
+
+
+
+
+
+```
+
+```{r synthetic studies }
+
+accord_fields  = c('age', 'Sex', 'Race', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM', 
+                  'BP.s', 'BP.d', 'LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',
+                   'Loop', 'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy', 'BetaB', 'rese', 
+                  'othBPmed', 'ONitra','TZD', 'VASO', 'Cent', 'AlphaB', 'K')
+aimhigh_fields= c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM', 
+                  'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI', 
+                  'ARB', 'AceI',  'BetaB', 'ONitra','TZD', 'DIUR', 'CaCB')
+allhat_fields  = c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM',
+                   'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig', 'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',    'antihyp')
+bari2d_fields  = c('age', 'Sex', 'Race', 'Race2', 'BMI', 'weight', 'height', 'Toba', 'Htn', 'HxDM',
+                   'BP.s', 'BP.d','LDL', 'HDL', 'TChol', 'Trig',  'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI',
+                   'ARB', 'AceI',  'BetaB', 'ONitra','TZD', 'DIUR', 'CaCB')
+
+analysis_fields  = c('age', 'Sex', 'Race2', 'BMI', 'Toba', 'Htn', 'HxDM',
+                   'BP.s', 'HDL', 'Trig', 'HMG', 'asprin',  'MI', 'HxStr', 'CABG', 'PCI',    'antihyp')
+#fields_list = list(accord_fields, aimhigh_fields, allhat_fields, bari2d_fields)
+#fields_list = list(accord_fields)
+fields_list = list(analysis_fields, analysis_fields, analysis_fields)
+#studies_list = list('ACCORD') 
+studies_list = list('ACCORD', 'AIMHIGH', 'ALLHAT', 'BARI2D')
+
+zero_one_cols = c('Toba', 'Htn', 'HxDM', 'HxMIStr', 'revasc', 'HMG', 'asprin', 'MI', 'HxStr', 'CABG', 'PCI', 'Loop', 'thiazide', 'KDiur', 'ARB', 'AceI', 'Dihy', 'nonDihy','BetaB', 'rese', 'othBPmed',
+                  'ONitra', 'nslNitrate', 'VASO', 'Cent', 'AlphaB', 'K', 'dthStat', 'DIUR', 'CaCB',
+                  'age', 'BMI', 'weight', 'height', 'BP.s', 'BP.d', 'LDL', 'HDL', 'TChol', 'Trig', 'antihyp','TZD')
+for (col in zero_one_cols) {
+        print(col)
+        #print(df_all[, col] + 1)
+        df_all[,col] = (df_all[, col] + 1)
+}
+```
+
+
+
+```{r polca}
+#install.packages("poLCA")
+library(poLCA)
+i=0
+for (flist in fields_list) {
+    i=i+1
+    #formula_string = paste(paste(flist, collapse=" + "), '~1')
+    formula_string=paste("cbind(", paste(flist, collapse=", "), ")~1")
+    print(formula_string)
+    study_formula <- as.formula(formula_string)
+    print(studies_list[i])
+    #print(study_formula)
+    #print(summary(df_all))
+    
+    # NEED ITERATE
+    
+    
+    lca_model <- poLCA(f=study_formula, data=df_all, nclass=4, nrep=10, na.rm=T, graphs=T)
+}
+
+```

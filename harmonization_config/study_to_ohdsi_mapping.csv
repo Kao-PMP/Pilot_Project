@@ -1,0 +1,628 @@
+study_id,from_table,from_column,function_name,vocabulary_id,concept_code,to_table,to_column,addl_value_1,addl_column_1,from_where_clause,comment,from_where_column,units,has_date,id
+1,best.lab2,latri,identity,LOINC,2571-8,measurement,value_as_number,,,,,,,t,1
+1,best.clab2,clatrix,identity,LOINC,12951-0,measurement,value_as_number,,,,,,,t,2
+1,best.clab2,clauax,identity,LOINC,3084-1,measurement,value_as_number,,,,,,,t,3
+1,best.muga,murve,identity,LOINC,10231-9,measurement,value_as_number,,,,,,,t,4
+1,best.lab2,laua,identity,LOINC,3084-1,measurement,value_as_number,,,,,,,t,5
+2,hfaction.analysis,weightkg,linear_equation,LOINC,29463-7,measurement,value_as_number,,,,,,,t,9
+2,hfaction.analysis,nyhacl,identity,SNOMED,420816009,observation,value_as_number,,,,,,,t,8
+2,hfaction.analysis,bun,identity,LOINC,6299-2,measurement,value_as_number,,,,,,,t,10
+2,hfaction.analysis,sbp,identity,LOINC,8480-6,measurement,value_as_number,,,,,,,t,11
+1,best.qol3,ql_13,identity,LOINC,85605-4,observation,value_as_number,,,,TBD,,,t,12
+1,best.qol3,ql_14,identity,LOINC,85616-1,observation,value_as_number,,,,TBD,,,t,13
+1,best.qol3,ql_15,identity,LOINC,85612-0,observation,value_as_number,,,,TBD,,,t,14
+2,hfaction.analysis,dbp,identity,LOINC,8462-4,measurement,value_as_number,,,,,,,t,15
+2,hfaction.analysis,basehr,identity,LOINC,8867-4,measurement,value_as_number,,,,,,,t,16
+1,best.clab2,clacho,not_used,LOINC,14647-2,measurement,value_as_number,,,,,,,t,18
+1,best.clab2,claua,not_used,LOINC,14933-6,measurement,value_as_number,,,,,,,t,19
+2,hfaction.analysis,bmi,identity,LOINC,39156-5,measurement,value_as_number,,,,,,,t,20
+2,hfaction.analysis,age,identity,SNOMED,424144002,observation,value_as_number,,,,,,years (assumed),t,21
+2,hfaction.analysis,heightcm,linear_equation,LOINC,8302-2,measurement,value_as_number,,,,,,,t,17
+1,best.br,brang,identity,SNOMED,4557003,observation,value_as_number,,,,,,,t,24
+1,best.diab,diaret,identity,LOINC,45672-3,observation,value_as_number,,,,,,,t,26
+1,best.pcsf,pcage,identity,SNOMED,424144002,observation,value_as_number,,,,,,,t,27
+1,best.pcsf,pcmihx,identity,SNOMED,428752002,observation,value_as_string,,,,,,,t,28
+1,best.pcsf,pcangina,identity,SNOMED,4557003,observation,value_as_string,,,,,,,t,29
+1,best.pcsf,pcpregnt,identity,SNOMED,169449001,observation,value_as_string,,,,,,,t,30
+1,best.pcsf,pccomorb,identity,SNOMED,398192003,observation,value_as_string,,,,,,,t,31
+1,best.cvs,cvnyh,identity,SNOMED,420816009,observation,value_as_number,,,,,,,t,34
+1,best.clab1,clahctx,identity,SNOMED,365616005,measurement,value_as_number,,,,,,,t,35
+1,best.clab1,clacalx,identity,LOINC,17861-6,measurement,value_as_number,,,,,,,t,36
+1,best.clab1,clapot,identity,LOINC,2823-3,measurement,value_as_number,,,,,,,t,38
+1,best.lab1,lapot,identity,LOINC,2823-3,measurement,value_as_number,,,,,,,t,39
+1,best.clab1,clamag,identity,LOINC,2601-3,measurement,value_as_number,,,,,,,t,40
+1,best.lab1,lamag,identity,LOINC,2601-3,measurement,value_as_number,,,,,,,t,41
+1,best.clab1,clasdm,identity,LOINC,2951-2,measurement,value_as_number,,,,,,,t,42
+1,best.lab1,lasdm,identity,LOINC,2951-2,measurement,value_as_number,,,,,,,t,43
+1,best.clab1,clachl,identity,LOINC,2075-0,measurement,value_as_number,,,,,,,t,44
+1,best.lab1,lachl,identity,LOINC,2075-0,measurement,value_as_number,,,,,,,t,45
+1,best.lab1,lahgb,identity,LOINC,4635-9,measurement,value_as_number,,,,,,,t,46
+1,best.clab1,clabic,identity,LOINC,1963-8,measurement,value_as_number,,,,,,,t,47
+1,best.lab1,labic,identity,LOINC,1963-8,measurement,value_as_number,,,,,,,t,48
+1,best.lab1,labil,identity,LOINC,1975-2,measurement,value_as_number,,,,,,,t,49
+1,best.clab1,clabilx,identity,LOINC,1975-2,measurement,value_as_number,,,,,,,t,50
+1,best.clab2,claalbx,identity,LOINC,1751-7,measurement,value_as_number,,,,,,,t,51
+1,best.lab2,laalb,identity,LOINC,1751-7,measurement,value_as_number,,,,,,,t,52
+1,best.lab2,lacho,identity,LOINC,2093-3,measurement,value_as_number,,,,,,,t,53
+1,best.clab2,clachox,identity,LOINC,2093-3,measurement,value_as_number,,,,,,,t,54
+1,best.clab2,clainr,identity,LOINC,34714-6,measurement,value_as_number,,,,,,,t,59
+1,best.lab2,lainr,identity,LOINC,34714-6,measurement,value_as_number,,,,,,,t,60
+1,best.clab2,claalt,identity,LOINC,76625-3,measurement,value_as_number,,,,,,,t,61
+1,best.lab2,laalt,identity,LOINC,76625-3,measurement,value_as_number,,,,,,,t,62
+1,best.clab2,claast,identity,LOINC,1920-8,measurement,value_as_number,,,,,,,t,63
+1,best.lab2,laast,identity,LOINC,1920-8,measurement,value_as_number,,,,,,,t,64
+1,best.pe,peht,identity,LOINC,8302-2,measurement,value_as_number,,,,,,,t,65
+1,best.pe,pewt,identity,LOINC,29463-7,measurement,value_as_number,,,,,,,t,66
+6,atmosphere.test,sgpt_1,identity,LOINC,1920-8,measurement,value_as_number,,,,AST,,,t,322
+6,atmosphere.test,sod_1,identity,LOINC,2951-2,measurement,value_as_number,,,,Sodium,,mmol/L,t,324
+1,best.pe,pebps,identity,LOINC,8480-6,measurement,value_as_number,,,,,,,t,67
+1,best.pe,pebpd,identity,LOINC,8462-4,measurement,value_as_number,,,,,,,t,68
+1,best.pe,pehr,identity,LOINC,8867-4,measurement,value_as_number,,,,,,,t,70
+1,best.pe,pejvd,identity,LOINC,44965-2,measurement,value_as_number,,,,,,,t,71
+1,best.clab1,claglux,identity,LOINC,2345-7,measurement,value_as_number,,,,,,,t,72
+1,best.lab1,lacal,identity,LOINC,17861-6,measurement,value_as_number,,,,,,,t,73
+1,best.lab1,laglu,identity,LOINC,2345-7,measurement,value_as_number,,,,,,,t,74
+1,best.lab1,lacre,identity,LOINC,2160-0,measurement,value_as_number,,,,,,,t,75
+1,best.lab1,labun,identity,LOINC,6299-2,measurement,value_as_number,,,,,,,t,76
+1,best.lab1,lawbc,identity,LOINC,30406-3,measurement,value_as_number,,,,,,,t,77
+1,best.diab,dianeu,identity,LOINC,66613-1,observation,value_as_number,,,,,,,t,37
+1,best.clab1,clawbc,identity,LOINC,30406-3,measurement,value_as_number,,,,,,,t,78
+1,best.clab1,clabunx,identity,LOINC,6299-2,measurement,value_as_number,,,,,,,t,79
+1,best.lab1,lahct,identity,SNOMED,365616005,measurement,value_as_number,,,,,,,t,80
+1,best.qol2,ql_1,identity,LOINC,85598-1,observation,value_as_number,,,,TBD,,,t,81
+1,best.qol2,ql_2,identity,LOINC,85600-5,observation,value_as_number,,,,TBD,,,t,82
+1,best.qol2,ql_3,identity,LOINC,85603-9,observation,value_as_number,,,,TBD,,,t,83
+1,best.qol2,ql_4,identity,LOINC,85619-5,observation,value_as_number,,,,TBD,,,t,84
+1,best.qol2,ql_5,identity,LOINC,85620-3,observation,value_as_number,,,,TBD,,,t,85
+1,best.qol2,ql_6,identity,LOINC,85604-7,observation,value_as_number,,,,TBD,,,t,86
+1,best.qol2,ql_7,identity,LOINC,85599-9,observation,value_as_number,,,,TBD,,,t,87
+1,best.clab1,clabil,not_used,LOINC,35194-0,measurement,value_as_number,,,,,,,t,88
+1,best.qol2,ql_8,identity,LOINC,85608-8,observation,value_as_number,,,,TBD,,,t,89
+1,best.qol2,ql_9,identity,LOINC,85602-1,observation,value_as_number,,,,TBD,,,t,90
+1,best.qol2,ql_10,identity,LOINC,85607-0,observation,value_as_number,,,,TBD,,,t,91
+1,best.qol2,ql_11,identity,LOINC,85601-3,observation,value_as_number,,,,TBD,,,t,93
+1,best.qol2,ql_12,identity,LOINC,85606-2,observation,value_as_number,,,,TBD,,,t,94
+1,best.qol3,ql_16,identity,LOINC,85615-3,observation,value_as_number,,,,TBD,,,t,96
+1,best.qol3,ql_17,identity,LOINC,85617-9,observation,value_as_number,,,,TBD,,,t,97
+1,best.qol3,ql_18,identity,LOINC,85611-2,observation,value_as_number,,,,TBD,,,t,98
+1,best.qol3,ql_19,identity,LOINC,85614-6,observation,value_as_number,,,,TBD,,,t,99
+1,best.qol3,ql_20,identity,LOINC,85610-4,observation,value_as_number,,,,TBD,,,t,100
+1,best.qol3,ql_21,identity,LOINC,85613-8,observation,value_as_number,,,,TBD,,,t,101
+1,best.ame,amcod,true,SNOMED,410429000,observation,value_as_concept_id,,,DC04,,amcod,,t,125
+2,hfaction.analysis,eurother,identity,SNOMED,273447005,observation,value_as_number,,,,,,,t,126
+2,hfaction.analysis,bnp,identity,LOINC,42637-9,measurement,value_as_number,,,,,,,t,127
+2,hfaction.analysis,probnp,identity,LOINC,33762-6,measurement,value_as_number,,,,,,,t,128
+1,best.ame,amcod,true,SNOMED,410430005,observation,value_as_concept_id,,,DC16,,amcod,,t,131
+1,best.ame,amcod,true,SNOMED,410429000,observation,value_as_concept_id,,,DH08,,amcod,,t,132
+6,atmosphere.test,bun_1,identity,LOINC,6299-2,measurement,value_as_number,,,,BUN,,mg/dl,t,325
+6,atmosphere.test,sgot_1,identity,LOINC,76625-3,measurement,value_as_number,,,,ALT,,,t,326
+1,best.ame,amcod,true,SNOMED,397829000,observation,value_as_concept_id,,,DS20,,amcod,,t,133
+1,best.ame,amcod,true,SNOMED,397829000,observation,value_as_concept_id,,,DV30,,amcod,,t,134
+1,best.ame,amcod,true,SNOMED,40593004,observation,value_as_concept_id,,,DF10,,amcod,,t,135
+1,best.ame,amcod,true,SNOMED,40593004,observation,value_as_concept_id,,,DF13,,amcod,,t,136
+1,best.ame,amcod,true,SNOMED,233915000,observation,value_as_concept_id,,,DF15,,amcod,,t,137
+1,best.ame,amcod,true,SNOMED,71908006,observation,value_as_concept_id,,,DF16,,amcod,,t,138
+1,best.ame,amcod,true,SNOMED,71908006,observation,value_as_concept_id,,,DV32,,amcod,,t,139
+1,best.ame,amcod,true,SNOMED,233915000,observation,value_as_concept_id,,,DV33,,amcod,,t,140
+1,best.ame,amcod,true,SNOMED,66657009,observation,value_as_concept_id,,,DP09,,amcod,,t,141
+1,best.ame,amcod,true,SNOMED,66657009,observation,value_as_concept_id,,,DT07,,amcod,,t,142
+1,best.ame,amcod,true,SNOMED,31722008,observation,value_as_concept_id,,,DT60,,amcod,,t,143
+1,best.ame,amcod,true,SNOMED,25569003,observation,value_as_concept_id,,,DV36,,amcod,,t,144
+2,hfaction.labs,labval,identity,LOINC,4635-9,measurement,value_as_number,,,9,,labtest,,t,146
+1,best.cvh2,cvcad,not_used,SNOMED,53741008,observation,value_as_concept_id,,,,,,,t,150
+3,scdheft.baseline_new,weightkg,linear_equation,LOINC,29463-7,measurement,value_as_number,,,,,,lb,t,176
+1,best.diab,diahis,not_used,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,152
+1,best.clab2,clatri,not_used,LOINC,14927-8,measurement,value_as_number,,,,,,,t,153
+3,scdheft.baseline_new,bun,identity,LOINC,6299-2,measurement,value_as_number,,,,,,MG/DL,t,156
+3,scdheft.basecrf,cnyha,identity,SNOMED,420816009,observation,value_as_number,,,,,,,t,159
+3,scdheft.basecrf,cpesys,identity,LOINC,8480-6,measurement,value_as_number,,,,,,mm Hg (assumed),t,168
+3,scdheft.basecrf,cpedias,identity,LOINC,8462-4,measurement,value_as_number,,,,,,mm Hg (assumed),t,169
+2,hfaction.labs,labval,identity,LOINC,2951-2,measurement,value_as_number,,,1,Hb,labtest,,t,170
+3,scdheft.basecrf,cpepulse,identity,LOINC,8867-4,measurement,value_as_number,,,,,,beat/min (assumed),t,171
+3,scdheft.baseline_new,sodium,identity,LOINC,2951-2,measurement,value_as_number,,,,,,MEQ/L,t,172
+3,scdheft.baseline_new,age,identity,SNOMED,424144002,observation,value_as_number,,,,,,years (assumed),t,173
+3,scdheft.baseline_new,chfdxmo,identity,UCD.Kao,UCD-Kao-1,observation,value_as_number,,,,,,months,t,177
+1,best.cvh1,cvduratn,identity,UCD.Kao,UCD-Kao-1,observation,value_as_number,,,,,,,t,178
+4,topcat.t008,bun_mgdl,identity,LOINC,6299-2,measurement,value_as_number,,,,,,mg/dl,t,179
+4,topcat.t008,na_mmoll,identity,LOINC,2951-2,measurement,value_as_number,,,,,,mmol/L,t,180
+4,topcat.t008,alt_ul,identity,LOINC,76625-3,measurement,value_as_number,,,,,,,t,181
+4,topcat.t008,ast_ul,identity,LOINC,1920-8,measurement,value_as_number,,,,,,,t,182
+4,topcat.t008,hct_p,identity,SNOMED,365616005,measurement,value_as_number,,,,,,,t,184
+4,topcat.t003,age_entry,identity,SNOMED,424144002,observation,value_as_number,,,,,,,t,185
+3,scdheft.baseline_new,lvef,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,ratio,t,186
+4,topcat.t004,ef,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,,t,187
+4,topcat.t008,alb_gdl,identity,LOINC,1751-7,measurement,value_as_number,,,,,,,t,188
+4,topcat.t008,hb_gdl,identity,LOINC,4635-9,measurement,value_as_number,,,,,,,t,189
+6,atmosphere.test,alb_1,identity,LOINC,1751-7,measurement,value_as_number,,,,Albumin,,,t,327
+6,atmosphere.test,nyh_b1,identity,SNOMED,420816009,observation,value_as_number,,,,NYHA,,,t,330
+3,scdheft.basecrf,cstay,identity,LOINC,85610-4,observation,value_as_number,,,,,,,t,197
+3,scdheft.basecrf,cburden,identity,LOINC,85613-8,observation,value_as_number,,,,,,,t,198
+3,scdheft.basecrf,ceffect,identity,LOINC,85612-0,observation,value_as_number,,,,,,,t,199
+3,scdheft.basecrf,cswell,identity,LOINC,85598-1,observation,value_as_number,,,,,,,t,200
+3,scdheft.basecrf,cwork,identity,LOINC,85600-5,observation,value_as_number,,,,,,,t,201
+3,scdheft.basecrf,cremem,identity,LOINC,85616-1,observation,value_as_number,,,,,,,t,202
+3,scdheft.basecrf,cfriends,identity,LOINC,85603-9,observation,value_as_number,,,,,,,t,203
+3,scdheft.basecrf,crest,identity,LOINC,85619-5,observation,value_as_number,,,,,,,t,204
+3,scdheft.basecrf,cenergy,identity,LOINC,85620-3,observation,value_as_number,,,,,,,t,205
+3,scdheft.basecrf,cdiff,identity,LOINC,85604-7,observation,value_as_number,,,,,,,t,206
+3,scdheft.basecrf,chobbie,identity,LOINC,85605-4,observation,value_as_number,,,,,,,t,207
+3,scdheft.basecrf,cbreath,identity,LOINC,85608-8,observation,value_as_number,,,,,,,t,208
+3,scdheft.basecrf,csleep,identity,LOINC,85602-1,observation,value_as_number,,,,,,,t,209
+3,scdheft.basecrf,ceat,identity,LOINC,85607-0,observation,value_as_number,,,,,,,t,210
+3,scdheft.basecrf,caway,identity,LOINC,85601-3,observation,value_as_number,,,,,,,t,211
+3,scdheft.basecrf,csex,identity,LOINC,85606-2,observation,value_as_number,,,,,,,t,212
+3,scdheft.basecrf,cworry,identity,LOINC,85615-3,observation,value_as_number,,,,,,,t,213
+3,scdheft.basecrf,cdeprs,identity,LOINC,85617-9,observation,value_as_number,,,,,,,t,214
+3,scdheft.basecrf,ccost,identity,LOINC,85611-2,observation,value_as_number,,,,,,,t,215
+3,scdheft.basecrf,closs,identity,LOINC,85614-6,observation,value_as_number,,,,,,,t,216
+3,scdheft.basecrf,cwalkc,identity,LOINC,85599-9,observation,value_as_number,,,,,,,t,217
+4,topcat.t006,nyha_class_cat,identity,SNOMED,420816009,observation,value_as_number,,,,,,,t,218
+4,topcat.t006,sbp,identity,LOINC,8480-6,measurement,value_as_number,,,,,,,t,219
+4,topcat.t006,dbp,identity,LOINC,8462-4,measurement,value_as_number,,,,,,,t,220
+4,topcat.t006,hr,identity,LOINC,8867-4,measurement,value_as_number,,,,,,,t,221
+4,topcat.t006,height,identity,LOINC,8302-2,measurement,value_as_number,,,,,,,t,223
+4,topcat.t008,tbili_mgdl,identity,LOINC,1975-2,measurement,value_as_number,,,,,,,t,224
+4,topcat.t006,weight,identity,LOINC,29463-7,measurement,value_as_number,,,,,,,t,222
+5,paradigm.test,wgt_b1,linear_equation,LOINC,29463-7,measurement,value_as_number,,,,Weight Kg,,,t,242
+4,topcat.t008,wbc_kul,identity,LOINC,30406-3,measurement,value_as_number,,,,,,,t,228
+5,paradigm.test,sgpt_1,identity,LOINC,1920-8,measurement,value_as_number,,,,AST,,,t,235
+5,paradigm.test,sod_1,identity,LOINC,2951-2,measurement,value_as_number,,,,Sodium,,mmol/L,t,237
+5,paradigm.test,bun_1,identity,LOINC,6299-2,measurement,value_as_number,,,,BUN,,mg/dl,t,238
+5,paradigm.test,sgot_1,identity,LOINC,76625-3,measurement,value_as_number,,,,ALT,,,t,239
+5,paradigm.test,alb_1,identity,LOINC,1751-7,measurement,value_as_number,,,,Albumin,,,t,240
+5,paradigm.test,nyh_b1,identity,SNOMED,420816009,observation,value_as_number,,,,NYHA,,,t,243
+5,paradigm.test,kcqscans_baseline,identity,LOINC,71940-1,observation,value_as_number,,,,KCCQ,,,t,244
+5,paradigm.test,dbp_b1,identity,LOINC,8462-4,measurement,value_as_number,,,,Diastolic blood pressure,,,t,245
+5,paradigm.test,hr_b2,identity,LOINC,8867-4,measurement,value_as_number,,,,Heart Rate,,,t,247
+5,paradigm.test,hgt_b1,identity,LOINC,8302-2,measurement,value_as_number,,,,Height cm,,,t,248
+5,paradigm.test,bmi_b1,identity,LOINC,39156-5,measurement,value_as_number,,,,BMI,,,t,252
+5,paradigm.test,sbp_b1,identity,LOINC,8480-6,measurement,value_as_number,,,,Systolic blood pressure,,,t,254
+1,best.muga,mulve,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,,t,255
+2,hfaction.analysis,bestlvef,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,,t,256
+5,paradigm.test,ejf_b1,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,,t,257
+6,atmosphere.test,kcqscans_baseline,identity,LOINC,71940-1,observation,value_as_number,,,,KCCQ,,,t,331
+6,atmosphere.test,dbp_b1,identity,LOINC,8462-4,measurement,value_as_number,,,,Diastolic blood pressure,,,t,332
+6,atmosphere.test,wgt_b1,linear_equation,LOINC,29463-7,measurement,value_as_number,,,,Weight Kg,,,t,329
+5,paradigm.test,hct_1,linear_equation,SNOMED,365616005,measurement,value_as_number,,,,Hematocrit,,,t,287
+5,paradigm.test,hf_flg1,linear_equation,UCD.Kao,UCD-Kao-1,observation,value_as_number,,,,Time since diagnosis (years),,,t,288
+5,paradigm.test,wbc_1,identity,LOINC,30406-3,measurement,value_as_number,,,,WBC,,,t,261
+4,topcat.t010,qrs_dur,identity,SNOMED,251208001,observation,value_as_number,,,,,,,t,190
+4,topcat.t030,term_dt_1,linear_equation,UCD.Kao,UCD-Kao-20,observation,value_as_number,,,,"topcat eos years, may be >; death_dt",,days,f,295
+4,topcat.t079,site_dt3,linear_equation,UCD.Kao,UCD-Kao-23,observation,value_as_number,,,,topcat site years to death,,,f,301
+4,topcat.t079,date_death,linear_equation,UCD.Kao,UCD-Kao-25,observation,value_as_number,,,,topcat site vs cec death,,,f,310
+4,topcat.t079,cec_dt3,linear_equation,UCD.Kao,UCD-Kao-24,observation,value_as_number,,,,topcate cec years to death,,,f,311
+5,paradigm.test,eqv_tfl2,identity,SNOMED,273447005,observation,value_as_number,,,,EQ5D euroqol,,,t,269
+2,hfaction.analysis,egfr,identity,SNOMED,442407001,measurement,value_as_number,,,,CrCl == gfr ?,,,t,274
+5,paradigm.test,tbil_1,identity,LOINC,1975-2,measurement,value_as_number,,,,"Total billirubin, * educated guess *",parnam1c,,t,275
+6,atmosphere.test,race,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,Race,,,t,341
+5,paradigm.test,age_1n,identity,SNOMED,424144002,observation,value_as_number,,,,"Age, risk model",,,t,276
+4,topcat.t008,gfr,identity,SNOMED,442407001,measurement,value_as_number,,,,CrCl == gfr ?,,,t,277
+3,scdheft.baseline_new,crclear,identity,SNOMED,442407001,measurement,value_as_number,,,,,,,t,284
+1,best.clab1,clacrex,identity,LOINC,2160-0,measurement,value_as_number,,,,,,,t,285
+1,best.clab1,clahgbx,identity,LOINC,4635-9,measurement,value_as_number,,,,,,,t,286
+1,best.br,randate,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,PHI?,,date,t,292
+2,dual,2000-01-01,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,"no absolute dates, assuming here",,date,f,293
+3,dual,2000-01-01,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,"no absolute dates, assuming here",,date,f,294
+1,best.eos,eos_dt,identity,UCD.Kao,UCD-Kao-21,observation,value_as_string,,,,eos date,,date,t,296
+5,paradigm.test,tend_1o,identity,UCD.Kao,UCD-Kao-21,observation,value_as_string,,,,eos date,,date,f,298
+2,hfaction.studcomp,visitdays,identity,UCD.Kao,UCD-Kao-20,observation,value_as_number,,,,eos days,,days,f,299
+3,scdheft.endpt_new,lastdt_days,identity,UCD.Kao,UCD-Kao-20,observation,value_as_number,,,,eos days,,days,f,300
+4,dual,2000-01-01,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,"no absolute dates, assuming here",,date,f,302
+5,paradigm.test,randate,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,rand date,,date,f,303
+3,scdheft.death,deathdt_days,identity,UCD.Kao,UCD-Kao-18,observation,value_as_number,,,,,,date,f,304
+5,paradigm.test,t2dth,identity,UCD.Kao,UCD-Kao-18,observation,value_as_number,,,,,,date,f,305
+5,paradigm.test,bnp_b1_pg,identity,LOINC,42637-9,measurement,value_as_number,,,,BNP,,,t,268
+5,paradigm.test,ntp_b1_pg,identity,LOINC,33762-6,measurement,value_as_number,,,,NTBNP,,,t,267
+5,paradigm.test,hgba_1,identity,LOINC,4635-9,measurement,value_as_number,,,,Hemoglobin,,,t,280
+2,hfaction.labs,labval,identity,SNOMED,365616005,measurement,value_as_number,,,10,Hcrit,labtest,,t,312
+2,hfaction.analysis,deathfu,identity,UCD.Kao,UCD-Kao-18,observation,value_as_number,,,,analysis.deathfu vs cecdeath.dthdays,,days,f,313
+2,hfaction.analysis,lftvdiad,identity,SNOMED,250933001,observation,value_as_number,,,,,,,t,314
+2,hfaction.analysis,lftvmass,identity,SNOMED,373941003,observation,value_as_number,,,,,,,t,315
+1,best.mort1,modate1,identity,SNOMED,399753006,observation,value_as_string,,,,,,,t,318
+1,best.wd,wddate,identity,UCD.Kao,UCD-Kao-21,observation,value_as_string,,,1,patients that withdrew,wdreport,date,t,321
+6,atmosphere.test,hr_b2,identity,LOINC,8867-4,measurement,value_as_number,,,,Heart Rate,,,t,334
+5,paradigm.test,gfr_b1,identity,SNOMED,442407001,measurement,value_as_number,,,,CrCl,,,t,251
+10,test.data,b,identity,UCD.Kao,test-2,measurement,value_as_number,,,,,,,f,376
+22,aimhigh.PATIENT,age,identity,SNOMED,424144002,observation,value_as_number,,,,added by the code,,,,407
+22,aimhigh.PATIENT,bmi,identity,LOINC,39156-5,measurement,value_as_number,,,,added by the code,,,,410
+10,test.data,d,linear_equation,UCD.Kao,test-4,measurement,value_as_number,,,,,,,f,380
+22,aimhigh.PATIENT,diasbp,identity,LOINC,8462-4,measurement,value_as_number,,,,added by the code,,,,414
+22,aimhigh.HX,hx_ef,identity,LOINC,10230-1,measurement,value_as_number,,,,added by the code,,,,415
+6,atmosphere.test,hgt_b1,identity,LOINC,8302-2,measurement,value_as_number,,,,Height cm,,,t,335
+6,atmosphere.test,hct_1,linear_equation,SNOMED,365616005,measurement,value_as_number,,,,Hematocrit,,,t,365
+22,aimhigh.PATIENT,sysbp,identity,LOINC,8480-6,measurement,value_as_number,,,,added by the code,,,,422
+21,accord.ACCORD_KEY,baseline_age,identity,SNOMED,424144002,observation,value_as_number,,,,added by the code,,,,428
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,x2qhba1c,identity,SNOMED,313835008,measurement,value_as_number,,,,added by the code,,,,451
+21,accord.OTHERLABS_201604,alt,identity,LOINC,76625-3,measurement,value_as_number,,,BLR,added by the code,visit,,,429
+5,paradigm.test,pp_b1,identity,SNOMED,87179004,observation,value_as_number,,,,Pulse pressure,,mm/hg,t,273
+22,aimhigh.PE,pe_wt,identity,LOINC,29463-7,measurement,value_as_number,,,Baseline,added by the code,visit,Kg,,424
+24,bari2d.BARI2D_BL,age,identity,SNOMED,424144002,observation,value_as_number,,,,added by the code,,,,441
+21,accord.F07_BASELINEHISTORYPHYSICALEXAM,ht_cm,identity,LOINC,8302-2,measurement,value_as_number,,,,added by the code,,cm,,438
+24,bari2d.BARI2D_BL,bmi,identity,LOINC,39156-5,measurement,value_as_number,,,,added by the code,,,,442
+22,aimhigh.LAB,crcl,identity,LOINC,2160-0,measurement,value_as_number,,,0,added by the code,visit,,,412
+22,aimhigh.PATIENT,glucose_base,identity,SNOMED,167094009,measurement,value_as_number,,,,added by the code,,,,469
+22,aimhigh.PATIENT,hdl_c_base,identity,SNOMED,166832000,measurement,value_as_number,,,,added by the code,,,,470
+22,aimhigh.PATIENT,ldl_c_base,identity,SNOMED,166833005,measurement,value_as_number,,,,added by the code,,,,471
+6,atmosphere.test,gfr_b1,identity,SNOMED,442407001,measurement,value_as_number,,,,CrCl == gfr ?,,,t,337
+6,atmosphere.test,bmi_b1,identity,LOINC,39156-5,measurement,value_as_number,,,,BMI,,,t,338
+6,atmosphere.test,sbp_b1,identity,LOINC,8480-6,measurement,value_as_number,,,,Systolic blood pressure,,,t,339
+6,atmosphere.test,ejf_b1,identity,LOINC,10230-1,measurement,value_as_number,,,,LV ejection fraction,,,t,340
+6,atmosphere.test,hf_flg1,linear_equation,UCD.Kao,UCD-Kao-1,observation,value_as_number,,,,Time since diagnosis (years),,,t,366
+6,atmosphere.test,wbc_1,identity,LOINC,30406-3,measurement,value_as_number,,,,WBC,,,t,344
+6,atmosphere.test,ntp_b1_pg,identity,LOINC,33762-6,measurement,value_as_number,,,,n-terminal pro bnp,,,t,350
+22,aimhigh.PATIENT,trig_base,identity,SNOMED,14740000,measurement,value_as_number,,,,added by the code,,,,472
+21,accord.BLOODPRESSURE_201604,dbp,identity,LOINC,8462-4,measurement,value_as_number,,,BLR,added by the code,visit,,,432
+21,accord.BLOODPRESSURE_201604,sbp,identity,LOINC,8480-6,measurement,value_as_number,,,BLR,added by the code,visit,,,433
+21,accord.BLOODPRESSURE_201604,hr,identity,LOINC,8867-4,measurement,value_as_number,,,BLR,added by the code,visit,,,434
+21,accord.LIPIDS_201604,trig,identity,SNOMED,14740000,measurement,value_as_number,,,BLR,added by the code,visit,,,457
+21,accord.LIPIDS_201604,chol,identity,SNOMED,121868005,measurement,value_as_number,,,BLR,added by the code,visit,,,458
+10,test.data,a,map_concept,SNOMED,232717009,measurement,value_as_number,,,,,,,f,375
+6,atmosphere.test,eqv_tfl2,identity,SNOMED,273447005,observation,value_as_number,,,,EQ5D euroqol,,,t,352
+21,accord.OTHERLABS_201604,fpg,identity,SNOMED,167096006,measurement,value_as_number,,,BLR,added by the code,visit,,,452
+21,accord.LIPIDS_201604,ldl,identity,SNOMED,166833005,measurement,value_as_number,,,BLR,added by the code,visit,,,455
+21,accord.LIPIDS_201604,hdl,identity,SNOMED,166832000,measurement,value_as_number,,,BLR,added by the code,visit,,,454
+4,topcat.q002,overall_sum_score,identity,LOINC,71940-1,observation,value_as_number,,,BASE,,visit,,t,225
+21,accord.BLOODPRESSURE_201604,dbp,identity,UCD.Kao,UCD-Kao-40,measurement,value_as_number,,,F12,,visit,,f,527
+22,aimhigh.PE,pe_bpdia,identity,UCD.Kao,UCD-Kao-40,measurement,value_as_number,,,12 Month Visit,,visit,,f,569
+24,bari2d.BARI2D_LONG,dbp_sit,identity,UCD.Kao,UCD-Kao-40,measurement,value_as_number,,,5,,fuper,,f,570
+4,topcat.t013,dbp,identity,UCD.Kao,UCD-Kao-40,measurement,value_as_number,,,MN12,,visit,,f,573
+6,atmosphere.test,tbil_1,identity,LOINC,1975-2,measurement,value_as_number,,,,"Total billirubin, * educated guess *",parnam1c,,t,357
+6,atmosphere.test,age_1n,identity,SNOMED,424144002,observation,value_as_number,,,,"Age, risk model",,,t,358
+6,atmosphere.test,hgba_1,identity,LOINC,4635-9,measurement,value_as_number,,,,"Hemoglobin, * educated guess *",,,t,361
+6,atmosphere.test,bnp_b1_pg,identity,LOINC,42637-9,measurement,value_as_number,,,,BNP,,,t,351
+6,atmosphere.test,tend_1o,identity,UCD.Kao,UCD-Kao-21,observation,value_as_string,,,,eos date,,date,f,370
+6,atmosphere.test,randate,identity,UCD.Kao,UCD-Kao-6,observation,value_as_string,,,,rand date,,date,f,371
+6,atmosphere.test,t2dth,identity,UCD.Kao,UCD-Kao-18,observation,value_as_number,,,,,,date,f,372
+23,allhat.DOX_VSC,age,identity,SNOMED,424144002,observation,value_as_number,,,,added by the code,,,,575
+23,allhat.DOX_VSC,blbmi,identity,LOINC,39156-5,measurement,value_as_number,,,,added by the code,,,,581
+22,aimhigh.LAB,egfr,identity,SNOMED,80274001,observation,value_as_number,,,0,added by the code,visit,,,440
+6,atmosphere.test,pp_b1,identity,SNOMED,87179004,observation,value_as_number,,,,Pulse pressure,,mm/hg,t,356
+21,accord.F07_BASELINEHISTORYPHYSICALEXAM,wt_kg,identity,LOINC,29463-7,measurement,value_as_number,,,,,,Kg,f,528
+24,bari2d.BARI2D_BL,hba1c,identity,SNOMED,313835008,measurement,value_as_number,,,,added by the code,,,,485
+22,aimhigh.PE,pe_ht,identity,LOINC,8302-2,measurement,value_as_number,,,Baseline,added by the code,visit,cm,,425
+24,bari2d.BARI2D_BL,hdl,identity,SNOMED,166832000,measurement,value_as_number,,,,added by the code,,,,486
+23,allhat.DOX_VSC,blhgt,linear_equation,LOINC,8302-2,measurement,value_as_number,,,,added by the code,,inches,,580
+23,allhat.DOX_VSC,blwgt,linear_equation,LOINC,29463-7,measurement,value_as_number,,,,added by the code,,lb,,579
+24,bari2d.BARI2D_BL,ldl,identity,SNOMED,166833005,measurement,value_as_number,,,,added by the code,,,,487
+24,bari2d.BARI2D_BL,trig,identity,SNOMED,14740000,measurement,value_as_number,,,,added by the code,,,,488
+24,bari2d.BARI2D_BL,tchol,identity,SNOMED,121868005,measurement,value_as_number,,,,added by the code,,,,489
+6,atmosphere.test,copd_flg1,map_number,LOINC,45670-7,observation,value_as_concept_id,,,,COPD,,,t,333
+6,atmosphere.test,stabang,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,Angina,,,t,336
+6,atmosphere.test,mi_flg1,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,Myocardial Infarction,,,t,342
+6,atmosphere.test,stk_flg1,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,Stroke,,,t,343
+6,atmosphere.test,cursmk1c,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,Tobacco use,,,t,345
+6,atmosphere.test,pci_flg1,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,Prior PCI,,,t,346
+6,atmosphere.test,af_flg1,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,Atrial fibrillation/flutter,,,t,347
+6,atmosphere.test,lip_flg2,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,Hyperlipidemia,,,t,348
+6,atmosphere.test,icd_flg1,map_number,UCD.Kao,UCD-Kao-14,observation,value_as_concept_id,,,,ICD,,,t,354
+6,atmosphere.test,ctd_flg1,map_number,UCD.Kao,UCD-Kao-12,observation,value_as_concept_id,,,,CTD,,,t,355
+6,atmosphere.test,hyp_flg1,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,Hypertension,,,t,359
+6,atmosphere.test,ich_flg1,map_number,SNOMED,414545008,observation,value_as_concept_id,,,,Ischemic Heart Disease,,,t,360
+6,atmosphere.test,dbt_flg1,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,Diabetes mellitus,,,t,362
+6,atmosphere.test,lbbb_ecg,map_number,SNOMED,63467002,observation,value_as_concept_id,,,,Left bundle branch block,,boolean,t,363
+6,atmosphere.test,rbbb_ecg,map_number,SNOMED,59118001,observation,value_as_concept_id,,,,Right bundle branch block,,boolean,t,364
+6,atmosphere.test,ang_flg1,map_number,UCD.Kao,UCD-Kao-15,observation,value_as_concept_id,,,,,,,t,367
+6,atmosphere.test,angiosten,map_number,UCD.Kao,UCD-Kao-16,observation,value_as_concept_id,,,,,,,t,368
+6,atmosphere.test,vhd_flg1,map_number,SNOMED,368009,observation,value_as_concept_id,,,,Valvular Disease,,boolean,t,369
+6,atmosphere.test,sex1c,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,Gender,,,t,323
+3,scdheft.rdemog,race_redact,map_string,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,165
+22,aimhigh.PATIENT,race,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,added by the code,,,,420
+6,atmosphere.test,cbg_flg1,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,Prior CABG,,,t,349
+6,atmosphere.test,trtnrand,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,f,373
+7,corona.sample,racedd,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,added by the code,,,,617
+7,corona.sample,bl_sbp,identity,LOINC,8480-6,measurement,value_as_number,,,,added by the code,,,,622
+2,hfaction.analysis,sex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,,,,f,601
+10,test.data,sex,map_number,UCD.Kao,test-6,observation,value_as_concept_id,,,,,,,f,602
+7,corona.sample,atfibfdd,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,added by the code,,,,613
+7,corona.sample,height,identity,LOINC,8302-2,measurement,value_as_number,,,,added by the code,,,,623
+7,corona.sample,impacedd,map_number,SNOMED,69031000119105,observation,value_as_concept_id,,,,added by the code,,,,608
+7,corona.sample,imcarddd,map_number,SNOMED,19257004,observation,value_as_concept_id,,,,added by the code,,,,614
+7,corona.sample,bl_wght,identity,LOINC,29463-7,measurement,value_as_number,,,,added by the code,,,,624
+7,corona.sample,bl_crcl,identity,SNOMED,442407001,measurement,value_as_number,,,,,,,t,630
+7,corona.sample,ntprobnp,identity,LOINC,33762-6,measurement,value_as_number,,,,,,,t,631
+7,corona.sample,bmi,identity,LOINC,39156-5,measurement,value_as_number,,,,,,,t,632
+7,corona.sample,nyha,identity,SNOMED,420816009,observation,value_as_number,,,,,,,t,636
+7,corona.sample,trtcode,map_string,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,t,638
+7,corona.sample,cabdd,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,639
+10,test.data,a,map_concept,SNOMED,232717009,measurement,value_as_number,,,,added by the code,,,,604
+7,corona.sample,d_hf,identity,UCD.Kao,UCD-Kao-1,observation,value_as_number,,,,,,,t,633
+7,corona.sample,d_days,identity,UCD.Kao,UCD-Kao-20,observation,value_as_number,,,,,,,t,635
+6,atmosphere.test,crt_flg1,map_number,SNOMED,69031000119105,observation,value_as_concept_id,,,,CTD,,,t,353
+7,corona.sample,myinfdd,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,added by the code,,,,625
+1,best.cvh1,cvbypas,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,102
+2,hfaction.analysis,cabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,122
+2,hfaction.analysis,smoking,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,,,,t,22
+1,best.pcsf,pcsex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,,,,t,109
+1,best.cvh1,cvang,map_number,SNOMED,194828000,measurement,value_as_concept_id,,,,,,,t,95
+3,scdheft.baseline_new,gender,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,,,,t,155
+7,corona.sample,age,identity,SNOMED,424144002,observation,value_as_number,,,,,,,t,641
+7,corona.sample,anpedd,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,,,,t,634
+7,corona.sample,ef,linear_equation,LOINC,10230-1,measurement,value_as_number,,,,added by the code,,,,618
+7,corona.sample,smoker,map_number,UCD.Kao,UCD-Kao-37,observation,value_as_concept_id,,,,added by the code,,,,619
+7,corona.sample,cabgpci,map_number,SNOMED,81266008,observation,value_as_concept_id,,,,,,,t,640
+2,hfaction.analysis,diabetes,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,145
+1,best.br,brcad,map_number,SNOMED,53741008,observation,value_as_concept_id,,,,,,,t,147
+5,paradigm.test,sex1c,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,Gender,,,t,236
+4,topcat.t005,dm,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,196
+4,topcat.t010,ecg_bbb2,map_number,SNOMED,6374002,observation,value_as_concept_id,,,,,,,t,226
+3,scdheft.basecrf,bmi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,"THIS IS REALLY MI, not bmi!!",,,t,167
+3,scdheft.basecrf,btx,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,t,306
+10,test.data,e,map_string,UCD.Kao,test-5,observation,value_as_concept_id,,,,,,,f,378
+22,aimhigh.HX,hx_angina,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,added by the code,,,,408
+22,aimhigh.HX,hx_afib,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,added by the code,,,,409
+22,aimhigh.HX,hx_cpd,map_number,LOINC,45670-7,observation,value_as_concept_id,,,,added by the code,,,,411
+22,aimhigh.HX,hx_hyper,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,added by the code,,,,416
+22,aimhigh.INCL,incl_cvd,map_number,SNOMED,266995000,observation,value_as_concept_id,,,,added by the code,,,,482
+21,accord.CONCOMITANTMEDS,cholest_abi,map_number,SNOMED,468638005,observation,value_as_concept_id,,,BLR,,visit,,f,523
+2,hfaction.analysis,racec,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,23
+1,best.pcsf,pcrace,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,110
+4,topcat.t003,race_cat,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,232
+5,paradigm.test,race,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,Race,,,t,258
+4,topcat.t003,gender,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,,,,t,183
+22,aimhigh.PATIENT,sex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,added by the code,,,,421
+21,accord.ACCORD_KEY,female,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,added by the code,,,,435
+2,hfaction.analysis,etiology,map_number,LOINC,8610-8,observation,value_as_concept_id,,,,note odd yes/no coding,,,t,7
+1,best.ecg,eclbb,map_string,SNOMED,63467002,observation,value_as_concept_id,,,,,,,t,32
+1,best.ecg,ecrbb,map_string,SNOMED,59118001,observation,value_as_concept_id,,,,,,,t,33
+1,best.cvh2,cvenzyme,map_number,SNOMED,314207007,observation,value_as_concept_id,,,,,,,t,55
+1,best.cvh2,cvaortic,map_number,SNOMED,8722008,observation,value_as_concept_id,,,,,,,t,56
+1,best.cvh2,cvmitral,map_number,SNOMED,11851006,observation,value_as_concept_id,,,,,,,t,57
+1,best.cvh2,cvowave,map_number,SNOMED,304914007,observation,value_as_concept_id,,,,,,,t,58
+1,best.cvh1,cvdefibr,map_number,SNOMED,19257004,observation,value_as_concept_id,,,,,,,t,103
+1,best.cvh1,cvangiop,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,,,,t,104
+1,best.cvh1,cvafib,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,,,,t,105
+1,best.cvh2,cvhxlip,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,,,,t,106
+7,corona.sample,diame,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,added by the code,,,,605
+7,corona.sample,death,map_number,UCD.Kao,UCD-Kao-27,observation,value_as_concept_id,,,,,,,t,643
+7,corona.sample,strokedd,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,added by the code,,,,615
+3,scdheft.basecrf,bcabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,154
+4,topcat.t005,cabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,191
+5,paradigm.test,cbg_flg1,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,Prior CABG,,,t,266
+7,corona.sample,cv_death,map_number,UCD.Kao,UCD-Kao-28,observation,value_as_concept_id,,,,,,,t,644
+1,best.cvh2,cvhxhtxn,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,,,,t,107
+1,best.cvh1,cvsmoker,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,,,,t,108
+2,hfaction.analysis,ecgcond2,map_number,SNOMED,63467002,observation,value_as_concept_id,,,,,,,t,112
+2,hfaction.analysis,ecgcond5,map_number,SNOMED,59118001,observation,value_as_concept_id,,,,,,,t,113
+2,hfaction.analysis,afibflut,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,,,,t,114
+2,hfaction.analysis,priorpci,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,,,,t,115
+2,hfaction.analysis,hyperten,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,,,,t,116
+2,hfaction.analysis,angina,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,,,,t,117
+2,hfaction.analysis,aicd,map_number,SNOMED,19257004,observation,value_as_concept_id,,,,,,,t,118
+2,hfaction.analysis,stroke,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,,,,t,119
+2,hfaction.analysis,copd,map_number,LOINC,45670-7,observation,value_as_concept_id,,,,,,,t,120
+2,hfaction.analysis,priormi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,,,,t,121
+2,hfaction.analysis,bivpacer,map_number,SNOMED,414987002,observation,value_as_concept_id,,,,,,,t,124
+1,best.cvh1,cvpacemk,map_number,SNOMED,414987002,observation,value_as_concept_id,,,,,,,t,129
+2,hfaction.medhx2,hlipid,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,,,,t,130
+1,best.cvh2,cvhxdiab,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,151
+3,scdheft.basecrf,bhypert,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,,,,t,157
+3,scdheft.baseline_new,afecg,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,,,,t,158
+23,allhat.DOX_VSC,sex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,added by the code,,,,576
+22,aimhigh.PATIENT,hxdiab,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,added by the code,,,,413
+24,bari2d.BARI2D_BL,sex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,added by the code,,,,445
+22,aimhigh.PATIENT,smoke,map_number,UCD.Kao,UCD-Kao-69,observation,value_as_concept_id,,,,added by the code,,,,423
+3,scdheft.basecrf,bptca,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,,,,t,160
+3,scdheft.basecrf,bsmoke,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,,,,t,161
+3,scdheft.basecrf,cmdiab,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,162
+3,scdheft.basecrf,cvalvdz,map_number,SNOMED,368009,observation,value_as_concept_id,,,,,,,t,164
+3,scdheft.basecrf,bhyperl,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,,,,t,166
+3,scdheft.basecrf,cstroke,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,,,,t,175
+4,topcat.t005,htn,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,,,,t,192
+4,topcat.t005,afib,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,,,,t,193
+4,topcat.t005,pci,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,,,,t,194
+4,topcat.t005,smoke_ever,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,,,,t,195
+4,topcat.t005,stroke,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,,,,t,227
+4,topcat.t005,icd,map_number,SNOMED,19257004,observation,value_as_concept_id,,,,,,,t,229
+4,topcat.t005,mi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,,,,t,230
+4,topcat.t005,dyslipid,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,,,,t,231
+3,scdheft.basecrf,crang,map_number,SNOMED,59021001,observation,value_as_concept_id,,,,,,,t,233
+3,scdheft.basecrf,ceang,map_number,SNOMED,30995000,observation,value_as_concept_id,,,,,,,t,234
+5,paradigm.test,copd_flg1,map_number,LOINC,45670-7,observation,value_as_concept_id,,,,COPD,,,t,246
+5,paradigm.test,stabang,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,Angina,,,t,249
+4,topcat.t005,angina,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,,,,t,250
+4,topcat.t005,copd,map_number,LOINC,45670-7,observation,value_as_concept_id,,,,,,,t,253
+5,paradigm.test,mi_flg1,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,Myocardial Infarction,,,t,259
+5,paradigm.test,stk_flg1,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,Stroke,,,t,260
+5,paradigm.test,cursmk1c,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,Tobacco use,,,t,262
+5,paradigm.test,pci_flg1,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,Prior PCI,,,t,263
+5,paradigm.test,af_flg1,map_number,SNOMED,49436004,observation,value_as_concept_id,,,,Atrial fibrillation/flutter,,,t,264
+5,paradigm.test,lip_flg2,map_number,SNOMED,55822004,observation,value_as_concept_id,,,,Hyperlipidemia,,,t,265
+5,paradigm.test,icd_flg1,map_number,UCD.Kao,UCD-Kao-14,observation,value_as_concept_id,,,,ICD,,,t,271
+5,paradigm.test,ctd_flg1,map_number,UCD.Kao,UCD-Kao-12,observation,value_as_concept_id,,,,CTD,,,t,272
+5,paradigm.test,hyp_flg1,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,Hypertension,,,t,278
+24,bari2d.BARI2D_BL,weight,identity,LOINC,29463-7,measurement,value_as_number,,,,,,Kg,,689
+5,paradigm.test,ich_flg1,map_number,SNOMED,414545008,observation,value_as_concept_id,,,,Ischemic Heart Disease,,,t,279
+5,paradigm.test,dbt_flg1,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,Diabetes mellitus,,,t,281
+5,paradigm.test,lbbb_ecg,map_number,SNOMED,63467002,observation,value_as_concept_id,,,,Left bundle branch block,,boolean,t,282
+5,paradigm.test,rbbb_ecg,map_number,SNOMED,59118001,observation,value_as_concept_id,,,,Right bundle branch block,,boolean,t,283
+5,paradigm.test,ang_flg1,map_number,UCD.Kao,UCD-Kao-15,observation,value_as_concept_id,,,,,,,t,289
+5,paradigm.test,angiosten,map_number,UCD.Kao,UCD-Kao-16,observation,value_as_concept_id,,,,,,,t,290
+5,paradigm.test,vhd_flg1,map_number,SNOMED,368009,observation,value_as_concept_id,,,,Valvular Disease,,boolean,t,291
+1,best.t,group,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,f,297
+5,paradigm.test,trtnrand,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,f,307
+2,hfaction.randvit,tassign,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,f,308
+4,topcat.t011,drug,map_number,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,,,,f,309
+5,paradigm.test,crt_flg1,map_number,SNOMED,69031000119105,observation,value_as_concept_id,,,,CTD,,,t,270
+22,aimhigh.HX,hx_mi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,added by the code,,,,417
+22,aimhigh.HX,hx_pci,map_number,SNOMED,415070008,observation,value_as_concept_id,,,,added by the code,,,,419
+22,aimhigh.HX,hx_stroke,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,added by the code,,,,426
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,x2stroke,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,added by the code,,,,437
+22,aimhigh.DEMO,demo_alcohol,map_number,SNOMED,219006,observation,value_as_concept_id,,,,added by the code,,,,427
+21,accord.CONCOMITANTMEDS,acei,map_number,ATC,C09A,observation,value_as_concept_id,,,BLR,added by the code,visit,,,463
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,x2angina,map_number,SNOMED,194828000,observation,value_as_concept_id,,,,added by the code,,,,430
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,cvdhist,map_number,SNOMED,266995000,observation,value_as_concept_id,,,,added by the code,,,,453
+21,accord.CONCOMITANTMEDS,beta_blocker,map_number,ATC,C07,observation,value_as_concept_id,,,BLR,added by the code,visit,,,462
+21,accord.CONCOMITANTMEDS,platelet_agi,map_number,ATC,B01AB,observation,value_as_concept_id,,,BLR,added by the code,visit,,,467
+21,accord.CONCOMITANTMEDS,anti_coag,map_number,ATC,B01,observation,value_as_concept_id,,,BLR,added by the code,visit,,,468
+21,accord.CONCOMITANTMEDS,reg_insulin,map_number,ATC,A10AC01,observation,value_as_concept_id,,,BLR,added by the code,visit,,,466
+22,aimhigh.HX,hx_cabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,added by the code,,,,418
+21,dual,4188539,identity,SNOMED,161445009,observation,value_as_concept_id,,,,added by the code,,,,431
+24,bari2d.BARI2D_BL,smkcat,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,added by the code,,,,449
+21,accord.CONCOMITANTMEDS,loop,map_number,SNOMED,29051009,observation,value_as_concept_id,,,BLR,,visit,,f,497
+21,accord.CONCOMITANTMEDS,thiazide,map_number,ATC,C03AA,observation,value_as_concept_id,,,BLR,,visit,,f,498
+21,accord.CONCOMITANTMEDS,ksparing,map_number,SNOMED,47755009,observation,value_as_concept_id,,,BLR,,visit,,f,499
+21,accord.CONCOMITANTMEDS,potassium,map_number,ATC,A12B,observation,value_as_concept_id,,,BLR,,visit,,f,500
+21,accord.CONCOMITANTMEDS,a2rb,map_number,ATC,C09C,observation,value_as_concept_id,,,BLR,,visit,,f,501
+21,accord.CONCOMITANTMEDS,dhp_ccb,map_number,SNOMED,406769001,observation,value_as_concept_id,,,BLR,,visit,,f,502
+21,accord.CONCOMITANTMEDS,alpha_blocker,map_number,NDFRT,N0000175553,observation,value_as_concept_id,,,BLR,,visit,,f,504
+21,accord.CONCOMITANTMEDS,statin,map_number,ATC,C10AA,observation,value_as_concept_id,,,BLR,added by the code,visit,,,465
+22,aimhigh.CONMED,cm_beta,map_number,ATC,C07,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,473
+22,aimhigh.CONMED,cm_diu,map_number,ATC,C03,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,474
+22,aimhigh.CONMED,cm_ace,map_number,ATC,C09A,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,475
+22,aimhigh.CONMED,cm_atii,map_number,ATC,C09C,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,476
+21,accord.CONCOMITANTMEDS,central_agent,map_number,NDFRT,N0000175554,observation,value_as_concept_id,,,BLR,,visit,,f,505
+21,accord.CONCOMITANTMEDS,nondhp_ccb,map_number,UCD.Kao,UCD-Kao-35,observation,value_as_concept_id,,,BLR,,visit,,f,506
+21,accord.CONCOMITANTMEDS,vasodilator,map_number,ATC,C01D,observation,value_as_concept_id,,,BLR,,visit,,f,508
+21,accord.CONCOMITANTMEDS,reserpine,map_number,ATC,C02AA02,observation,value_as_concept_id,,,BLR,,visit,,f,509
+21,accord.CONCOMITANTMEDS,la_insulin,map_number,ATC,A10AB01,observation,value_as_concept_id,,,BLR,,visit,,f,511
+21,accord.CONCOMITANTMEDS,premix_insulin,map_number,UCD.Kao,UCD-Kao-32,observation,value_as_concept_id,,,BLR,,visit,,f,513
+21,accord.CONCOMITANTMEDS,nphl_insulin,map_number,ATC,A10AE01,observation,value_as_concept_id,,,BLR,,visit,,f,514
+21,accord.CONCOMITANTMEDS,other_diabmed,map_number,UCD.Kao,UCD-Kao-33,observation,value_as_concept_id,,,BLR,,visit,,f,515
+21,accord.CONCOMITANTMEDS,sulfonylurea,map_number,ATC,A10BB,observation,value_as_concept_id,,,BLR,,visit,,f,516
+21,accord.CONCOMITANTMEDS,biguanide,map_number,ATC,A10BA,observation,value_as_concept_id,,,BLR,,visit,,f,517
+21,accord.CONCOMITANTMEDS,meglitinide,map_number,SNOMED,109075003,observation,value_as_concept_id,,,BLR,,visit,,f,518
+21,accord.CONCOMITANTMEDS,ag_inhibitor,map_number,ATC,A10BF,observation,value_as_concept_id,,,BLR,,visit,,f,519
+21,accord.CONCOMITANTMEDS,fibrate,map_number,ATC,C10AB,observation,value_as_concept_id,,,BLR,,visit,,f,521
+21,accord.CONCOMITANTMEDS,other_lipidmed,map_number,UCD.Kao,UCD-Kao-36,observation,value_as_concept_id,,,BLR,,visit,,f,522
+21,accord.CONCOMITANTMEDS,niacin,map_number,SNOMED,55013001,observation,value_as_concept_id,,,BLR,,visit,,f,524
+21,accord.CONCOMITANTMEDS,othbol_insulin,map_number,UCD.Kao,UCD-Kao-31,observation,value_as_concept_id,,,BLR,,visit,,f,512
+22,aimhigh.CONMED,cm_insulin,map_number,ATC,A10A,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,477
+22,aimhigh.CONMED,cm_plavix,map_number,ATC,B01AB,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,479
+24,bari2d.BARI2D_LONG,insulin,map_number,ATC,A10A,observation,value_as_concept_id,,,-1,added by the code,fuper,,,494
+24,bari2d.BARI2D_LONG,apa,map_number,ATC,B01AB,observation,value_as_concept_id,,,-1,added by the code,fuper,,,495
+22,aimhigh.CONMED,cm_aspirin,map_number,ATC,B01AC06,observation,value_as_concept_id,,,Baseline,,visit,,f,530
+22,aimhigh.CONMED,cm_metformin,map_number,ATC,A10BA02,observation,value_as_concept_id,,,Baseline,,visit,,f,532
+22,aimhigh.CONMED,cm_tzd,map_number,SNOMED,109086001,observation,value_as_concept_id,,,Baseline,,visit,,f,533
+22,aimhigh.CONMED,cm_otdiab,map_number,UCD.Kao,UCD-Kao-37,observation,value_as_concept_id,,,Baseline,,visit,,f,535
+22,aimhigh.CONMED,cm_niacin,map_number,SNOMED,55013001,observation,value_as_concept_id,,,Baseline,,visit,,f,536
+22,aimhigh.CONMED,cm_fibric,map_number,NDFRT,N0000182116,observation,value_as_concept_id,,,Baseline,,visit,,f,537
+22,aimhigh.CONMED,cm_fishoil,map_number,SNOMED,226359003,observation,value_as_concept_id,,,Baseline,,visit,,f,538
+22,aimhigh.CONMED,cm_warfarin,map_number,ATC,B01AA03,observation,value_as_concept_id,,,Baseline,added by the code,visit,,,481
+24,bari2d.BARI2D_LONG,sulf,map_number,SNOMED,34012005,observation,value_as_concept_id,,,-1,,fuper,,f,539
+24,bari2d.BARI2D_LONG,biguanide,map_number,ATC,A10BA,observation,value_as_concept_id,,,-1,,fuper,,f,540
+24,bari2d.BARI2D_LONG,incrmim,map_number,SNOMED,417524005,observation,value_as_concept_id,,,-1,,fuper,,f,543
+24,bari2d.BARI2D_LONG,dpp,map_number,ATC,A10BH,observation,value_as_concept_id,,,-1,,fuper,,f,544
+24,bari2d.BARI2D_LONG,amylin,map_number,SNOMED,417736001,observation,value_as_concept_id,,,-1,,fuper,,f,545
+22,aimhigh.CONMED,cm_nit,map_number,ATC,C01DA,observation,value_as_concept_id,,,Baseline,,visit,,f,531
+22,aimhigh.CONMED,cm_ccb,map_number,SNOMED,373304005,observation,value_as_concept_id,,,Baseline,,visit,,f,529
+24,bari2d.BARI2D_BL,betab,map_number,ATC,C07,observation,value_as_concept_id,,,,added by the code,,,,490
+22,aimhigh.CONMED,cm_sulu,map_number,SNOMED,419204001,observation,value_as_concept_id,,,Baseline,,visit,,f,534
+24,bari2d.BARI2D_LONG,omega,map_number,NDFRT,N0000175583,observation,value_as_concept_id,,,-1,,fuper,,f,551
+24,bari2d.BARI2D_LONG,fibr,map_number,ATC,C10AB,observation,value_as_concept_id,,,-1,,fuper,,f,552
+24,bari2d.BARI2D_LONG,niac,map_number,SNOMED,55013001,observation,value_as_concept_id,,,-1,,fuper,,f,553
+4,topcat.t007_allvisits_bysub,ace_yn,map_number,ATC,C09A,observation,value_as_concept_id,,,BASE,,visit,,f,555
+4,topcat.t007_allvisits_bysub,arb_yn,map_number,ATC,C09C,observation,value_as_concept_id,,,BASE,,visit,,f,556
+4,topcat.t007_allvisits_bysub,bb_yn,map_number,ATC,C07,observation,value_as_concept_id,,,BASE,,visit,,f,557
+4,topcat.t007_allvisits_bysub,diur_yn,map_number,ATC,C03,observation,value_as_concept_id,,,BASE,,visit,,f,559
+4,topcat.t007_allvisits_bysub,hypog_yn,map_number,ATC,A10B,observation,value_as_concept_id,,,BASE,,visit,,f,560
+4,topcat.t007_allvisits_bysub,aspirin_yn,map_number,ATC,B01AC06,observation,value_as_concept_id,,,BASE,,visit,,f,561
+4,topcat.t007_allvisits_bysub,nitrate_yn,map_number,ATC,C01DA,observation,value_as_concept_id,,,BASE,,visit,,f,562
+4,topcat.t007_allvisits_bysub,warfarin_yn,map_number,ATC,B01AA03,observation,value_as_concept_id,,,BASE,,visit,,f,564
+4,topcat.t007_allvisits_bysub,statin_yn,map_number,ATC,C10AA,observation,value_as_concept_id,,,BASE,,visit,,f,563
+7,corona.sample,hypertdd,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,added by the code,,,,606
+7,corona.sample,pciptcdd,map_number,SNOMED,41339005,observation,value_as_concept_id,,,,added by the code,,,,611
+7,corona.sample,sex,map_number,SNOMED,263495000,observation,value_as_concept_id,,,,added by the code,,,,616
+7,corona.sample,bl_dbp,identity,LOINC,8462-4,measurement,value_as_number,,,,added by the code,,,,621
+7,corona.sample,endp1,map_number,UCD.Kao,UCD-Kao-36,observation,value_as_concept_id,,,,,,,t,648
+7,corona.sample,cvd_days,identity,UCD.Kao,UCD-Kao-29,observation,value_as_number,,,,,,,t,645
+7,dual,4188540,identity,SNOMED,55822004,observation,value_as_concept_id,,,,,,,t,628
+7,dual,4188540,identity,SNOMED,368009,observation,value_as_concept_id,,,,,,,t,629
+7,corona.sample,hfhosp,map_number,UCD.Kao,UCD-Kao-34,observation,value_as_concept_id,,,,,,,t,646
+5,paradigm.test,sid1a,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,keep the original subject id,,,f,649
+6,atmosphere.test,sid1a,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,keep the original subject id,,,f,650
+7,corona.sample,usubjid,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,keep the original subject id,,,f,651
+8,ipreserve.echo,lvma,identity,SNOMED,373941003,measurement,value_as_number,,,,added by the code,,,,654
+8,ipreserve.echo,laesat,identity,LOINC,79974-2,measurement,value_as_number,,,,added by the code,,,,657
+8,ipreserve.echo,laesaf,identity,LOINC,17977-0,measurement,value_as_number,,,,added by the code,,,,658
+8,ipreserve.echo,laapdm,identity,LOINC,17985-3,measurement,value_as_number,,,,added by the code,,,,659
+8,ipreserve.echo,sex,map_string,SNOMED,263495000,observation,value_as_concept_id,,,,,,,f,663
+8,ipreserve.echo,race,map_string,SNOMED,103579009,observation,value_as_concept_id,,,,,,,f,664
+8,ipreserve.echo,lvdidm,identity,SNOMED,3545003,measurement,value_as_number,,,,added by the code,,,,652
+8,ipreserve.echo,age,identity,SNOMED,424144002,observation,value_as_number,,,,,,,f,665
+8,ipreserve.echo,afib_ecg,identity,SNOMED,49436004,measurement,value_as_number,,,,added by the code,,,,656
+8,ipreserve.echo,bsa,identity,LOINC,8277-6,measurement,value_as_number,,,,added by the code,,,,666
+8,ipreserve.echo,rewltk,identity,UCD.Kao,UCD-Kao-39,measurement,value_as_number,,,,added by the code,,,,667
+8,ipreserve.echo,trt,map_string,UCD.Kao,UCD-Kao-19,observation,value_as_concept_id,,,,added by the code,,,,669
+7,corona.sample,hftime,identity,UCD.Kao,UCD-Kao-58,observation,value_as_number,,,,,,,t,647
+21,accord.ACCORD_KEY,raceclass,map_string,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,670
+21,accord.BLOODPRESSURE_201604,sbp,identity,UCD.Kao,UCD-Kao-41,measurement,value_as_number,,,F12,,visit,,f,526
+22,aimhigh.PE,pe_bpsys,identity,UCD.Kao,UCD-Kao-41,measurement,value_as_number,,,12 Month Visit,,visit,,f,568
+24,bari2d.BARI2D_LONG,sbp_sit,identity,UCD.Kao,UCD-Kao-41,measurement,value_as_number,,,5,,fuper,,f,571
+8,ipreserve.echo,rvsp,identity,SNOMED,276772001,observation,value_as_number,,,,added by the code,,,,655
+23,allhat.DOX_VSC,hispanic,map_number,SNOMED,414408004,observation,value_as_concept_id,,,,added by the code,,,,578
+23,allhat.DOX_VSC,aspirin,map_number,ATC,B01AC06,observation,value_as_concept_id,,,,added by the code,,,,589
+8,ipreserve.echo,lvejfr,identity,SNOMED,250908004,observation,value_as_number,,,,added by the code,,,,668
+4,topcat.t007_allvisits_bysub,lipidlowering_yn,map_number,LOINC,LP31452-3,measurement,value_as_concept_id,,,BASE,,visit,,f,565
+7,corona.sample,bl_hrate,identity,LOINC,8867-4,measurement,value_as_number,,,,added by the code,,,,626
+24,bari2d.BARI2D_BL,hmg,map_number,ATC,C10AA,observation,value_as_concept_id,,,,,,,f,554
+23,allhat.LLT_VSC,lrzgrp,map_number,UCD.Kao,UCD-Kao-67,observation,value_as_concept_id,,,,added by the code,,,,591
+4,topcat.t013,sbp,identity,UCD.Kao,UCD-Kao-41,measurement,value_as_number,,,MN12,,visit,,f,572
+21,accord.CONCOMITANTMEDS,other_bpmed,map_number,UCD.Kao,UCD-Kao-62,observation,value_as_concept_id,,,BLR,added by the code,visit,,,464
+4,topcat.t007_allvisits_bysub,ccb_yn,map_number,SNOMED,373304005,observation,value_as_concept_id,,,BASE,,visit,,f,558
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,x2mi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,,,,t,675
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,cabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,,,,t,676
+21,accord.F01_INCLUSIONEXCLUSIONSUMMARY,ptci,map_number,SNOMED,415070008,observation,value_as_concept_id,,,,,,,t,677
+22,aimhigh.LAB,result,identity,SNOMED,121868005,measurement,value_as_number,,,CHOL,,test,,t,684
+21,accord.CONCOMITANTMEDS,nitrate,map_number,ATC,C01DA,observation,value_as_concept_id,,,BLR,,visit,,f,685
+21,accord.CONCOMITANTMEDS,tzd,map_number,SNOMED,109086001,observation,value_as_concept_id,,,BLR,,visit,,f,686
+21,accord.CONCOMITANTMEDS,aspirin,map_number,ATC,B01AC06,observation,value_as_concept_id,,,BLR,,visit,,t,694
+23,allhat.DOX_VSC,mistroke,map_number,UCD.Kao,UCD-Kao-63,observation,value_as_concept_id,,,,,,,t,683
+24,bari2d.BARI2D_BL,hxmi,map_number,SNOMED,22298006,observation,value_as_concept_id,,,,,,,t,678
+21,accord.F07_BASELINEHISTORYPHYSICALEXAM,cigarett,map_number,LOINC,39240-7,observation,value_as_concept_id,,,,added by the code,,,,436
+24,bari2d.BARI2D_BL,hxcva,map_number,SNOMED,230690007,observation,value_as_concept_id,,,,,,,t,679
+24,bari2d.BARI2D_BL,priorrev,map_number,SNOMED,81266008,observation,value_as_concept_id,,,,,,,t,680
+24,bari2d.BARI2D_BL,ccb,map_number,SNOMED,373304005,observation,value_as_concept_id,,,,,,,f,687
+23,allhat.DOX_VSC,dbp6m12,identity,UCD.Kao,UCD-Kao-40,measurement,value_as_number,,,,,,,,597
+23,allhat.DOX_VSC,bv2sbp,identity,LOINC,8480-6,measurement,value_as_number,,,,added by the code,,,,582
+23,allhat.DOX_VSC,blgfr,identity,SNOMED,442407001,measurement,value_as_number,,,,added by the code,,,,590
+23,allhat.DOX_VSC,achol,identity,SNOMED,121868005,measurement,value_as_number,,,,added by the code,,,,586
+23,allhat.DOX_VSC,bv2dbp,identity,LOINC,8462-4,measurement,value_as_number,,,,added by the code,,,,583
+23,allhat.DOX_VSC,rzgroup,map_number,UCD.Kao,UCD-Kao-30,observation,value_as_concept_id,,,,,,,f,599
+23,allhat.DOX_VSC,sbp6m12,identity,UCD.Kao,UCD-Kao-41,measurement,value_as_number,,,,,,,,596
+23,allhat.DOX_VSC,hxcabg,map_number,SNOMED,232717009,observation,value_as_concept_id,,,,added by the code,,,,584
+23,allhat.DOX_VSC,ahdl,identity,SNOMED,166832000,measurement,value_as_number,,,,,,,t,695
+23,allhat.DOX_VSC,aldl,identity,SNOMED,166833005,measurement,value_as_number,,,,,,,t,696
+23,allhat.DOX_VSC,aftrig,identity,SNOMED,14740000,measurement,value_as_number,,,,,,,t,699
+23,allhat.DOX_VSC,race,map_number,SNOMED,103579009,observation,value_as_concept_id,,,,,,,t,700
+23,allhat.DOX_VSC,race2,map_number,UCD.Kao,UCD-Kao-64,observation,value_as_concept_id,,,,added by the code,,,,577
+22,aimhigh.PATIENT,patientkey,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,,,,,702
+23,allhat.DOX_VSC,index,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,,,,,703
+21,accord.ACCORD_KEY,maskid,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,,,,,705
+1,best.pe,peedm,identity,LOINC,44966-0,observation,value_as_number,,,,,,,t,69
+2,hfaction.analysis,kccqosb,identity,LOINC,71940-1,observation,value_as_number,,,,,,,t,123
+2,hfaction.cpx,qrsint,identity,SNOMED,251208001,observation,value_as_number,,,,,,,t,149
+1,best.ecg,ecqr,linear_equation,SNOMED,251208001,observation,value_as_number,,,,,,centiseconds,t,148
+3,scdheft.ecg,ecgqrs,identity,SNOMED,251208001,observation,value_as_number,,,,,,milliseconds (max),t,174
+6,atmosphere.test,qrs_ecg,identity,SNOMED,251208001,observation,value_as_number,,,,QRS interval,,,t,328
+5,paradigm.test,qrs_ecg,identity,SNOMED,251208001,observation,value_as_number,,,,QRS interval,,,t,241
+21,accord.F07_BASELINEHISTORYPHYSICALEXAM,yrstens,not_null_number,SNOMED,38341003,observation,value_as_concept_id,,,,added by the code,,years,,697
+24,bari2d.BARI2D_BL,hxhtn,map_number,SNOMED,38341003,observation,value_as_concept_id,,,,added by the code,,,,698
+24,bari2d.BARI2D_BL,asp,map_number,ATC,B01AC06,observation,value_as_concept_id,,,,,,,t,693
+23,allhat.DOX_VSC,blmeds2,map_number,SNOMED,308116003,observation,value_as_concept_id,,,,,,,t,692
+24,bari2d.BARI2D_BL,race,map_number,UCD.Kao,UCD-Kao-64,observation,value_as_concept_id,,,,,,,,688
+24,bari2d.BARI2D_BL,id,identity,UCD.Kao,UCD-Kao-38,observation,value_as_string,,,,,,,,704
+21,accord.OTHERLABS_201604,gfr,identity,SNOMED,80274001,observation,value_as_number,,,BLR,added by the code,visit,,,439
+22,aimhigh.DEATH,dth_date,not_null,UCD.Kao,UCD-Kao-27,observation,value_as_concept_id,,,,,,,t,707
+21,accord.CVDOUTCOMES_201604,censor_tm,map_number,UCD.Kao,UCD-Kao-27,observation,value_as_concept_id,,,,,,,t,706
+23,allhat.DOX_VSC,death,map_number,UCD.Kao,UCD-Kao-27,observation,value_as_concept_id,,,,,,,t,708
+24,bari2d.BARI2D_ENDPTS,death,map_number,UCD.Kao,UCD-Kao-27,observation,value_as_concept_id,,,,,,,t,709
+21,dual,ACCORD,identity,UCD.Kao,UCD-Kao-66,observation,value_as_string,,,,,,,t,715
+22,dual,AIMHIGH,identity,UCD.Kao,UCD-Kao-66,observation,value_as_string,,,,,,,t,716
+23,dual,ALLHAT,identity,UCD.Kao,UCD-Kao-66,observation,value_as_string,,,,,,,t,717
+24,dual,BARI2D,identity,UCD.Kao,UCD-Kao-66,observation,value_as_string,,,,,,,t,718
+23,allhat.DOX_VSC,diabetes,map_number,SNOMED,161445009,observation,value_as_concept_id,,,,,,,t,719
+22,aimhigh.PATIENT,dtcensor,identity,UCD.Kao,UCD-Kao-26,observation,value_as_number,,,,,,days,t,711
+23,allhat.DOX_VSC,dydeath,identity,UCD.Kao,UCD-Kao-26,observation,value_as_number,,,,,,days,t,712
+24,bari2d.BARI2D_ENDPTS,deathfu,identity,UCD.Kao,UCD-Kao-26,observation,value_as_number,,,,,,days,t,713
+21,accord.CVDOUTCOMES_201604,fuyrs_tm,linear_equation,UCD.Kao,UCD-Kao-26,observation,value_as_number,,,,,,years,t,710
+24,bari2d.BARI2D_BL,dbp_sit,identity,LOINC,8462-4,measurement,value_as_number,,,,added by the code,,,,443
+24,bari2d.BARI2D_BL,pulse60_sit,identity,LOINC,8867-4,measurement,value_as_number,,,,added by the code,,,,444
+24,bari2d.BARI2D_BL,sbp_sit,identity,LOINC,8480-6,measurement,value_as_number,,,,added by the code,,,,447
+24,bari2d.BARI2D_BL,height,identity,LOINC,8302-2,measurement,value_as_number,,,,added by the code,,cm,,450
+24,bari2d.BARI2D_BL,diur,map_number,ATC,C03,observation,value_as_concept_id,,,,added by the code,,,,491
+24,bari2d.BARI2D_BL,acei,map_number,ATC,C09A,observation,value_as_concept_id,,,,added by the code,,,,492
+24,bari2d.BARI2D_BL,arb,map_number,ATC,C09C,observation,value_as_concept_id,,,,added by the code,,,,493
+24,bari2d.BARI2D_BL,tzd,map_number,SNOMED,109086001,observation,value_as_concept_id,,,,,,,f,541
+24,bari2d.BARI2D_BL,nsgn,map_number,UCD.Kao,UCD-Kao-61,observation,value_as_concept_id,,,,,,,f,546
+23,allhat.DOX_VSC,llt,map_number,UCD.Kao,UCD-Kao-68,observation,value_as_concept_id,,,,,,,t,720
+23,allhat.DOX_VSC,cursmoke,map_number,UCD.Kao,UCD-Kao-69,observation,value_as_concept_id,,,,added by the code,,,,588

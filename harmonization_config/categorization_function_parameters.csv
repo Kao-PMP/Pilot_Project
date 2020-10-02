@@ -1,0 +1,822 @@
+extract_study_id,function_name,long_name,rule_id,value_limit,rank,from_string,from_concept_id
+1,ranges_to_rank_asc,Age,0,50,1,,
+1,ranges_to_rank_asc,Age,0,60,2,,
+1,ranges_to_rank_asc,Systolic blood pressure,0,120,1,,
+1,ranges_to_rank_asc,Systolic blood pressure,0,140,2,,
+1,ranges_to_rank_asc,Systolic blood pressure,0,150,3,,
+1,ranges_to_rank_asc,Diastolic blood pressure,0,65,2,,
+1,ranges_to_rank_asc,Diastolic blood pressure,0,60,1,,
+1,ranges_to_rank_asc,Diastolic blood pressure,0,75,3,,
+1,ranges_to_rank_asc,Heart rate,0,60,1,,
+1,ranges_to_rank_asc,Heart rate,0,80,2,,
+1,ranges_to_rank_asc,Heart rate,0,100,3,,
+1,ranges_to_rank_desc,AST,0,20,1,,
+1,ranges_to_rank_desc,ALT,0,20,1,,
+1,ranges_to_rank_asc,Age,0,,4,,
+1,ranges_to_rank_asc,Systolic blood pressure,0,,4,,
+1,ranges_to_rank_asc,Diastolic blood pressure,0,,4,,
+1,ranges_to_rank_asc,Heart rate,0,,4,,
+1,ranges_to_rank_asc,BMI,0,25,1,,
+1,ranges_to_rank_asc,BMI,0,30,2,,
+1,ranges_to_rank_asc,BMI,0,,3,,
+1,ranges_to_rank_asc,Pulse pressure,0,,4,,
+1,ranges_to_rank_asc,Pulse pressure,0,55,3,,
+1,ranges_to_rank_asc,Pulse pressure,0,40,2,,
+1,ranges_to_rank_asc,Pulse pressure,0,25,1,,
+1,ranges_to_rank_asc,Albumin,0,,2,,
+1,ranges_to_rank_asc,Albumin,0,35,1,,
+1,ranges_to_rank_desc,Creatinine clearance,0,60,1,,
+1,ranges_to_rank_desc,Creatinine clearance,0,45,2,,
+1,ranges_to_rank_desc,Creatinine clearance,0,30,3,,
+1,ranges_to_rank_desc,Creatinine clearance,0,,4,,
+1,ranges_to_rank_desc,LV ejection fraction,0,35,1,,
+1,ranges_to_rank_desc,LV ejection fraction,0,25,2,,
+1,ranges_to_rank_desc,LV ejection fraction,0,,3,,
+1,ranges_to_rank_desc,Sodium,0,141,1,,
+1,ranges_to_rank_desc,Sodium,0,138,2,,
+1,ranges_to_rank_desc,Sodium,0,,3,,
+1,ranges_to_rank_desc,ALT,0,,2,,
+1,ranges_to_rank_desc,AST,0,,2,,
+1,map_concept_id,Race,0,,1,,4185154
+1,map_concept_id,Race,0,,2,,4035165
+1,map_concept_id,Race,0,,9,,
+1,map_concept_id,Race,0,,8,,4188159
+1,map_concept_id,Race,0,,5,,4184966
+1,map_concept_id,Race,0,,4,,4211353
+1,ranges_to_rank_asc,BUN,0,20,1,,
+1,ranges_to_rank_asc,BUN,0,30,2,,
+1,ranges_to_rank_asc,BUN,0,,3,,
+1,ranges_to_rank_asc,WBC count,0,6,1,,
+1,ranges_to_rank_asc,WBC count,0,8,2,,
+1,ranges_to_rank_asc,WBC count,0,,3,,
+1,map_concept_id,Left bundle branch block,0,,1,,4188540
+1,map_concept_id,Right bundle branch block,0,,1,,4188540
+1,map_concept_id,Left bundle branch block,0,,2,,4188539
+1,map_concept_id,Right bundle branch block,0,,2,,4188539
+1,map_concept_id,Tobacco use,0,,2,,4188539
+1,map_concept_id,Tobacco use,0,,1,,4188540
+1,map_concept_id,Any BBB,0,,1,,4188540
+1,map_concept_id,Any BBB,0,,2,,4188539
+1,map_concept_id,Valvular disease,0,,1,,4188540
+1,map_concept_id,Valvular disease,0,,2,,4188539
+1,map_concept_id,Prior PCI,0,,1,,4188540
+1,map_concept_id,Prior CABG,0,,1,,4188540
+1,map_concept_id,ICD,0,,1,,4188540
+1,map_concept_id,Prior PCI,0,,2,,4188539
+1,map_concept_id,Prior CABG,0,,2,,4188539
+1,map_concept_id,ICD,0,,2,,4188539
+1,ranges_to_rank_asc,QRS interval,0,12,1,,
+1,ranges_to_rank_asc,QRS interval,0,60,2,,
+1,ranges_to_rank_asc,QRS interval,0,,3,,
+1,ranges_to_rank_asc,Time since diagnosis,0,12,1,,
+1,ranges_to_rank_asc,Time since diagnosis,0,60,2,,
+1,ranges_to_rank_asc,Time since diagnosis,0,,3,,
+1,map_concept_id,Myocardial infarction,0,1,2,,4188539
+1,map_concept_id,Myocardial infarction,0,2,1,,4188540
+1,ranges_to_rank_asc,MLHF,0,20,1,,
+1,ranges_to_rank_asc,MLHF,0,35,2,,
+1,ranges_to_rank_asc,MLHF,0,52,3,,
+1,ranges_to_rank_asc,MLHF,0,,4,,
+1,map_concept_id,Atrial fibrillation/flutter,0,,2,,4188539
+1,map_concept_id,Diabetes mellitus,0,,2,,4188539
+1,map_concept_id,CAD,0,,2,,4188539
+1,map_concept_id,Atrial fibrillation/flutter,0,,1,,4188540
+1,map_concept_id,Diabetes mellitus,0,,1,,4188540
+1,map_concept_id,CAD,0,,1,,4188540
+1,map_concept_id,Angina,0,,1,,4188540
+1,map_concept_id,Angina,0,,2,,4188539
+1,map_concept_id,COPD,0,,2,,4188539
+1,map_concept_id,COPD,0,,1,,4188540
+1,map_concept_id,Stroke,0,,1,,4188540
+1,map_concept_id,Stroke,0,,2,,4188539
+1,ranges_to_rank_asc,Hemoglobin,0,13,1,,
+1,map_concept_id,Hyperlipidemia,0,,2,,4188539
+1,map_concept_id,Hypertension,0,,2,,4188539
+1,map_concept_id,Hyperlipidemia,0,,1,,4188540
+1,map_concept_id,Hypertension,0,,1,,4188540
+1,ranges_to_rank_asc,Hemoglobin,0,15,2,,
+1,ranges_to_rank_asc,Hemoglobin,0,,3,,
+1,map_concept_id,Gender,0,,1,,45766034
+1,map_concept_id,Gender,0,,2,,45766035
+1,map_concept_id,Race,0,,7,,8552
+1,map_concept_id,Race,0,,6,,4211331
+1,map_concept_id,Treatment Arm,0,,1,,4188540
+1,map_concept_id,Treatment Arm,0,,2,,4188539
+1001,ranges_to_rank_asc,Age,0,,4,,
+1001,map_concept_id,Atrial fibrillation/flutter,0,,2,,4188539
+1001,map_concept_id,Atrial fibrillation/flutter,0,,1,,4188540
+1001,ranges_to_rank_asc,BMI,0,,3,,
+1001,ranges_to_rank_asc,BMI,0,25,1,,
+1001,map_concept_id,CAD,0,,2,,4188539
+1002,ranges_to_rank_desc,Creatinine clearance,0,30,3,,
+1,ranges_to_rank_asc,Age,0,70,3,,
+1002,ranges_to_rank_desc,Creatinine clearance,0,45,2,,
+1002,ranges_to_rank_desc,Creatinine clearance,0,60,1,,
+1002,ranges_to_rank_desc,Creatinine clearance,0,,4,,
+1002,ranges_to_rank_desc,LV ejection fraction,0,40,1,,
+1002,ranges_to_rank_asc,Systolic blood pressure,0,90,1,,
+1001,ranges_to_rank_asc,Age,0,70,3,,
+1001,ranges_to_rank_asc,BMI,0,30,2,,
+1001,ranges_to_rank_asc,Age,0,60,2,,
+1001,ranges_to_rank_asc,Age,0,50,1,,
+1001,map_concept_id,CAD,0,,1,,4188540
+1001,ranges_to_rank_desc,Creatinine clearance,0,,4,,
+1001,ranges_to_rank_desc,Creatinine clearance,0,60,1,,
+1001,ranges_to_rank_desc,Creatinine clearance,0,45,2,,
+1001,ranges_to_rank_desc,Creatinine clearance,0,30,3,,
+1001,map_concept_id,Diabetes mellitus,0,,1,,4188540
+1001,map_concept_id,Diabetes mellitus,0,,2,,4188539
+1001,map_concept_id,Gender,0,,1,,45766034
+1001,map_concept_id,Gender,0,,2,,45766035
+1001,map_concept_id,Hyperlipidemia,0,,1,,4188540
+1001,map_concept_id,Hyperlipidemia,0,,2,,4188539
+1001,map_concept_id,Hypertension,0,,1,,4188540
+1001,map_concept_id,Hypertension,0,,2,,4188539
+1001,map_concept_id,Left bundle branch block,0,,1,,4188540
+1001,map_concept_id,Left bundle branch block,0,,2,,4188539
+1001,map_concept_id,Prior CABG,0,,2,,4188539
+1001,map_concept_id,Prior CABG,0,,1,,4188540
+1001,map_concept_id,Race,0,,8,,4188159
+1001,map_concept_id,Race,0,,4,,4211353
+1001,map_concept_id,Race,0,,5,,4184966
+1001,map_concept_id,Race,0,,6,,4211331
+1001,map_concept_id,Race,0,,1,,4185154
+1001,map_concept_id,Race,0,,9,,
+1001,map_concept_id,Race,0,,2,,4035165
+1001,map_concept_id,Race,0,,7,,8552
+1002,ranges_to_rank_asc,Heart rate,0,60,1,,
+1002,ranges_to_rank_asc,Heart rate,0,80,2,,
+1002,ranges_to_rank_asc,Heart rate,0,100,3,,
+1002,ranges_to_rank_asc,Systolic blood pressure,0,,4,,
+1002,ranges_to_rank_asc,Heart rate,0,,4,,
+1002,ranges_to_rank_desc,LV ejection fraction,0,25,2,,
+1002,ranges_to_rank_desc,LV ejection fraction,0,,3,,
+1002,ranges_to_rank_desc,Sodium,0,,3,,
+1002,ranges_to_rank_asc,WBC count,0,,3,,
+1002,ranges_to_rank_asc,Systolic blood pressure,0,120,2,,
+1002,ranges_to_rank_asc,Systolic blood pressure,0,140,3,,
+1002,ranges_to_rank_asc,WBC count,0,4,1,,
+1002,ranges_to_rank_asc,WBC count,0,12,2,,
+1002,ranges_to_rank_desc,Sodium,0,130,1,,
+1002,ranges_to_rank_desc,Sodium,0,125,2,,
+1,ranges_to_rank_desc,Hematocrit,0,39,1,,
+1,ranges_to_rank_desc,Hematocrit,0,43,2,,
+1002,ranges_to_rank_asc,NTBNP,0,20,1,,
+1,ranges_to_rank_desc,Hematocrit,0,,3,,
+1009,ranges_to_rank_desc,Hematocrit,0,39,2,,
+1009,ranges_to_rank_desc,Hematocrit,0,,3,,
+1009,ranges_to_rank_desc,Hematocrit,0,43,1,,
+1001,ranges_to_rank_asc,Left Ventricle Diameter Value,0,,4,,
+1001,ranges_to_rank_asc,Left Ventricle Mass Value,0,,4,,
+1002,ranges_to_rank_asc,NYHA,0,20,1,,
+1002,ranges_to_rank_asc,NYHA,0,50,3,,
+1002,ranges_to_rank_asc,NYHA,0,,4,,
+1002,ranges_to_rank_asc,NTBNP,0,60,3,,
+1001,ranges_to_rank_asc,Left Ventricle Mass Value,0,212.9,1,,
+1001,ranges_to_rank_asc,Left Ventricle Mass Value,0,294,2,,
+1002,ranges_to_rank_asc,NTBNP,0,,4,,
+1001,ranges_to_rank_desc,Hemoglobin,0,12,1,,
+1001,ranges_to_rank_desc,Hemoglobin,0,10,2,,
+1001,ranges_to_rank_desc,Hemoglobin,0,,4,,
+1001,ranges_to_rank_desc,Hemoglobin,0,8,3,,
+5001,ranges_to_rank_asc,Age,0,50,1,,
+5001,ranges_to_rank_asc,Age,0,60,2,,
+5001,ranges_to_rank_asc,Systolic blood pressure,0,120,1,,
+5001,ranges_to_rank_asc,Systolic blood pressure,0,140,2,,
+5001,ranges_to_rank_asc,Systolic blood pressure,0,150,3,,
+5001,ranges_to_rank_asc,Diastolic blood pressure,0,65,2,,
+5001,ranges_to_rank_asc,Diastolic blood pressure,0,60,1,,
+5001,ranges_to_rank_asc,Diastolic blood pressure,0,75,3,,
+5001,ranges_to_rank_asc,Heart rate,0,60,1,,
+5001,ranges_to_rank_asc,Heart rate,0,80,2,,
+5001,ranges_to_rank_asc,Heart rate,0,100,3,,
+5001,ranges_to_rank_desc,AST,0,20,1,,
+5001,ranges_to_rank_desc,ALT,0,20,1,,
+5001,ranges_to_rank_asc,Age,0,,4,,
+5001,ranges_to_rank_asc,Systolic blood pressure,0,,4,,
+5001,ranges_to_rank_asc,Diastolic blood pressure,0,,4,,
+5001,ranges_to_rank_asc,Heart rate,0,,4,,
+5001,ranges_to_rank_asc,BMI,0,25,1,,
+5001,ranges_to_rank_asc,BMI,0,30,2,,
+5001,ranges_to_rank_asc,BMI,0,,3,,
+5001,ranges_to_rank_asc,Pulse pressure,0,,4,,
+5001,ranges_to_rank_asc,Pulse pressure,0,55,3,,
+5001,ranges_to_rank_asc,Pulse pressure,0,40,2,,
+5001,ranges_to_rank_asc,Pulse pressure,0,25,1,,
+5001,ranges_to_rank_asc,Albumin,0,,2,,
+5001,ranges_to_rank_asc,Albumin,0,35,1,,
+5001,ranges_to_rank_desc,Creatinine clearance,0,60,1,,
+5001,ranges_to_rank_desc,Creatinine clearance,0,45,2,,
+5001,ranges_to_rank_desc,Creatinine clearance,0,30,3,,
+5001,ranges_to_rank_desc,Creatinine clearance,0,,4,,
+5001,ranges_to_rank_desc,LV ejection fraction,0,35,1,,
+5001,ranges_to_rank_desc,LV ejection fraction,0,25,2,,
+5001,ranges_to_rank_desc,LV ejection fraction,0,,3,,
+5001,ranges_to_rank_desc,Sodium,0,141,1,,
+5001,ranges_to_rank_desc,Sodium,0,138,2,,
+5001,ranges_to_rank_desc,Sodium,0,,3,,
+5001,ranges_to_rank_desc,ALT,0,,2,,
+5001,ranges_to_rank_desc,AST,0,,2,,
+5001,map_concept_id,Race,0,,1,,4185154
+5001,map_concept_id,Race,0,,2,,4035165
+5001,map_concept_id,Race,0,,8,,4188159
+5001,map_concept_id,Race,0,,5,,4184966
+5001,map_concept_id,Race,0,,4,,4211353
+5001,ranges_to_rank_asc,BUN,0,20,1,,
+5001,ranges_to_rank_asc,BUN,0,30,2,,
+5001,ranges_to_rank_asc,BUN,0,,3,,
+5001,ranges_to_rank_asc,WBC count,0,6,1,,
+5001,ranges_to_rank_asc,WBC count,0,8,2,,
+5001,ranges_to_rank_asc,WBC count,0,,3,,
+5001,map_concept_id,Left bundle branch block,0,,1,,4188540
+5001,map_concept_id,Right bundle branch block,0,,1,,4188540
+5001,map_concept_id,Left bundle branch block,0,,2,,4188539
+5001,map_concept_id,Right bundle branch block,0,,2,,4188539
+5001,map_concept_id,Tobacco use,0,,2,,4188539
+5001,map_concept_id,Tobacco use,0,,1,,4188540
+5001,map_concept_id,Any BBB,0,,1,,4188540
+5001,map_concept_id,Any BBB,0,,2,,4188539
+5001,map_concept_id,Valvular disease,0,,1,,4188540
+5001,map_concept_id,Valvular disease,0,,2,,4188539
+5001,map_concept_id,Prior PCI,0,,1,,4188540
+5001,map_concept_id,Prior CABG,0,,1,,4188540
+5001,map_concept_id,ICD,0,,1,,4188540
+5001,map_concept_id,Prior PCI,0,,2,,4188539
+5001,map_concept_id,Prior CABG,0,,2,,4188539
+5001,map_concept_id,ICD,0,,2,,4188539
+5001,ranges_to_rank_asc,QRS interval,0,,3,,
+5001,ranges_to_rank_asc,Time since diagnosis,0,12,1,,
+5001,ranges_to_rank_asc,Time since diagnosis,0,60,2,,
+5001,ranges_to_rank_asc,Time since diagnosis,0,,3,,
+5001,map_concept_id,Myocardial infarction,0,1,2,,4188539
+5001,map_concept_id,Myocardial infarction,0,2,1,,4188540
+5001,map_concept_id,Atrial fibrillation/flutter,0,,2,,4188539
+5001,map_concept_id,Diabetes mellitus,0,,2,,4188539
+5001,map_concept_id,CAD,0,,2,,4188539
+5001,map_concept_id,Atrial fibrillation/flutter,0,,1,,4188540
+5001,map_concept_id,Diabetes mellitus,0,,1,,4188540
+5001,map_concept_id,CAD,0,,1,,4188540
+1001,ranges_to_rank_asc,Left Ventricle Diameter Value,0,7.39,3,,
+1001,ranges_to_rank_asc,Left Ventricle Mass Value,0,388.18,3,,
+5001,map_concept_id,Hyperlipidemia,0,,2,,4188539
+5001,map_concept_id,Hypertension,0,,2,,4188539
+5001,map_concept_id,Hyperlipidemia,0,,1,,4188540
+5001,map_concept_id,Hypertension,0,,1,,4188540
+5001,map_concept_id,Gender,0,,1,,45766034
+5001,map_concept_id,Gender,0,,2,,45766035
+5001,map_concept_id,Race,0,,7,,8552
+5001,map_concept_id,Race,0,,6,,4211331
+5001,ranges_to_rank_asc,Age,0,70,3,,
+5001,map_concept_id,COPD,0,,1,,4188540
+5001,map_concept_id,COPD,0,,2,,4188539
+5001,map_concept_id,Stroke,0,,1,,4188540
+5001,map_concept_id,Stroke,0,,2,,4188539
+5001,ranges_to_rank_asc,NTBNP,0,130,1,,
+5001,ranges_to_rank_asc,NTBNP,0,280,2,,
+5001,ranges_to_rank_asc,NTBNP,0,,3,,
+5001,ranges_to_rank_asc,BNP,0,50,1,,
+5001,ranges_to_rank_asc,BNP,0,100,2,,
+5001,ranges_to_rank_desc,KCCQ,0,85,1,,
+5001,ranges_to_rank_desc,KCCQ,0,70,2,,
+5001,ranges_to_rank_desc,KCCQ,0,,3,,
+1001,ranges_to_rank_asc,Left Ventricle Diameter Value,0,5.87,1,,
+1001,ranges_to_rank_asc,Left Ventricle Diameter Value,0,6.59,2,,
+2,ranges_to_rank_asc,Age,0,50,1,,
+2,ranges_to_rank_asc,Age,0,60,2,,
+2,ranges_to_rank_asc,Heart rate,0,60,1,,
+2,ranges_to_rank_asc,Heart rate,0,80,2,,
+2,ranges_to_rank_asc,Heart rate,0,100,3,,
+2,ranges_to_rank_asc,Age,0,,4,,
+2,ranges_to_rank_asc,Heart rate,0,,4,,
+2,ranges_to_rank_asc,BMI,0,25,1,,
+2,ranges_to_rank_asc,BMI,0,30,2,,
+2,ranges_to_rank_asc,BMI,0,,3,,
+2,map_concept_id,Race,0,,1,,4185154
+2,map_concept_id,Race,0,,2,,4035165
+2,map_concept_id,Race,0,,9,,
+2,map_concept_id,Race,0,,8,,4188159
+2,map_concept_id,Race,0,,5,,4184966
+2,map_concept_id,Race,0,,4,,4211353
+2,map_concept_id,Tobacco use,0,,2,,4188539
+2,map_concept_id,Tobacco use,0,,1,,4188540
+2,map_concept_id,Diabetes mellitus,0,,2,,4188539
+5001,ranges_to_rank_asc,QRS interval,0,150,2,,
+2,map_concept_id,CAD,0,,2,,4188539
+2,map_concept_id,Diabetes mellitus,0,,1,,4188540
+2,map_concept_id,CAD,0,,1,,4188540
+2,map_concept_id,Gender,0,,1,,45766034
+2,map_concept_id,Gender,0,,2,,45766035
+2,map_concept_id,Race,0,,7,,8552
+2,map_concept_id,Race,0,,6,,4211331
+2,ranges_to_rank_asc,Age,0,70,3,,
+2,ranges_to_rank_asc,Weight,0,150,1,,
+2,ranges_to_rank_asc,Weight,0,200,2,,
+2,ranges_to_rank_asc,Weight,0,250,3,,
+2,ranges_to_rank_asc,Weight,0,,4,,
+2,ranges_to_rank_asc,Height,0,60,1,,
+2,ranges_to_rank_asc,Height,0,66,2,,
+2,ranges_to_rank_asc,Height,0,72,3,,
+2,ranges_to_rank_asc,Height,0,,4,,
+5001,map_concept_id,Treatment Arm,0,,1,,4188540
+5001,map_concept_id,Treatment Arm,0,,2,,4188539
+5001,ranges_to_rank_asc,QRS interval,0,120,1,,
+5001,ranges_to_rank_asc,Weight,0,150,1,,
+5001,ranges_to_rank_asc,Weight,0,200,2,,
+5001,ranges_to_rank_asc,Weight,0,250,3,,
+5001,ranges_to_rank_asc,Weight,0,,4,,
+5002,ranges_to_rank_asc,Age,0,50,1,,
+5002,ranges_to_rank_asc,Age,0,60,2,,
+5002,ranges_to_rank_asc,Systolic blood pressure,0,120,1,,
+5002,ranges_to_rank_asc,Systolic blood pressure,0,140,2,,
+5002,ranges_to_rank_asc,Systolic blood pressure,0,150,3,,
+5002,ranges_to_rank_asc,Diastolic blood pressure,0,65,2,,
+5002,ranges_to_rank_asc,Diastolic blood pressure,0,60,1,,
+5002,ranges_to_rank_asc,Diastolic blood pressure,0,75,3,,
+5002,ranges_to_rank_asc,Heart rate,0,60,1,,
+5002,ranges_to_rank_asc,Heart rate,0,80,2,,
+5002,ranges_to_rank_asc,Heart rate,0,100,3,,
+5002,ranges_to_rank_desc,AST,0,20,1,,
+5002,ranges_to_rank_desc,ALT,0,20,1,,
+5002,ranges_to_rank_asc,Age,0,,4,,
+5002,ranges_to_rank_asc,Systolic blood pressure,0,,4,,
+5002,ranges_to_rank_asc,Diastolic blood pressure,0,,4,,
+5002,ranges_to_rank_asc,Heart rate,0,,4,,
+5002,ranges_to_rank_asc,BMI,0,25,1,,
+5002,ranges_to_rank_asc,BMI,0,30,2,,
+5002,ranges_to_rank_asc,BMI,0,,3,,
+5002,ranges_to_rank_asc,Pulse pressure,0,,4,,
+5002,ranges_to_rank_asc,Pulse pressure,0,55,3,,
+5002,ranges_to_rank_asc,Pulse pressure,0,40,2,,
+5002,ranges_to_rank_asc,Pulse pressure,0,25,1,,
+5002,ranges_to_rank_desc,Creatinine clearance,0,60,1,,
+5002,ranges_to_rank_desc,Creatinine clearance,0,45,2,,
+5002,ranges_to_rank_desc,Creatinine clearance,0,30,3,,
+5002,ranges_to_rank_desc,Creatinine clearance,0,,4,,
+5002,ranges_to_rank_desc,Sodium,0,141,1,,
+5002,ranges_to_rank_desc,Sodium,0,138,2,,
+5002,ranges_to_rank_desc,Sodium,0,,3,,
+5002,ranges_to_rank_desc,ALT,0,,2,,
+5002,ranges_to_rank_desc,AST,0,,2,,
+5002,map_concept_id,Race,0,,1,,4185154
+5002,map_concept_id,Race,0,,2,,4035165
+5002,map_concept_id,Race,0,,8,,4188159
+5002,map_concept_id,Race,0,,5,,4184966
+5002,map_concept_id,Race,0,,4,,4211353
+5002,ranges_to_rank_asc,BUN,0,20,1,,
+5002,ranges_to_rank_asc,BUN,0,30,2,,
+5002,ranges_to_rank_asc,BUN,0,,3,,
+5002,ranges_to_rank_asc,WBC count,0,6,1,,
+5002,ranges_to_rank_asc,WBC count,0,8,2,,
+5002,ranges_to_rank_asc,WBC count,0,,3,,
+5002,map_concept_id,Left bundle branch block,0,,1,,4188540
+5002,map_concept_id,Right bundle branch block,0,,1,,4188540
+5002,map_concept_id,Left bundle branch block,0,,2,,4188539
+5002,map_concept_id,Right bundle branch block,0,,2,,4188539
+5002,map_concept_id,Tobacco use,0,,2,,4188539
+5002,map_concept_id,Tobacco use,0,,1,,4188540
+5002,map_concept_id,Any BBB,0,,1,,4188540
+5002,map_concept_id,Any BBB,0,,2,,4188539
+5002,map_concept_id,Prior PCI,0,,1,,4188540
+5002,map_concept_id,Prior CABG,0,,1,,4188540
+5002,map_concept_id,ICD,0,,1,,4188540
+5002,map_concept_id,Prior PCI,0,,2,,4188539
+5002,map_concept_id,Prior CABG,0,,2,,4188539
+5002,map_concept_id,ICD,0,,2,,4188539
+5002,map_concept_id,Myocardial infarction,0,1,2,,4188539
+5002,map_concept_id,Myocardial infarction,0,2,1,,4188540
+5002,map_concept_id,Atrial fibrillation/flutter,0,,2,,4188539
+5002,map_concept_id,Diabetes mellitus,0,,2,,4188539
+5002,map_concept_id,CAD,0,,2,,4188539
+5002,map_concept_id,Atrial fibrillation/flutter,0,,1,,4188540
+5002,map_concept_id,Diabetes mellitus,0,,1,,4188540
+5002,map_concept_id,CAD,0,,1,,4188540
+5002,map_concept_id,Hyperlipidemia,0,,2,,4188539
+5002,ranges_to_rank_desc,Anemia,f,36,1,,
+5002,ranges_to_rank_desc,Anemia,f,,2,,
+5002,ranges_to_rank_desc,Anemia,m,39,1,,
+5002,ranges_to_rank_desc,Anemia,m,,2,,
+5002,ranges_to_rank_desc,Albumin,0,,2,,
+5002,ranges_to_rank_desc,Albumin,0,35,1,,
+5002,map_concept_id,Hypertension,0,,2,,4188539
+5002,map_concept_id,Hyperlipidemia,0,,1,,4188540
+5002,map_concept_id,Hypertension,0,,1,,4188540
+5002,map_concept_id,Gender,0,,1,,45766034
+5002,map_concept_id,Gender,0,,2,,45766035
+5002,map_concept_id,Race,0,,7,,8552
+5002,map_concept_id,Race,0,,6,,4211331
+5002,ranges_to_rank_asc,Age,0,70,3,,
+5002,map_concept_id,COPD,0,,1,,4188540
+5002,map_concept_id,COPD,0,,2,,4188539
+5002,map_concept_id,Stroke,0,,1,,4188540
+5002,map_concept_id,Stroke,0,,2,,4188539
+5002,ranges_to_rank_asc,NTBNP,0,130,1,,
+5002,ranges_to_rank_asc,NTBNP,0,280,2,,
+5002,ranges_to_rank_asc,NTBNP,0,,3,,
+5002,ranges_to_rank_asc,BNP,0,50,1,,
+5002,ranges_to_rank_asc,BNP,0,100,2,,
+5002,ranges_to_rank_desc,KCCQ,0,85,1,,
+5002,ranges_to_rank_desc,KCCQ,0,70,2,,
+5002,ranges_to_rank_desc,KCCQ,0,,3,,
+5001,ranges_to_rank_asc,BNP,0,,3,,
+5002,ranges_to_rank_asc,BNP,0,,3,,
+5002,map_concept_id,PPM,0,,1,,4188540
+5002,map_concept_id,PPM,0,,2,,4188539
+5002,map_concept_id,CRT,0,,1,,4188540
+5002,map_concept_id,CRT,0,,2,,4188539
+5001,map_concept_id,CRT,0,,1,,4188540
+5001,map_concept_id,CRT,0,,2,,4188539
+1,ranges_to_rank_asc,Anemia,m,39,1,,
+1,ranges_to_rank_asc,Anemia,m,,2,,
+1,ranges_to_rank_asc,Anemia,f,36,1,,
+1,ranges_to_rank_asc,Anemia,f,,2,,
+5001,ranges_to_rank_asc,Anemia,m,39,1,,
+5001,ranges_to_rank_asc,Anemia,m,,2,,
+5001,ranges_to_rank_asc,Anemia,f,36,1,,
+5001,ranges_to_rank_asc,Anemia,f,,2,,
+5002,ranges_to_rank_desc,LV ejection fraction,0,30,3,,
+5002,ranges_to_rank_desc,LV ejection fraction,0,45,2,,
+5002,ranges_to_rank_desc,LV ejection fraction,0,55,1,,
+5002,ranges_to_rank_desc,LV ejection fraction,0,,4,,
+20000,ranges_to_rank_asc,Age,0,50,1,,
+20000,ranges_to_rank_asc,Age,0,60,2,,
+20000,ranges_to_rank_desc,AST,0,20,1,,
+20000,ranges_to_rank_desc,ALT,0,20,1,,
+20000,ranges_to_rank_asc,Age,0,,4,,
+20000,ranges_to_rank_asc,Pulse pressure,0,,4,,
+20000,ranges_to_rank_asc,Pulse pressure,0,55,3,,
+20000,ranges_to_rank_asc,Pulse pressure,0,40,2,,
+20000,ranges_to_rank_asc,Pulse pressure,0,25,1,,
+20000,ranges_to_rank_asc,Albumin,0,,2,,
+20000,ranges_to_rank_asc,Albumin,0,35,1,,
+20000,ranges_to_rank_desc,Sodium,0,141,1,,
+20000,ranges_to_rank_desc,Sodium,0,138,2,,
+20000,ranges_to_rank_desc,Sodium,0,,3,,
+20000,ranges_to_rank_desc,ALT,0,,2,,
+20000,ranges_to_rank_desc,AST,0,,2,,
+20000,map_concept_id,Race,0,,1,,4185154
+20000,map_concept_id,Race,0,,2,,4035165
+20000,map_concept_id,Race,0,,9,,
+20000,map_concept_id,Race,0,,8,,4188159
+20000,map_concept_id,Race,0,,5,,4184966
+20000,map_concept_id,Race,0,,4,,4211353
+20000,ranges_to_rank_asc,BUN,0,20,1,,
+20000,ranges_to_rank_asc,BUN,0,30,2,,
+20000,ranges_to_rank_asc,BUN,0,,3,,
+20000,ranges_to_rank_asc,WBC count,0,6,1,,
+20000,ranges_to_rank_asc,WBC count,0,8,2,,
+20000,ranges_to_rank_asc,WBC count,0,,3,,
+20000,map_concept_id,Left bundle branch block,0,,1,,4188540
+20000,map_concept_id,Right bundle branch block,0,,1,,4188540
+20000,map_concept_id,Left bundle branch block,0,,2,,4188539
+20000,map_concept_id,Right bundle branch block,0,,2,,4188539
+20000,map_concept_id,Tobacco use,0,,2,,4188539
+20000,map_concept_id,Tobacco use,0,,1,,4188540
+20000,map_concept_id,Any BBB,0,,1,,4188540
+20000,map_concept_id,Any BBB,0,,2,,4188539
+20000,map_concept_id,Valvular disease,0,,1,,4188540
+20000,map_concept_id,Valvular disease,0,,2,,4188539
+20000,map_concept_id,Prior PCI,0,,1,,4188540
+20000,map_concept_id,Prior CABG,0,,1,,4188540
+20000,map_concept_id,ICD,0,,1,,4188540
+20000,map_concept_id,Prior PCI,0,,2,,4188539
+20000,map_concept_id,Prior CABG,0,,2,,4188539
+20000,map_concept_id,ICD,0,,2,,4188539
+20000,ranges_to_rank_asc,QRS interval,0,12,1,,
+20000,ranges_to_rank_asc,QRS interval,0,60,2,,
+20000,ranges_to_rank_asc,QRS interval,0,,3,,
+20000,map_concept_id,Myocardial infarction,0,1,2,,4188539
+20000,map_concept_id,Myocardial infarction,0,2,1,,4188540
+20000,map_concept_id,Atrial fibrillation/flutter,0,,2,,4188539
+20000,map_concept_id,Diabetes mellitus,0,,2,,4188539
+20000,map_concept_id,CAD,0,,2,,4188539
+20000,map_concept_id,Atrial fibrillation/flutter,0,,1,,4188540
+20000,map_concept_id,Diabetes mellitus,0,,1,,4188540
+20000,map_concept_id,CAD,0,,1,,4188540
+20000,map_concept_id,Angina,0,,1,,4188540
+20000,map_concept_id,Angina,0,,2,,4188539
+20000,map_concept_id,COPD,0,,2,,4188539
+20000,map_concept_id,COPD,0,,1,,4188540
+20000,map_concept_id,Stroke,0,,1,,4188540
+20000,map_concept_id,Stroke,0,,2,,4188539
+20000,ranges_to_rank_asc,Hemoglobin,0,13,1,,
+20000,map_concept_id,Hyperlipidemia,0,,2,,4188539
+20000,map_concept_id,Hypertension,0,,2,,4188539
+20000,map_concept_id,Hyperlipidemia,0,,1,,4188540
+20000,map_concept_id,Hypertension,0,,1,,4188540
+20000,ranges_to_rank_asc,Hemoglobin,0,15,2,,
+20000,ranges_to_rank_asc,Hemoglobin,0,,3,,
+20000,map_concept_id,Gender,0,,1,,45766034
+20000,map_concept_id,Gender,0,,2,,45766035
+20000,map_concept_id,Race,0,,7,,8552
+20000,map_concept_id,Race,0,,6,,4211331
+20000,ranges_to_rank_asc,Age,0,70,3,,
+20000,ranges_to_rank_desc,Hematocrit,0,39,1,,
+20000,ranges_to_rank_desc,Hematocrit,0,43,2,,
+20000,ranges_to_rank_desc,Hematocrit,0,,3,,
+20001,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,ACCORD other bolus insulines UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,ACCORD other bp med UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,ACCORD other diabetes treatments UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,ACCORD  other lipid med UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,ACCORD premixed insulins UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,,0,,4188540
+20001,map_concept_id,acetylsalicylic acid B01AC06,0,,0,,4188540
+20001,map_concept_id,AIM-HIGH other diabetes treatments UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,alpha-Adrenergic Blocker N00001755,0,,0,,4188540
+20001,map_concept_id,Alpha glucosidase inhibitors A10BF,0,,0,,4188540
+20001,map_concept_id,Amylin 417736001,0,,0,,4188540
+20001,map_concept_id,Angina pectoris 194828000,0,,0,,4188540
+20001,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,,0,,4188540
+20001,map_concept_id,ANTITHROMBOTIC AGENTS B01,0,,0,,4188540
+20001,map_concept_id,Arterial graft 261240000,0,,0,,4188540
+20001,map_concept_id,Atrial fibrillation 49436004,0,,0,,4188540
+20001,map_concept_id,BARI-2D nonsublingual nitrate UCD-Kao-3,0,,0,,4188540
+20001,map_concept_id,BETA BLOCKING AGENTS C07,0,,0,,4188540
+20001,map_concept_id,Biguanides A10BA,0,,0,,4188540
+20001,map_concept_id,"BLOOD GLUCOSE LOWERING DRUGS, EXCL. INSULINS A10B",0,,0,,4188540
+20001,map_concept_id,Bundle branch block 6374002,0,,0,,4188540
+20001,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,,0,,4188540
+20001,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,,0,,4188540
+20001,map_concept_id,Cerebrovascular accident 230690007,0,,0,,4188540
+20001,map_concept_id,Coronary angioplasty 41339005,0,,0,,4188540
+20001,map_concept_id,Current drinker 219006,0,,0,,4188540
+20001,map_concept_id,Defibrillator 19257004,0,,0,,4188540
+20001,map_concept_id,Dietary cholesterol absorption inhibitor 468638005,0,,0,,4188540
+20001,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,,0,,4188540
+20001,map_concept_id,Dipeptidyl peptidase 4 (DPP-4) inhibitors A10BH,0,,0,,4188540
+20001,map_concept_id,DIURETICS C03,0,,0,,4188540
+20001,map_concept_id,Emphysema or COPD [Minimum Data Set] 45670-7,0,,0,,4188540
+20001,map_concept_id,Fibrates C10AB,0,,0,,4188540
+20001,map_concept_id,Fibric Acids N00001821,0,,0,,4188540
+20001,map_concept_id,Fish oil 226359003,0,,0,,4188540
+20001,map_concept_id,Heart revascularization 81266008,0,,0,,4188540
+20001,map_concept_id,Heparin group B01AB,0,,0,,4188540
+20001,map_concept_id,HMG CoA reductase inhibitors C10AA,0,,0,,4188540
+20001,map_concept_id,H/O: cardiovascular disease 266995000,0,,0,,4188540
+20001,map_concept_id,H/O: diabetes mellitus 161445009,0,,0,,4188540
+20001,map_concept_id,Hyperlipidemia 55822004,0,,0,,4188540
+20001,map_concept_id,Hypertensive disorder 38341003,0,,0,,4188540
+20001,map_concept_id,Incretin 417524005,0,,0,,4188540
+20001,map_concept_id,insulin (human) A10AB01,0,,0,,4188540
+20001,map_concept_id,insulin (human) A10AC01,0,,0,,4188540
+20001,map_concept_id,insulin (human) A10AE01,0,,0,,4188540
+20001,map_concept_id,INSULINS AND ANALOGUES A10A,0,,0,,4188540
+20001,map_concept_id,Lipid lowering agents LP31452-3,0,,0,,4188540
+20001,map_concept_id,Loop diuretic 29051009,0,,0,,4188540
+20001,map_concept_id,Meglitinide 109075003,0,,0,,4188540
+20001,map_concept_id,metformin A10BA02,0,,0,,4188540
+20001,map_concept_id,Myocardial infarction 22298006,0,,0,,4188540
+20001,map_concept_id,Myocardial infarction age by EKG 8611-6,0,,0,,4188540
+20001,map_concept_id,Niacin 55013001,0,,0,,4188540
+20001,map_concept_id,Omega-3 Fatty Acid N00001755,0,,0,,4188540
+20001,map_concept_id,Organic nitrates C01DA,0,,0,,4188540
+20001,map_concept_id,Percutaneous coronary intervention 415070008,0,,0,,4188540
+20001,map_concept_id,POTASSIUM A12B,0,,0,,4188540
+20001,map_concept_id,Potassium-sparing diuretic 47755009,0,,0,,4188540
+20001,map_concept_id,reserpine C02AA02,0,,0,,4188540
+20001,map_concept_id,Sulfaurea 419204001,0,,0,,4188540
+20001,map_concept_id,Sulfonylurea 34012005,0,,0,,4188540
+20001,map_concept_id,Sulfonylureas A10BB,0,,0,,4188540
+20001,map_concept_id,"Thiazides, plain C03AA",0,,0,,4188540
+20001,map_concept_id,Thiazolidinedione 109086001,0,,0,,4188540
+20001,map_concept_id,Tmt is placebo/std of care UCD-Kao-1,0,,0,,4188540
+20001,map_concept_id,Tobacco use status CPHS 39240-7,0,,0,,4188540
+20001,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,,0,,4188540
+20001,map_concept_id,warfarin B01AA03,0,,0,,4188540
+20001,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,ACCORD other bolus insulines UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,ACCORD other bp med UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,ACCORD other diabetes treatments UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,ACCORD  other lipid med UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,ACCORD premixed insulins UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,,1,,4188539
+20001,map_concept_id,acetylsalicylic acid B01AC06,0,,1,,4188539
+20001,map_concept_id,AIM-HIGH other diabetes treatments UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,alpha-Adrenergic Blocker N00001755,0,,1,,4188539
+20001,map_concept_id,Alpha glucosidase inhibitors A10BF,0,,1,,4188539
+20001,map_concept_id,Amylin 417736001,0,,1,,4188539
+20001,map_concept_id,Angina pectoris 194828000,0,,1,,4188539
+20001,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,,1,,4188539
+20001,map_concept_id,ANTITHROMBOTIC AGENTS B01,0,,1,,4188539
+20001,map_concept_id,Arterial graft 261240000,0,,1,,4188539
+20001,map_concept_id,Atrial fibrillation 49436004,0,,1,,4188539
+20001,map_concept_id,BARI-2D nonsublingual nitrate UCD-Kao-3,0,,1,,4188539
+20001,map_concept_id,BETA BLOCKING AGENTS C07,0,,1,,4188539
+20001,map_concept_id,Biguanides A10BA,0,,1,,4188539
+20001,map_concept_id,"BLOOD GLUCOSE LOWERING DRUGS, EXCL. INSULINS A10B",0,,1,,4188539
+20001,map_concept_id,Bundle branch block 6374002,0,,1,,4188539
+20001,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,,1,,4188539
+20001,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,,1,,4188539
+20001,map_concept_id,Cerebrovascular accident 230690007,0,,1,,4188539
+20001,map_concept_id,Coronary angioplasty 41339005,0,,1,,4188539
+20001,map_concept_id,Current drinker 219006,0,,1,,4188539
+20001,map_concept_id,Defibrillator 19257004,0,,1,,4188539
+20001,map_concept_id,Dietary cholesterol absorption inhibitor 468638005,0,,1,,4188539
+20001,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,,1,,4188539
+20001,map_concept_id,Dipeptidyl peptidase 4 (DPP-4) inhibitors A10BH,0,,1,,4188539
+20001,map_concept_id,DIURETICS C03,0,,1,,4188539
+20001,map_concept_id,Emphysema or COPD [Minimum Data Set] 45670-7,0,,1,,4188539
+20001,map_concept_id,Fibrates C10AB,0,,1,,4188539
+20001,map_concept_id,Fibric Acids N00001821,0,,1,,4188539
+20001,map_concept_id,Fish oil 226359003,0,,1,,4188539
+20001,map_concept_id,Heart revascularization 81266008,0,,1,,4188539
+20001,map_concept_id,Heparin group B01AB,0,,1,,4188539
+20001,map_concept_id,HMG CoA reductase inhibitors C10AA,0,,1,,4188539
+20001,map_concept_id,H/O: cardiovascular disease 266995000,0,,1,,4188539
+20001,map_concept_id,H/O: diabetes mellitus 161445009,0,,1,,4188539
+20001,map_concept_id,Hyperlipidemia 55822004,0,,1,,4188539
+20001,map_concept_id,Hypertensive disorder 38341003,0,,1,,4188539
+20001,map_concept_id,Incretin 417524005,0,,1,,4188539
+20001,map_concept_id,insulin (human) A10AB01,0,,1,,4188539
+20001,map_concept_id,insulin (human) A10AC01,0,,1,,4188539
+20001,map_concept_id,insulin (human) A10AE01,0,,1,,4188539
+20001,map_concept_id,INSULINS AND ANALOGUES A10A,0,,1,,4188539
+20001,map_concept_id,Lipid lowering agents LP31452-3,0,,1,,4188539
+20001,map_concept_id,Loop diuretic 29051009,0,,1,,4188539
+20001,map_concept_id,Meglitinide 109075003,0,,1,,4188539
+20001,map_concept_id,metformin A10BA02,0,,1,,4188539
+20001,map_concept_id,Myocardial infarction 22298006,0,,1,,4188539
+20001,map_concept_id,Myocardial infarction age by EKG 8611-6,0,,1,,4188539
+20001,map_concept_id,Niacin 55013001,0,,1,,4188539
+20001,map_concept_id,Omega-3 Fatty Acid N00001755,0,,1,,4188539
+20001,map_concept_id,Organic nitrates C01DA,0,,1,,4188539
+20001,map_concept_id,Percutaneous coronary intervention 415070008,0,,1,,4188539
+20001,map_concept_id,POTASSIUM A12B,0,,1,,4188539
+20001,map_concept_id,Potassium-sparing diuretic 47755009,0,,1,,4188539
+20001,map_concept_id,reserpine C02AA02,0,,1,,4188539
+20001,map_concept_id,Sulfaurea 419204001,0,,1,,4188539
+20001,map_concept_id,Sulfonylurea 34012005,0,,1,,4188539
+20001,map_concept_id,Sulfonylureas A10BB,0,,1,,4188539
+20001,map_concept_id,"Thiazides, plain C03AA",0,,1,,4188539
+20001,map_concept_id,Thiazolidinedione 109086001,0,,1,,4188539
+20001,map_concept_id,Tmt is placebo/std of care UCD-Kao-1,0,,1,,4188539
+20001,map_concept_id,Tobacco use status CPHS 39240-7,0,,1,,4188539
+20001,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,,1,,4188539
+20001,map_concept_id,warfarin B01AA03,0,,1,,4188539
+20001,map_concept_id,Gender 263495000,0,,1,,45766034
+20001,map_concept_id,Gender 263495000,0,,2,,45766035
+20001,map_concept_id,Race 103579009,0,,0,,8552
+20001,map_concept_id,Race 103579009,0,,1,,4035165
+20001,map_concept_id,Race 103579009,0,,2,,4184966
+20001,map_concept_id,Race 103579009,0,,3,,4185154
+20001,map_concept_id,Race 103579009,0,,4,,4188159
+20001,map_concept_id,Race 103579009,0,,5,,4211331
+20001,map_concept_id,Race 103579009,0,,6,,4211353
+5001,map_concept_id,HF hospital status,0,,1,,4188540
+5001,map_concept_id,CV hospital status,0,,1,,4188540
+5001,map_concept_id,All-cause hospital status,0,,1,,4188540
+5001,map_concept_id,CV death status,0,,1,,4188540
+5001,map_concept_id,Death status,0,,1,,4188540
+5001,map_concept_id,Primary outcome status,0,,1,,4188540
+5001,map_concept_id,HF hospital status,0,,2,,4188539
+5001,map_concept_id,CV hospital status,0,,2,,4188539
+5001,map_concept_id,All-cause hospital status,0,,2,,4188539
+5001,map_concept_id,CV death status,0,,2,,4188539
+5001,map_concept_id,Death status,0,,2,,4188539
+5001,map_concept_id,Primary outcome status,0,,2,,4188539
+8001,map_concept_id,sex,0,,1,,45766034
+8001,map_concept_id,sex,0,,2,,45766035
+8001,map_concept_id,race,0,,1,,4185154
+8001,map_concept_id,race,0,,2,,4035165
+8001,map_concept_id,race,0,,8,,4188159
+8001,map_concept_id,race,0,,5,,4184966
+8001,map_concept_id,race,0,,4,,4211353
+8001,map_concept_id,race,0,,7,,8552
+8001,map_concept_id,race,0,,6,,4211331
+8001,map_concept_id,race,0,,9,,45877443
+20003,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,,0,,4188540
+20003,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,,0,,4188540
+20003,map_concept_id,acetylsalicylic acid B01AC06,0,,0,,4188540
+20003,map_concept_id,alpha-Adrenergic Blocker N00001755,0,,0,,4188540
+20003,map_concept_id,Alpha glucosidase inhibitors A10BF,0,,0,,4188540
+20003,map_concept_id,Amylin 417736001,0,,0,,4188540
+20003,map_concept_id,Angina pectoris 194828000,0,,0,,4188540
+20003,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,,0,,4188540
+20003,map_concept_id,ANTITHROMBOTIC AGENTS B01,0,,0,,4188540
+20003,map_concept_id,Atrial fibrillation 49436004,0,,0,,4188540
+20003,map_concept_id,BETA BLOCKING AGENTS C07,0,,0,,4188540
+20003,map_concept_id,"BLOOD GLUCOSE LOWERING DRUGS, EXCL. INSULINS A10B",0,,0,,4188540
+20003,map_concept_id,Bundle branch block 6374002,0,,0,,4188540
+20003,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,,0,,4188540
+20003,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,,0,,4188540
+20003,map_concept_id,Cerebrovascular accident 230690007,0,,0,,4188540
+20003,map_concept_id,Current drinker 219006,0,,0,,4188540
+20003,map_concept_id,Defibrillator 19257004,0,,0,,4188540
+20003,map_concept_id,Dietary cholesterol absorption inhibitor 468638005,0,,0,,4188540
+20003,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,,0,,4188540
+20003,map_concept_id,Dipeptidyl peptidase 4 (DPP-4) inhibitors A10BH,0,,0,,4188540
+20003,map_concept_id,DIURETICS C03,0,,0,,4188540
+20003,map_concept_id,Emphysema or COPD [Minimum Data Set] 45670-7,0,,0,,4188540
+20003,map_concept_id,Fibrates C10AB,0,,0,,4188540
+20003,map_concept_id,Fibric Acids N00001821,0,,0,,4188540
+20003,map_concept_id,Fish oil 226359003,0,,0,,4188540
+20003,map_concept_id,Heart revascularization 81266008,0,,0,,4188540
+20003,map_concept_id,Heparin group B01AB,0,,0,,4188540
+20003,map_concept_id,HMG CoA reductase inhibitors C10AA,0,,0,,4188540
+20003,map_concept_id,H/O: diabetes mellitus 161445009,0,,0,,4188540
+20003,map_concept_id,Hypertensive disorder 38341003,0,,0,,4188540
+20003,map_concept_id,Incretin 417524005,0,,0,,4188540
+20003,map_concept_id,insulin (human) A10AB01,0,,0,,4188540
+20003,map_concept_id,insulin (human) A10AC01,0,,0,,4188540
+20003,map_concept_id,insulin (human) A10AE01,0,,0,,4188540
+20003,map_concept_id,INSULINS AND ANALOGUES A10A,0,,0,,4188540
+20003,map_concept_id,Lipid lowering agents LP31452-3,0,,0,,4188540
+20003,map_concept_id,Loop diuretic 29051009,0,,0,,4188540
+20003,map_concept_id,Meglitinide 109075003,0,,0,,4188540
+20003,map_concept_id,metformin A10BA02,0,,0,,4188540
+20003,map_concept_id,Myocardial infarction 22298006,0,,0,,4188540
+20003,map_concept_id,Niacin 55013001,0,,0,,4188540
+20003,map_concept_id,Omega-3 Fatty Acid N00001755,0,,0,,4188540
+20003,map_concept_id,Organic nitrates C01DA,0,,0,,4188540
+20003,map_concept_id,Percutaneous coronary intervention 415070008,0,,0,,4188540
+20003,map_concept_id,POTASSIUM A12B,0,,0,,4188540
+20003,map_concept_id,Potassium-sparing diuretic 47755009,0,,0,,4188540
+20003,map_concept_id,reserpine C02AA02,0,,0,,4188540
+20003,map_concept_id,Sulfaurea 419204001,0,,0,,4188540
+20003,map_concept_id,Sulfonylurea 34012005,0,,0,,4188540
+20003,map_concept_id,Sulfonylureas A10BB,0,,0,,4188540
+20003,map_concept_id,"Thiazides, plain C03AA",0,,0,,4188540
+20003,map_concept_id,Thiazolidinedione 109086001,0,,0,,4188540
+20003,map_concept_id,Tobacco use status CPHS 39240-7,0,,0,,4188540
+20003,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,,0,,4188540
+20003,map_concept_id,warfarin B01AA03,0,,0,,4188540
+20003,map_concept_id,ACCORD  non-dihydropyridine ca channel blocker UCD-Kao-3,0,,1,,4188539
+20003,map_concept_id,"ACE INHIBITORS, PLAIN C09A",0,,1,,4188539
+20003,map_concept_id,acetylsalicylic acid B01AC06,0,,1,,4188539
+20003,map_concept_id,alpha-Adrenergic Blocker N00001755,0,,1,,4188539
+20003,map_concept_id,Alpha glucosidase inhibitors A10BF,0,,1,,4188539
+20003,map_concept_id,Amylin 417736001,0,,1,,4188539
+20003,map_concept_id,Angina pectoris 194828000,0,,1,,4188539
+20003,map_concept_id,"ANGIOTENSIN II ANTAGONISTS, PLAIN C09C",0,,1,,4188539
+20003,map_concept_id,ANTITHROMBOTIC AGENTS B01,0,,1,,4188539
+20003,map_concept_id,Atrial fibrillation 49436004,0,,1,,4188539
+20003,map_concept_id,BETA BLOCKING AGENTS C07,0,,1,,4188539
+20003,map_concept_id,"BLOOD GLUCOSE LOWERING DRUGS, EXCL. INSULINS A10B",0,,1,,4188539
+20003,map_concept_id,Bundle branch block 6374002,0,,1,,4188539
+20003,map_concept_id,CALCIUM CHANNEL BLOCKERS C08,0,,1,,4188539
+20003,map_concept_id,Central alpha-2 Adrenergic Agonist N00001755,0,,1,,4188539
+20003,map_concept_id,Cerebrovascular accident 230690007,0,,1,,4188539
+20003,map_concept_id,Current drinker 219006,0,,1,,4188539
+20003,map_concept_id,Defibrillator 19257004,0,,1,,4188539
+20003,map_concept_id,Dietary cholesterol absorption inhibitor 468638005,0,,1,,4188539
+20003,map_concept_id,Dihydropyridine derivative calcium channel blocker 406769001,0,,1,,4188539
+20003,map_concept_id,Dipeptidyl peptidase 4 (DPP-4) inhibitors A10BH,0,,1,,4188539
+20003,map_concept_id,DIURETICS C03,0,,1,,4188539
+20003,map_concept_id,Emphysema or COPD [Minimum Data Set] 45670-7,0,,1,,4188539
+20003,map_concept_id,Fibrates C10AB,0,,1,,4188539
+20003,map_concept_id,Fibric Acids N00001821,0,,1,,4188539
+20003,map_concept_id,Fish oil 226359003,0,,1,,4188539
+20003,map_concept_id,Heart revascularization 81266008,0,,1,,4188539
+20003,map_concept_id,Heparin group B01AB,0,,1,,4188539
+20003,map_concept_id,HMG CoA reductase inhibitors C10AA,0,,1,,4188539
+20003,map_concept_id,H/O: diabetes mellitus 161445009,0,,1,,4188539
+20003,map_concept_id,Hypertensive disorder 38341003,0,,1,,4188539
+20003,map_concept_id,Incretin 417524005,0,,1,,4188539
+20003,map_concept_id,insulin (human) A10AB01,0,,1,,4188539
+20003,map_concept_id,insulin (human) A10AC01,0,,1,,4188539
+20003,map_concept_id,insulin (human) A10AE01,0,,1,,4188539
+20003,map_concept_id,INSULINS AND ANALOGUES A10A,0,,1,,4188539
+20003,map_concept_id,Lipid lowering agents LP31452-3,0,,1,,4188539
+20003,map_concept_id,Loop diuretic 29051009,0,,1,,4188539
+20003,map_concept_id,Meglitinide 109075003,0,,1,,4188539
+20003,map_concept_id,metformin A10BA02,0,,1,,4188539
+20003,map_concept_id,Myocardial infarction 22298006,0,,1,,4188539
+20003,map_concept_id,Niacin 55013001,0,,1,,4188539
+20003,map_concept_id,Omega-3 Fatty Acid N00001755,0,,1,,4188539
+20003,map_concept_id,Organic nitrates C01DA,0,,1,,4188539
+20003,map_concept_id,Percutaneous coronary intervention 415070008,0,,1,,4188539
+20003,map_concept_id,POTASSIUM A12B,0,,1,,4188539
+20003,map_concept_id,Potassium-sparing diuretic 47755009,0,,1,,4188539
+20003,map_concept_id,reserpine C02AA02,0,,1,,4188539
+20003,map_concept_id,Sulfaurea 419204001,0,,1,,4188539
+20003,map_concept_id,Sulfonylurea 34012005,0,,1,,4188539
+20003,map_concept_id,Sulfonylureas A10BB,0,,1,,4188539
+20003,map_concept_id,"Thiazides, plain C03AA",0,,1,,4188539
+20003,map_concept_id,Thiazolidinedione 109086001,0,,1,,4188539
+20003,map_concept_id,Tobacco use status CPHS 39240-7,0,,1,,4188539
+20003,map_concept_id,VASODILATORS USED IN CARDIAC DISEASES C01D,0,,1,,4188539
+20003,map_concept_id,warfarin B01AA03,0,,1,,4188539
+20003,map_concept_id,Gender 263495000,0,,1,,45766034
+20003,map_concept_id,Gender 263495000,0,,2,,45766035
+20003,map_concept_id,Race 103579009,0,,0,,8552
+20003,map_concept_id,Race 103579009,0,,1,,4035165
+20003,map_concept_id,Race 103579009,0,,2,,4184966
+20003,map_concept_id,Race 103579009,0,,3,,4185154
+20003,map_concept_id,Race 103579009,0,,4,,4188159
+20003,map_concept_id,Race 103579009,0,,5,,4211331
+20003,map_concept_id,Race 103579009,0,,6,,4211353
+20003,map_concept_id,Antihypertensives - flexible,0,,0,,4188540
+20003,map_concept_id,Antihypertensives - flexible,0,,1,,4188539
+20003,map_concept_id,Coronary artery bypass graft,0,,1,,4188539
+20003,map_concept_id,Coronary artery bypass graft,0,,0,,4188540
+20003,map_concept_id,ACCORD Other BP med,0,,0,,4188540
+20003,map_concept_id,ACCORD Other BP med,0,,1,,4188539
+20003,map_concept_id,Nonsublingual nitrates,0,,0,,4188540
+20003,map_concept_id,Nonsublingual nitrates,0,,1,,4188539
+20003,map_concept_id,"2 Class Race UCD-Kao-64 Black, Other",0,,2,,4035165
+20003,map_concept_id,Death Status,0,,0,,4188540
+20003,map_concept_id,Death Status,0,,1,,4188539
+20003,map_concept_id,MI Stroke,0,,0,,4188540
+20003,map_concept_id,MI Stroke,0,,1,,4188539
+20003,map_concept_id,Race 103579009,0,,8,,4190758
+20003,map_concept_id,"2 Class Race UCD-Kao-64 Black, Other",0,,1,,2000000065

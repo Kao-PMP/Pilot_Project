@@ -1,0 +1,13 @@
+extract_study_id,function_name,long_name,rule_id,vocabulary_id,concept_code,value_vocabulary_id,value_as_string,value_as_number,value_as_concept_id
+1,ranges_to_rank_asc,Age,0,local,units,x,years,,
+1,ranges_to_rank_asc,BMI,0,local,units,x,kg/m^2,,
+1,ranges_to_rank_asc,BUN,0,local,units,x,mg/dL,,
+1,ranges_to_rank_asc,Pulse pressure,0,local,units,x,mm Hg,,
+1,ranges_to_rank_desc,Creatinine clearance,0,local,units,x,mL/min/1.73m^2,,
+1,ranges_to_rank_desc,Sodium,0,local,units,x,mEq/L,,
+1,ranges_to_rank_desc,Anemia,m,SNOMED,45766034,x,male,,
+1,ranges_to_rank_desc,Anemia,f,SNOMED,45766035,x,female,,
+5001,ranges_to_rank_desc,Anemia,m,SNOMED,45766034,x,male,,
+5001,ranges_to_rank_desc,Anemia,f,SNOMED,45766035,x,male,,
+5002,ranges_to_rank_desc,Anemia,m,SNOMED,45766034,x,male,,
+5002,ranges_to_rank_desc,Anemia,f,SNOMED,45766035,x,male,,
